@@ -59,15 +59,15 @@ const projects = [
 		placeholder: false
 	},
 	{
-		title: "Projet 2",
-		description: "Description à compléter — nom, contexte, fonctionnalités principales.",
-		tech: ["Tech 1", "Tech 2", "Tech 3"],
+		title: "Astus Citée — Gestion de fichiers",
+		description: "Application web de gestion documentaire développée en stage : centralisation, sécurisation et accès aux fichiers internes de l\'entreprise, avec interface moderne et ergonomique.",
+		tech: ["Laravel", "PHP", "HTML", "SCSS", "JavaScript", "Blade", "MySQL"],
 		github: "https://github.com/PrinceAscelJacne/Astus-Cit-e",
 		video: "/videos/astus-gestion.mp4",
-		placeholder: true
+		placeholder: false
 	},
 	{
-		title: "Projet 3 — Site vitrine Astus Citée",
+		title: "Astus Citée — Site vitrine",
 		description: "Site web vitrine développé en stage chez Astus Citée pour présenter l'entreprise et renforcer sa visibilité en ligne.",
 		tech: ["HTML", "CSS", "JavaScript", "PHP"],
 		github: "https://github.com/PrinceAscelJacne/Astus-Cit-e",
@@ -164,6 +164,31 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		transition: background 0.25s !important;
 	}
 	.nav-cta:hover { background: var(--gold-dim) !important; }
+	.nav-cv {
+		font-size: 0.72rem !important;
+		letter-spacing: 0.15em !important;
+		text-transform: uppercase !important;
+		color: var(--text-dim) !important;
+		border: 1px solid var(--border-subtle) !important;
+		padding: 0.6rem 1.4rem !important;
+		transition: color 0.25s, border-color 0.25s !important;
+		text-decoration: none;
+	}
+	.nav-cv:hover { color: var(--text) !important; border-color: var(--border) !important; }
+	.btn-outline {
+		display: inline-block;
+		font-size: 0.72rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--gold);
+		background: transparent;
+		border: 1px solid var(--border);
+		padding: 0.9rem 2.2rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: background 0.25s, color 0.25s, transform 0.2s;
+	}
+	.btn-outline:hover { background: var(--gold-dim); transform: translateY(-1px); }
 
 	main { position: relative; z-index: 1; }
 
@@ -475,6 +500,13 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		background: var(--surface2);
 		border: 1px solid var(--border-subtle);
 	}
+	.project-img {
+		width: 100%; aspect-ratio: 16/9;
+		object-fit: cover;
+		display: block;
+		position: relative; z-index: 1;
+		border: 1px solid var(--border-subtle);
+	}
 	.project-number {
 		font-family: 'DM Mono', monospace;
 		font-size: 0.6rem; letter-spacing: 0.2em;
@@ -631,6 +663,7 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		<a href="#formations">Formations</a>
 		<a href="#experience">Expériences</a>
 		<a href="#projects">Projets</a>
+		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">Télécharger CV</a>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
 	</div>
 </nav>
@@ -648,6 +681,7 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 			<p class="hero-desc">{description}</p>
 			<div class="hero-actions">
 				<a href="#projects" class="btn-main">Voir mes projets</a>
+				<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="btn-outline">↓ Télécharger CV</a>
 				<div class="hero-meta">
 					<span>📍 Mulhouse, France &nbsp;·&nbsp; Mobilité</span>
 					<span>📞 07 45 36 03 07</span>
@@ -749,7 +783,9 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 				<div class="project-card">
 					{p.video
 						? <video class="project-video" src={p.video} controls muted playsinline preload="metadata" />
-						: <div class="project-placeholder-img"><span>Aperçu à venir</span></div>
+						: p.image
+							? <img class="project-img" src={p.image} alt={p.title} />
+							: <div class="project-placeholder-img"><span>Aperçu à venir</span></div>
 					}
 					<span class="project-number">PROJET 0{i + 1}</span>
 					<h3 class="project-title">{p.title}</h3>
