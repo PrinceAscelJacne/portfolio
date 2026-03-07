@@ -102,6 +102,33 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		--border: rgba(201,168,76,0.18);
 		--border-subtle: rgba(255,255,255,0.06);
 	}
+	[data-theme="light"] {
+		--bg: #f8f6f2;
+		--surface: #ffffff;
+		--surface2: #f0ece4;
+		--gold: #a07828;
+		--gold-light: #c9a84c;
+		--gold-dim: rgba(160,120,40,0.1);
+		--text: #1a1810;
+		--text-dim: #8a8070;
+		--text-mid: #5a5248;
+		--border: rgba(160,120,40,0.25);
+		--border-subtle: rgba(0,0,0,0.08);
+	}
+	/* Theme toggle button */
+	.theme-toggle {
+		background: none;
+		border: 1px solid var(--border-subtle);
+		color: var(--text-dim);
+		cursor: pointer;
+		padding: 0.5rem 0.7rem;
+		font-size: 1rem;
+		line-height: 1;
+		transition: border-color 0.25s, color 0.25s;
+		display: flex;
+		align-items: center;
+	}
+	.theme-toggle:hover { border-color: var(--border); color: var(--text); }
 	html { scroll-behavior: smooth; }
 	body {
 		background: var(--bg);
@@ -541,10 +568,12 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		<a href="#experience">Expériences</a>
 		<a href="#projects">Projets</a>
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">Télécharger CV</a>
+		<button class="theme-toggle" id="themeToggle" title="Changer le thème">☀️</button>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
 	</div>
 	<div class="nav-mobile">
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">↓ CV</a>
+		<button class="theme-toggle" id="themeToggleMobile" title="Changer le thème">☀️</button>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
 	</div>
 </nav>
@@ -722,4 +751,31 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 	</footer>
 </main>
 
+<script>
+  const STORAGE_KEY = 'pad-theme';
+  const toggle1 = document.getElementById('themeToggle');
+  const toggle2 = document.getElementById('themeToggleMobile');
+
+  function getTheme() {
+    return localStorage.getItem(STORAGE_KEY) || 'dark';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : '');
+    const icon = theme === 'light' ? '🌙' : '☀️';
+    if (toggle1) toggle1.textContent = icon;
+    if (toggle2) toggle2.textContent = icon;
+  }
+
+  function toggleTheme() {
+    const next = getTheme() === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(STORAGE_KEY, next);
+    applyTheme(next);
+  }
+
+  // Init
+  applyTheme(getTheme());
+  if (toggle1) toggle1.addEventListener('click', toggleTheme);
+  if (toggle2) toggle2.addEventListener('click', toggleTheme);
+</script>
 </Layout>
