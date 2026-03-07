@@ -115,6 +115,22 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		--border: rgba(160,120,40,0.25);
 		--border-subtle: rgba(0,0,0,0.08);
 	}
+	/* Contact dropdown */
+	.contact-dropdown-wrapper { position: relative; }
+	.contact-menu {
+		display: none; flex-direction: column;
+		position: absolute; top: calc(100% + 0.5rem); right: 0;
+		background: var(--surface); border: 1px solid var(--border);
+		min-width: 150px; z-index: 200;
+	}
+	.contact-menu.open { display: flex; }
+	.contact-option {
+		padding: 0.65rem 1rem; font-family: "DM Mono", monospace;
+		font-size: 0.65rem; letter-spacing: 0.08em;
+		color: var(--text-dim); text-decoration: none;
+		transition: background 0.15s, color 0.15s;
+	}
+	.contact-option:hover { background: var(--gold-dim); color: var(--text); }
 	/* Lang dropdown */
 	.lang-dropdown-wrapper { position: relative; }
 	.lang-toggle-btn {
@@ -613,13 +629,27 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">Télécharger CV</a>
 		<div id="langDropdown"></div>
 		<button class="theme-toggle" id="themeToggle" title="Changer le thème">☀️</button>
-		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
+		<div class="contact-dropdown-wrapper">
+			<button class="nav-cta" id="contactToggle">Contact ▾</button>
+			<div class="contact-menu" id="contactMenu">
+				<a href="mailto:djibodeprinceascel@gmail.com" class="contact-option">✉️ Email</a>
+				<a href="https://wa.me/33745360307" target="_blank" class="contact-option">💬 WhatsApp</a>
+				<a href="tel:+33745360307" class="contact-option">📞 Appeler</a>
+			</div>
+		</div>
 	</div>
 	<div class="nav-mobile">
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">↓ CV</a>
 		<div id="langDropdownMobile"></div>
 		<button class="theme-toggle" id="themeToggleMobile" title="Changer le thème">☀️</button>
-		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
+		<div class="contact-dropdown-wrapper">
+			<button class="nav-mobile-contact" id="contactToggleMobile">Contact ▾</button>
+			<div class="contact-menu contact-menu-mobile" id="contactMenuMobile">
+				<a href="mailto:djibodeprinceascel@gmail.com" class="contact-option">✉️ Email</a>
+				<a href="https://wa.me/33745360307" target="_blank" class="contact-option">💬 WhatsApp</a>
+				<a href="tel:+33745360307" class="contact-option">📞 Appeler</a>
+			</div>
+		</div>
 	</div>
 </nav>
 
@@ -1105,6 +1135,21 @@ function applyLang(lang) {
   if (footerLeft) footerLeft.textContent = t.footer;
 }
 
+// Contact dropdown
+function buildContactDropdown() {
+  var pairs = [["contactToggle","contactMenu"],["contactToggleMobile","contactMenuMobile"]];
+  pairs.forEach(function(pair) {
+    var btn = document.getElementById(pair[0]);
+    var menu = document.getElementById(pair[1]);
+    if (!btn || !menu) return;
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      menu.classList.toggle("open");
+    });
+    document.addEventListener("click", function() { menu.classList.remove("open"); });
+  });
+}
+buildContactDropdown();
 // Build dropdown lang selector
 function buildLangSelector() {
   ['langDropdown', 'langDropdownMobile'].forEach((id, isMobile) => {
