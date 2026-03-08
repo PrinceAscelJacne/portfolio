@@ -498,8 +498,9 @@ body.light body::before { opacity: 0.2; }
 		/* Navbar */
 		.navbar { padding: 1rem 1.25rem; }
 		.nav-links { display: none; }
+		.nav-controls { display: none; }
 		.nav-mobile {
-			display: flex; align-items: center; gap: 0.75rem;
+			display: flex; align-items: center; gap: 0.6rem;
 		}
 		.nav-mobile-cv {
 			font-family: 'DM Mono', monospace; font-size: 0.62rem;
@@ -796,10 +797,10 @@ body.light body::before { opacity: 0.2; }
 // ── THEME ──
 function toggleTheme() {
   const body = document.body;
-  const btn = document.getElementById('themeToggle');
   body.classList.toggle('light');
   const isLight = body.classList.contains('light');
-  btn.textContent = isLight ? '☀️' : '🌙';
+  const icon = isLight ? '☀️' : '🌙';
+  document.querySelectorAll('.theme-toggle').forEach(btn => btn.textContent = icon);
   localStorage.setItem('pad-theme', isLight ? 'light' : 'dark');
 }
 
@@ -1071,7 +1072,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('pad-theme');
   if (savedTheme === 'light') {
     document.body.classList.add('light');
-    document.getElementById('themeToggle').textContent = '☀️';
+    document.querySelectorAll('.theme-toggle').forEach(btn => btn.textContent = '☀️');
   }
   const savedLang = localStorage.getItem('pad-lang');
   if (savedLang && savedLang !== 'fr') setLang(savedLang);
