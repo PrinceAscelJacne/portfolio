@@ -420,7 +420,49 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 	.pill { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--text-mid); border: 1px solid var(--border-subtle); padding: 0.4rem 0.9rem; background: rgba(255,255,255,0.03); }
 	.pill.interest { color: var(--text-dim); font-size: 0.72rem; }
 
-	/* ── FOOTER ── */
+	/* ── THEME TOGGLE & LANG ── */
+.nav-controls { display: flex; align-items: center; gap: 0.75rem; }
+.theme-toggle {
+background: none; border: 1px solid var(--border-subtle);
+color: var(--text-dim); cursor: pointer; font-size: 0.85rem;
+width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+transition: border-color 0.2s, color 0.2s; flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--border); color: var(--text); }
+.lang-dropdown { position: relative; }
+.lang-btn {
+background: none; border: 1px solid var(--border-subtle);
+color: var(--text-dim); cursor: pointer;
+font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+padding: 0 0.75rem; height: 34px; display: flex; align-items: center; gap: 0.4rem;
+transition: border-color 0.2s, color 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.lang-btn:hover { border-color: var(--border); color: var(--text); }
+.lang-menu {
+position: absolute; top: calc(100% + 6px); right: 0;
+background: var(--surface2); border: 1px solid var(--border);
+min-width: 130px; z-index: 200; display: none; flex-direction: column;
+}
+.lang-menu.open { display: flex; }
+.lang-option {
+font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+color: var(--text-dim); padding: 0.6rem 1rem; cursor: pointer;
+border: none; background: none; text-align: left; width: 100%;
+transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 0.5rem;
+}
+.lang-option:hover { background: var(--gold-dim); color: var(--text); }
+.lang-option.active { color: var(--gold); }
+
+/* Light theme */
+body.light {
+--bg: #f8f6f2; --surface: #f0ede8; --surface2: #e8e4de;
+--text: #1a1810; --text-dim: #7a7570; --text-mid: #4a4640;
+--border: rgba(160,120,40,0.25); --border-subtle: rgba(0,0,0,0.08);
+--gold: #a07828; --gold-light: #c49a30; --gold-dim: rgba(160,120,40,0.1);
+}
+body.light body::before { opacity: 0.2; }
+
+/* ── FOOTER ── */
 	footer {
 		border-top: 1px solid var(--border-subtle); padding: 3rem 4rem;
 		max-width: 1300px; margin: 6rem auto 0;
@@ -551,7 +593,27 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">Télécharger CV</a>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
 	</div>
+	<div class="nav-controls">
+		<div class="lang-dropdown" id="langDropdown">
+			<button class="lang-btn" id="langBtn" onclick="toggleLang()">🇫🇷 FR ▾</button>
+			<div class="lang-menu" id="langMenu">
+				<button class="lang-option active" onclick="setLang('fr')">🇫🇷 Français</button>
+				<button class="lang-option" onclick="setLang('en')">🇬🇧 English</button>
+				<button class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</button>
+			</div>
+		</div>
+		<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Changer le thème">🌙</button>
+	</div>
 	<div class="nav-mobile">
+		<div class="lang-dropdown" id="langDropdownMobile">
+			<button class="lang-btn" id="langBtnMobile" onclick="toggleLangMobile()">🇫🇷</button>
+			<div class="lang-menu" id="langMenuMobile">
+				<button class="lang-option active" onclick="setLang('fr')">🇫🇷 FR</button>
+				<button class="lang-option" onclick="setLang('en')">🇬🇧 EN</button>
+				<button class="lang-option" onclick="setLang('de')">🇩🇪 DE</button>
+			</div>
+		</div>
+		<button class="theme-toggle" id="themeToggleMobile" onclick="toggleTheme()">🌙</button>
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">↓ CV</a>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
 	</div>
@@ -730,4 +792,105 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 	</footer>
 </main>
 
+<script is:inline>
+// ── THEME ──
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  body.classList.toggle('light');
+  const isLight = body.classList.contains('light');
+  btn.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('pad-theme', isLight ? 'light' : 'dark');
+}
+
+// ── LANG ──
+const translations = {
+  fr: {
+    nav: ['À propos','Compétences','Formations','Expériences','Projets'],
+    badge: 'Disponible pour un stage · 3 mois',
+    desc: "Étudiant en L3 MIAGE à FST UHA, je suis à la recherche d'un stage de 3 mois en tant que Développeur Full Stack. Passionné par la création d'applications web complètes, je maîtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes compétences au service d'un projet concret au sein de votre équipe.",
+    s1: "Domaines d'expertise", s2: "Formations & diplômes", s3: "Expériences terrain",
+    s4: "Projets GitHub", s5: "Langues, atouts & intérêts",
+    dl: 'Télécharger CV', contact: 'Contact',
+    flag: '🇫🇷', code: 'FR'
+  },
+  en: {
+    nav: ['About','Skills','Education','Experience','Projects'],
+    badge: 'Available for a 3-month internship',
+    desc: "L3 MIAGE student at FST UHA, I am looking for a 3-month internship as a Full Stack Developer. Passionate about building complete web applications, I master both Front-end and Back-end environments. Rigorous and curious, I want to contribute to a concrete project within your team.",
+    s1: "Areas of expertise", s2: "Education & degrees", s3: "Professional experience",
+    s4: "GitHub projects", s5: "Languages, strengths & interests",
+    dl: 'Download CV', contact: 'Contact',
+    flag: '🇬🇧', code: 'EN'
+  },
+  de: {
+    nav: ['Über mich','Fähigkeiten','Ausbildung','Erfahrung','Projekte'],
+    badge: 'Verfügbar für ein 3-monatiges Praktikum',
+    desc: "Als L3-MIAGE-Student an der FST UHA suche ich ein 3-monatiges Praktikum als Full-Stack-Entwickler. Ich beherrsche sowohl Front-end- als auch Back-end-Technologien und möchte meine Fähigkeiten in einem konkreten Projekt einsetzen.",
+    s1: "Fachgebiete", s2: "Ausbildung & Abschlüsse", s3: "Berufserfahrung",
+    s4: "GitHub-Projekte", s5: "Sprachen, Stärken & Interessen",
+    dl: 'Lebenslauf laden', contact: 'Kontakt',
+    flag: '🇩🇪', code: 'DE'
+  }
+};
+
+function toggleLang() {
+  const menu = document.getElementById('langMenu');
+  menu.classList.toggle('open');
+  document.getElementById('langMenuMobile').classList.remove('open');
+}
+function toggleLangMobile() {
+  const menu = document.getElementById('langMenuMobile');
+  menu.classList.toggle('open');
+  document.getElementById('langMenu').classList.remove('open');
+}
+
+function setLang(lang) {
+  const t = translations[lang];
+  const btn = document.getElementById('langBtn');
+  btn.textContent = t.flag + ' ' + t.code + ' ▾';
+  // Nav links
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta)');
+  navLinks.forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
+  document.querySelectorAll('.nav-cv').forEach(el => el.textContent = t.dl);
+  document.querySelectorAll('.nav-cta').forEach(el => el.textContent = t.contact);
+  // Badge
+  const badge = document.querySelector('.badge');
+  if (badge) badge.childNodes[badge.childNodes.length - 1].textContent = ' ' + t.badge;
+  // Section titles (simplified)
+  const titles = document.querySelectorAll('.section-title');
+  const keys = ['s1','s2','s3','s4','s5'];
+  titles.forEach((el, i) => { if (t[keys[i]]) el.innerHTML = t[keys[i]].replace(/([^&]*)(&.*?)?$/,'$1'); });
+  // Active option
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+  document.querySelectorAll(`.lang-option[onclick="setLang('${lang}')"]`).forEach(el => el.classList.add('active'));
+  document.getElementById('langMenu').classList.remove('open');
+  document.getElementById('langMenuMobile').classList.remove('open');
+  // Sync mobile flag
+  const mobile = document.getElementById('langBtnMobile');
+  if (mobile) mobile.textContent = t.flag;
+  localStorage.setItem('pad-lang', lang);
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('pad-theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('themeToggle').textContent = '☀️';
+  }
+  const savedLang = localStorage.getItem('pad-lang');
+  if (savedLang && savedLang !== 'fr') setLang(savedLang);
+
+  // Close lang menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('langDropdown').contains(e.target)) {
+      document.getElementById('langMenu').classList.remove('open');
+    }
+    if (!document.getElementById('langDropdownMobile').contains(e.target)) {
+      document.getElementById('langMenuMobile').classList.remove('open');
+    }
+  });
+});
+</script>
 </Layout>
