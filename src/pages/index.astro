@@ -123,6 +123,28 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		--border: rgba(160,120,40,0.25);
 		--border-subtle: rgba(0,0,0,0.08);
 	}
+	/* Lang selector */
+	.lang-selector {
+		display: flex;
+		align-items: center;
+		gap: 0.2rem;
+	}
+	.lang-btn {
+		background: none;
+		border: 1px solid transparent;
+		color: var(--text-dim);
+		cursor: pointer;
+		padding: 0.3rem 0.5rem;
+		font-family: 'DM Mono', monospace;
+		font-size: 0.6rem;
+		letter-spacing: 0.1em;
+		transition: color 0.2s, border-color 0.2s;
+	}
+	.lang-btn:hover { color: var(--text); }
+	.lang-btn.active {
+		color: var(--gold);
+		border-color: var(--border);
+	}
 	/* Theme toggle button */
 	.theme-toggle {
 		background: none;
@@ -576,11 +598,13 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 		<a href="#experience">Expériences</a>
 		<a href="#projects">Projets</a>
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">Télécharger CV</a>
+		<div class="lang-selector" id="langSelector"></div>
 		<button class="theme-toggle" id="themeToggle" title="Changer le thème">☀️</button>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
 	</div>
 	<div class="nav-mobile">
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">↓ CV</a>
+		<div class="lang-selector" id="langSelectorMobile"></div>
 		<button class="theme-toggle" id="themeToggleMobile" title="Changer le thème">☀️</button>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
 	</div>
@@ -785,5 +809,167 @@ const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
   applyTheme(getTheme());
   if (toggle1) toggle1.addEventListener('click', toggleTheme);
   if (toggle2) toggle2.addEventListener('click', toggleTheme);
+</script>
+
+<script>
+const LANG_KEY = 'pad-lang';
+
+const translations = {
+  fr: {
+    badge: "Disponible pour un stage · 3 mois",
+    role: "Étudiant en Licence 3 MIAGE — Développeur Full Stack",
+    school: "@ Université de Haute-Alsace",
+    description: "Étudiant en L3 MIAGE à FST UHA, je suis à la recherche d'un stage de 3 mois en tant que Développeur Full Stack. Passionné par la création d'applications web complètes, je maîtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes compétences au service d'un projet concret au sein de votre équipe.",
+    btnProjects: "Voir mes projets",
+    btnCv: "↓ Télécharger CV",
+    location: "📍 Mulhouse, France · Mobilité",
+    nav: { about: "À propos", skills: "Compétences", formations: "Formations", experience: "Expériences", projects: "Projets", cv: "Télécharger CV", contact: "Contact" },
+    dividers: ["Compétences techniques", "Parcours académique", "Expérience professionnelle", "Réalisations personnelles", "Profil complet"],
+    sec1title: ["Domaines d'", "expertise"],
+    sec2title: ["Formations & ", "diplômes"],
+    sec3title: ["Expériences ", "terrain"],
+    sec4title: ["Projets ", "GitHub"],
+    sec5title: ["Langues, ", "atouts", " & intérêts"],
+    expType: "Stage",
+    aside: ["Langues", "Atouts", "Centres d'intérêt"],
+    footer: "DJIBODE Prince Ascel Jacné — Portfolio 2025",
+    cvBtn: "↓ CV",
+  },
+  en: {
+    badge: "Available for internship · 3 months",
+    role: "Bachelor's student in MIAGE — Full Stack Developer",
+    school: "@ University of Upper Alsace",
+    description: "L3 MIAGE student at FST UHA, I am looking for a 3-month internship as a Full Stack Developer. Passionate about building complete web applications, I master both Front-end and Back-end environments. Rigorous and curious, I want to put my skills to work on a concrete project within your team.",
+    btnProjects: "See my projects",
+    btnCv: "↓ Download CV",
+    location: "📍 Mulhouse, France · Mobility",
+    nav: { about: "About", skills: "Skills", formations: "Education", experience: "Experience", projects: "Projects", cv: "Download CV", contact: "Contact" },
+    dividers: ["Technical skills", "Academic background", "Professional experience", "Personal projects", "Full profile"],
+    sec1title: ["Areas of ", "expertise"],
+    sec2title: ["Education & ", "degrees"],
+    sec3title: ["Work ", "experience"],
+    sec4title: ["GitHub ", "projects"],
+    sec5title: ["Languages, ", "strengths", " & interests"],
+    expType: "Internship",
+    aside: ["Languages", "Strengths", "Interests"],
+    footer: "DJIBODE Prince Ascel Jacné — Portfolio 2025",
+    cvBtn: "↓ CV",
+  },
+  de: {
+    badge: "Verfügbar für Praktikum · 3 Monate",
+    role: "Bachelor-Student MIAGE — Full Stack Entwickler",
+    school: "@ Universität Oberelsass",
+    description: "L3-MIAGE-Student an der FST UHA, ich suche ein 3-monatiges Praktikum als Full-Stack-Entwickler. Ich beherrsche sowohl Front-end- als auch Back-end-Umgebungen und möchte meine Fähigkeiten in Ihrem Team einsetzen.",
+    btnProjects: "Meine Projekte",
+    btnCv: "↓ Lebenslauf herunterladen",
+    location: "📍 Mulhouse, Frankreich · Mobilität",
+    nav: { about: "Über mich", skills: "Kenntnisse", formations: "Ausbildung", experience: "Erfahrung", projects: "Projekte", cv: "Lebenslauf", contact: "Kontakt" },
+    dividers: ["Technische Kenntnisse", "Akademischer Werdegang", "Berufserfahrung", "Eigene Projekte", "Vollständiges Profil"],
+    sec1title: ["Fachgebiete ", "Expertise"],
+    sec2title: ["Ausbildung & ", "Abschlüsse"],
+    sec3title: ["Berufliche ", "Erfahrung"],
+    sec4title: ["GitHub ", "Projekte"],
+    sec5title: ["Sprachen, ", "Stärken", " & Interessen"],
+    expType: "Praktikum",
+    aside: ["Sprachen", "Stärken", "Interessen"],
+    footer: "DJIBODE Prince Ascel Jacné — Portfolio 2025",
+    cvBtn: "↓ CV",
+  }
+};
+
+function getLang() {
+  return localStorage.getItem(LANG_KEY) || 'fr';
+}
+
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  localStorage.setItem(LANG_KEY, lang);
+
+  // Update lang selector buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Badge
+  const badge = document.querySelector('.badge');
+  if (badge) badge.childNodes[badge.childNodes.length - 1].textContent = t.badge;
+
+  // Hero role
+  const roleSpans = document.querySelectorAll('.hero-role span');
+  if (roleSpans[0]) roleSpans[0].textContent = t.role;
+  if (roleSpans[1]) roleSpans[1].textContent = t.school;
+
+  // Hero desc
+  const desc = document.querySelector('.hero-desc');
+  if (desc) desc.textContent = t.description;
+
+  // Buttons
+  const btnMain = document.querySelector('.btn-main');
+  if (btnMain) btnMain.textContent = t.btnProjects;
+  const btnOutline = document.querySelector('.btn-outline');
+  if (btnOutline) btnOutline.textContent = t.btnCv;
+
+  // Location
+  const metaSpans = document.querySelectorAll('.hero-meta span');
+  if (metaSpans[0]) metaSpans[0].textContent = t.location;
+
+  // Navbar links
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta):not(.nav-cv)');
+  const keys = ['about','skills','formations','experience','projects'];
+  navLinks.forEach((a, i) => { if (keys[i]) a.textContent = t.nav[keys[i]]; });
+  const navCv = document.querySelector('.nav-cv');
+  if (navCv) navCv.textContent = t.nav.cv;
+  const navCta = document.querySelector('.nav-cta');
+  if (navCta) navCta.textContent = t.nav.contact;
+  const navMobileCv = document.querySelector('.nav-mobile-cv');
+  if (navMobileCv) navMobileCv.textContent = t.cvBtn;
+  const navMobileContact = document.querySelector('.nav-mobile-contact');
+  if (navMobileContact) navMobileContact.textContent = t.nav.contact;
+
+  // Dividers
+  document.querySelectorAll('.divider-label').forEach((el, i) => {
+    if (t.dividers[i]) el.textContent = t.dividers[i];
+  });
+
+  // Aside titles
+  document.querySelectorAll('.aside-card h3').forEach((el, i) => {
+    if (t.aside[i]) el.textContent = t.aside[i];
+  });
+
+  // Exp type badges
+  document.querySelectorAll('.exp-type').forEach(el => {
+    el.textContent = t.expType;
+  });
+
+  // Footer
+  const footerLeft = document.querySelector('.footer-left');
+  if (footerLeft) footerLeft.textContent = t.footer;
+}
+
+// Build lang selector
+function buildLangSelector() {
+  const langs = [
+    { code: 'fr', label: 'FR' },
+    { code: 'en', label: 'EN' },
+    { code: 'de', label: 'DE' },
+  ];
+  const container = document.getElementById('langSelector');
+  const containerMobile = document.getElementById('langSelectorMobile');
+  [container, containerMobile].forEach(c => {
+    if (!c) return;
+    langs.forEach(l => {
+      const btn = document.createElement('button');
+      btn.className = 'lang-btn';
+      btn.dataset.lang = l.code;
+      btn.textContent = l.label;
+      btn.addEventListener('click', () => applyLang(l.code));
+      c.appendChild(btn);
+    });
+  });
+}
+
+buildLangSelector();
+applyLang(getLang());
 </script>
 </Layout>
