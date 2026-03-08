@@ -5,1100 +5,706 @@ const displayName = { first: "Prince Ascel Jacné", last: "Djibodé" };
 const profession = "Étudiant en Licence 3 MIAGE";
 const school = "Université de Haute-Alsace";
 const description = "Étudiant en L3 MIAGE à FST UHA, je suis à la recherche d'un stage de 3 mois en tant que Développeur Full Stack. Passionné par la création d'applications web complètes, je maîtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes compétences au service d'un projet concret au sein de votre équipe.";
-
 const skills = [
-	{ category: "Web & Frameworks", items: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "Bootstrap"], icon: "◈" },
-	{ category: "Langages & Mobile", items: ["Flutter", "C++", "Python", "Java"], icon: "◇" },
-	{ category: "Analyse & BD", items: ["MySQL", "UML", "Merise"], icon: "◉" },
-	{ category: "Outils", items: ["VS Code", "Eclipse", "Code::Blocks", "Laragon", "XAMPP"], icon: "◫" }
+    { category: "Web & Frameworks", items: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "Bootstrap"], icon: "◈" },
+    { category: "Langages & Mobile", items: ["Flutter", "C++", "Python", "Java"], icon: "◇" },
+    { category: "Analyse & BD", items: ["MySQL", "UML", "Merise"], icon: "◉" },
+    { category: "Outils", items: ["VS Code", "Eclipse", "Code::Blocks", "Laragon", "XAMPP"], icon: "◫" }
 ];
-
 const formations = [
-	{ degree: "Licence 3 MIAGE", school: "FST UHA", location: "Mulhouse", period: "Depuis 2025" },
-	{ degree: "Licence Pro. Analyse Informatique & Programmation", school: "ENEAM", location: "Cotonou, Bénin", period: "2023 — 2024" },
-	{ degree: "Baccalauréat Série D", school: "Sainte Jeanne d'Arc", location: "Bénin", period: "2020 — 2021" },
-	{ degree: "Brevet d'Étude du Premier Cycle", school: "CEG 1 Allada", location: "Bénin", period: "2016 — 2017" },
+    { degree: "Licence 3 MIAGE", school: "FST UHA", location: "Mulhouse", period: "Depuis 2025" },
+    { degree: "Licence Pro. Analyse Informatique & Programmation", school: "ENEAM", location: "Cotonou, Bénin", period: "2023 — 2024" },
+    { degree: "Baccalauréat Série D", school: "Sainte Jeanne d'Arc", location: "Bénin", period: "2020 — 2021" },
+    { degree: "Brevet d'Étude du Premier Cycle", school: "CEG 1 Allada", location: "Bénin", period: "2016 — 2017" },
 ];
-
 const experiences = [
-	{
-		role: "Développeur web",
-		type: "Stage",
-		company: "ASTUS CITEE",
-		location: "Cotonou, Bénin",
-		date: "Mai — Août 2024",
-		details: [
-			"Développement d'une application de gestion des fichiers (centralisation, sécurisation, accès documents)",
-			"Création d'un site web vitrine pour renforcer la visibilité de l'entreprise",
-			"Intégration d'une interface moderne et ergonomique",
-			"Collaboration avec l'équipe interne pour recueillir les besoins et tester les fonctionnalités"
-		]
-	},
-	{
-		role: "Analyste programmeur",
-		type: "Stage",
-		company: "Super U Erevan",
-		location: "Bénin",
-		date: "Juil. — Sept. 2023",
-		details: [
-			"Participation à la conception et au développement d'applications web",
-			"Contribution à l'analyse des besoins et à la rédaction des cahiers des charges",
-			"Intégration d'interfaces utilisateurs en HTML, CSS et JavaScript",
-			"Collaboration avec l'équipe technique pour les tests et le déploiement"
-		]
-	}
+    {
+        role: "Développeur web",
+        type: "Stage",
+        company: "ASTUS CITEE",
+        location: "Cotonou, Bénin",
+        date: "Mai — Août 2024",
+        details: [
+            "Développement d'une application de gestion des fichiers (centralisation, sécurisation, accès documents)",
+            "Création d'un site web vitrine pour renforcer la visibilité de l'entreprise",
+            "Intégration d'une interface moderne et ergonomique",
+            "Collaboration avec l'équipe interne pour recueillir les besoins et tester les fonctionnalités"
+        ]
+    },
+    {
+        role: "Analyste programmeur",
+        type: "Stage",
+        company: "Super U Erevan",
+        location: "Bénin",
+        date: "Juil. — Sept. 2023",
+        details: [
+            "Participation à la conception et au développement d'applications web",
+            "Contribution à l'analyse des besoins et à la rédaction des cahiers des charges",
+            "Intégration d'interfaces utilisateurs en HTML, CSS et JavaScript",
+            "Collaboration avec l'équipe technique pour les tests et le déploiement"
+        ]
+    }
 ];
-
 const projects = [
-	{
-		title: "Crypto — Chiffrement de messages",
-		description: "Application de chiffrement polyalphabétique : l'utilisateur saisit un mot, une phrase ou un paragraphe, et le programme retourne le message codé en tenant compte des espaces.",
-		tech: ["Python", "C++"],
-		github: "https://github.com/PrinceAscelJacne/Crypto",
-		image: "/images/crypto-illustration.svg",
-		placeholder: false
-	},
-	{
-		title: "Astus Citée — Gestion de fichiers",
-		description: "Application web de gestion documentaire développée en stage : centralisation, sécurisation et accès aux fichiers internes de l'entreprise, avec interface moderne et ergonomique.",
-		tech: ["Laravel", "PHP", "HTML", "SCSS", "JavaScript", "Blade", "MySQL"],
-		github: "https://github.com/PrinceAscelJacne/Astus-Cit-e",
-		video: "/videos/astus-gestion.mp4",
-		placeholder: false
-	},
-	{
-		title: "Gestionnaire de questionnaires",
-		description: "Application en C++ permettant de gérer des questionnaires interactifs. Prend en charge plusieurs types de questions (texte, numérique, QCM), la sauvegarde depuis un fichier texte, et propose différents modes d'évaluation (test, seconde chance, adaptatif).",
-		tech: ["C++"],
-		github: "https://github.com/PrinceAscelJacne/Questionnaire-Cpp",
-		image: "/images/questionnaire-illustration.svg",
-		placeholder: false
-	},
-	{
-		title: "Astus Citée — Site vitrine",
-		description: "Site web vitrine développé en stage chez Astus Citée pour présenter l'entreprise et renforcer sa visibilité en ligne.",
-		tech: ["HTML", "CSS", "JavaScript", "PHP"],
-		github: "https://github.com/PrinceAscelJacne/Astus-Cit-e",
-		video: "/videos/astus-citee.mp4",
-		placeholder: false
-	}
+    {
+        title: "Crypto — Chiffrement de messages",
+        description: "Application de chiffrement polyalphabétique : l'utilisateur saisit un mot, une phrase ou un paragraphe, et le programme retourne le message codé en tenant compte des espaces.",
+        tech: ["Python", "C++"],
+        github: "https://github.com/PrinceAscelJacne/Crypto",
+        image: "/images/crypto-illustration.svg",
+        placeholder: false
+    },
+    {
+        title: "Astus Citée — Gestion de fichiers",
+        description: "Application web de gestion documentaire développée en stage : centralisation, sécurisation et accès aux fichiers internes de l'entreprise, avec interface moderne et ergonomique.",
+        tech: ["Laravel", "PHP", "HTML", "SCSS", "JavaScript", "Blade", "MySQL"],
+        github: "https://github.com/PrinceAscelJacne/Astus-Cit-e",
+        video: "/videos/astus-gestion.mp4",
+        placeholder: false
+    },
+    {
+        title: "Gestionnaire de questionnaires",
+        description: "Application en C++ permettant de gérer des questionnaires interactifs. Prend en charge plusieurs types de questions (texte, numérique, QCM), la sauvegarde depuis un fichier texte, et propose différents modes d'évaluation (test, seconde chance, adaptatif).",
+        tech: ["C++"],
+        github: "https://github.com/PrinceAscelJacne/Questionnaire-Cpp",
+        image: "/images/questionnaire-illustration.svg",
+        placeholder: false
+    },
+    {
+        title: "Astus Citée — Site vitrine",
+        description: "Site web vitrine développé en stage chez Astus Citée pour présenter l'entreprise et renforcer sa visibilité en ligne.",
+        tech: ["HTML", "CSS", "JavaScript", "PHP"],
+        github: "https://github.com/PrinceAscelJacne/Astus-Cit-e",
+        video: "/videos/astus-citee.mp4",
+        placeholder: false
+    }
 ];
-
 const languages = [
-	{ lang: "Français", level: "C2", pct: 100 },
-	{ lang: "Anglais", level: "B1", pct: 55 },
-	{ lang: "Allemand", level: "A2", pct: 30 },
+    { lang: "Français", level: "C2", pct: 100 },
+    { lang: "Anglais", level: "B1", pct: 55 },
+    { lang: "Allemand", level: "A2", pct: 30 },
 ];
-
 const softSkills = ["Esprit d'équipe", "Dynamique & motivé", "Sens de l'analyse", "Capacité d'adaptation"];
 const interests = ["Football", "Jeux vidéos", "Voyage", "Musique"];
 ---
 <Layout title={fullName}>
 <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap');
-	*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-	:root {
-		--bg: #07080a;
-		--surface: #0e1015;
-		--surface2: #13161c;
-		--gold: #c9a84c;
-		--gold-light: #e8c97a;
-		--gold-dim: rgba(201,168,76,0.15);
-		--text: #eeeae3;
-		--text-dim: #7a7570;
-		--text-mid: #b5b0a8;
-		--border: rgba(201,168,76,0.18);
-		--border-subtle: rgba(255,255,255,0.06);
-	}
-	html { scroll-behavior: smooth; }
-	body {
-		background: var(--bg);
-		color: var(--text);
-		font-family: 'Syne', sans-serif;
-		overflow-x: hidden;
-		min-height: 100vh;
-	}
-	body::before {
-		content: '';
-		position: fixed; inset: 0;
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-		pointer-events: none; z-index: 9999; opacity: 0.4;
-	}
-	.ambient {
-		position: fixed; top: -20vh; left: 50%;
-		transform: translateX(-50%);
-		width: 80vw; height: 60vh;
-		background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%);
-		pointer-events: none; z-index: 0;
-	}
-
-	/* ── NAVBAR ── */
-	.navbar {
-		position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-		padding: 1.5rem 3rem;
-		display: flex; align-items: center; justify-content: space-between;
-		border-bottom: 1px solid var(--border-subtle);
-		background: rgba(7,8,10,0.85);
-		backdrop-filter: blur(20px);
-	}
-	.logo {
-		font-family: 'Cormorant Garamond', serif;
-		font-size: 1.4rem; font-weight: 600; letter-spacing: 0.12em;
-		color: var(--text); text-decoration: none; flex-shrink: 0;
-	}
-	.logo em { color: var(--gold); font-style: italic; }
-	.nav-links { display: flex; align-items: center; gap: 2rem; }
-	.nav-links a {
-		font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
-		color: var(--text-dim); text-decoration: none; transition: color 0.25s; white-space: nowrap;
-	}
-	.nav-links a:hover { color: var(--text); }
-	.nav-cta {
-		color: var(--gold) !important; border: 1px solid var(--border) !important;
-		padding: 0.55rem 1.2rem !important; transition: background 0.25s !important;
-	}
-	.nav-cta:hover { background: var(--gold-dim) !important; }
-	.nav-cv {
-		color: var(--text-dim) !important; border: 1px solid var(--border-subtle) !important;
-		padding: 0.55rem 1.2rem !important; transition: color 0.25s, border-color 0.25s !important;
-		text-decoration: none;
-	}
-	.nav-cv:hover { color: var(--text) !important; border-color: var(--border) !important; }
-
-	/* Mobile nav — hidden on desktop */
-	.nav-mobile { display: none; }
-
-	/* ── HERO ── */
-	main { position: relative; z-index: 1; }
-	.hero {
-		min-height: 100vh; display: grid;
-		grid-template-columns: 1fr 1fr; align-items: center;
-		padding: 8rem 4rem 4rem; gap: 4rem;
-		max-width: 1300px; margin: 0 auto;
-	}
-	.hero-left { display: flex; flex-direction: column; gap: 2rem; }
-	.badge {
-		display: inline-flex; align-items: center; gap: 0.5rem;
-		font-family: 'DM Mono', monospace; font-size: 0.68rem;
-		letter-spacing: 0.12em; text-transform: uppercase;
-		color: var(--gold); border: 1px solid var(--border);
-		padding: 0.45rem 1rem; background: var(--gold-dim); width: fit-content;
-	}
-	.badge::before {
-		content: ''; width: 6px; height: 6px;
-		background: var(--gold); border-radius: 50%;
-		animation: pulse 2s ease-in-out infinite;
-	}
-	@keyframes pulse {
-		0%,100% { opacity:1; transform:scale(1); }
-		50% { opacity:0.4; transform:scale(0.7); }
-	}
-	.hero-name {
-		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 300; line-height: 1.05;
-	}
-	.hero-name em { font-style: italic; color: var(--gold); }
-	.hero-role {
-		font-family: 'DM Mono', monospace; font-size: 0.75rem;
-		letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase;
-		display: flex; flex-direction: column; gap: 0.25rem;
-	}
-	.hero-role span { color: var(--text-mid); }
-	.hero-desc {
-		font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
-		font-weight: 300; line-height: 1.75; color: var(--text-mid); max-width: 48ch;
-	}
-	.hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-	.btn-main {
-		display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em;
-		text-transform: uppercase; color: var(--bg); background: var(--gold);
-		padding: 0.9rem 2.2rem; text-decoration: none; font-weight: 600;
-		transition: background 0.25s, transform 0.2s; white-space: nowrap;
-	}
-	.btn-main:hover { background: var(--gold-light); transform: translateY(-1px); }
-	.btn-outline {
-		display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em;
-		text-transform: uppercase; color: var(--gold); background: transparent;
-		border: 1px solid var(--border); padding: 0.9rem 2.2rem;
-		text-decoration: none; font-weight: 600; white-space: nowrap;
-		transition: background 0.25s, transform 0.2s;
-	}
-	.btn-outline:hover { background: var(--gold-dim); transform: translateY(-1px); }
-	.hero-meta { display: flex; flex-direction: column; gap: 0.4rem; }
-	.hero-meta span {
-		font-family: 'DM Mono', monospace; font-size: 0.7rem;
-		letter-spacing: 0.08em; color: var(--text-dim);
-	}
-	.hero-right { display: flex; justify-content: center; align-items: center; }
-	.monogram-container {
-		position: relative; width: 320px; height: 320px;
-		display: flex; align-items: center; justify-content: center;
-	}
-	.monogram-bg { position: absolute; inset: 0; border: 1px solid var(--border); transform: rotate(15deg); opacity: 0.5; }
-	.monogram-bg2 { position: absolute; inset: 20px; border: 1px solid var(--border); transform: rotate(5deg); opacity: 0.3; }
-	.monogram {
-		font-family: 'Cormorant Garamond', serif; font-size: 9rem;
-		font-weight: 300; font-style: italic; color: transparent;
-		-webkit-text-stroke: 1px rgba(201,168,76,0.4);
-		line-height: 1; position: relative; z-index: 1; user-select: none;
-	}
-	.corner-tag {
-		position: absolute; font-family: 'DM Mono', monospace;
-		font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-dim); line-height: 1.6;
-	}
-	.corner-tag.tl { top: 1rem; left: 1rem; }
-	.corner-tag.br { bottom: 1rem; right: 1rem; text-align: right; }
-
-	/* ── DIVIDER ── */
-	.divider {
-		max-width: 1300px; margin: 0 auto; padding: 0 4rem;
-		display: flex; align-items: center; gap: 2rem;
-	}
-	.divider-line { flex: 1; height: 1px; background: var(--border-subtle); }
-	.divider-label {
-		font-family: 'DM Mono', monospace; font-size: 0.62rem;
-		letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim);
-	}
-
-	/* ── SECTIONS ── */
-	.section { padding: 6rem 4rem; max-width: 1300px; margin: 0 auto; }
-	.section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
-	.section-number {
-		font-family: 'DM Mono', monospace; font-size: 0.65rem;
-		letter-spacing: 0.15em; color: var(--gold); opacity: 0.7;
-	}
-	.section-title {
-		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; letter-spacing: -0.01em;
-	}
-	.section-title em { font-style: italic; color: var(--gold); }
-
-	/* ── SKILLS ── */
-	.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; border: 1px solid var(--border-subtle); }
-	.skill-card {
-		background: var(--surface); padding: 2rem;
-		position: relative; overflow: hidden; transition: background 0.3s;
-	}
-	.skill-card::before {
-		content: ''; position: absolute; inset: 0;
-		background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 60%);
-		opacity: 0; transition: opacity 0.3s;
-	}
-	.skill-card:hover { background: var(--surface2); }
-	.skill-card:hover::before { opacity: 1; }
-	.skill-icon { font-size: 1.3rem; color: var(--gold); opacity: 0.6; margin-bottom: 0.8rem; display: block; }
-	.skill-card h3 {
-		font-family: 'DM Mono', monospace; font-size: 0.6rem;
-		letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1.2rem;
-	}
-	.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-	.tag {
-		font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600;
-		color: var(--text-mid); background: rgba(255,255,255,0.04);
-		border: 1px solid var(--border-subtle); padding: 0.3rem 0.75rem;
-		transition: border-color 0.2s, color 0.2s;
-	}
-	.skill-card:hover .tag { border-color: var(--border); color: var(--text); }
-
-	/* ── FORMATIONS ── */
-	.formations-list { display: flex; flex-direction: column; border: 1px solid var(--border-subtle); }
-	.formation-item {
-		display: grid; grid-template-columns: 200px 1fr;
-		background: var(--surface); border-bottom: 1px solid var(--border-subtle);
-		transition: background 0.25s; position: relative; overflow: hidden;
-	}
-	.formation-item:last-child { border-bottom: none; }
-	.formation-item::after {
-		content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-		width: 2px; background: var(--gold); transform: scaleY(0);
-		transform-origin: bottom; transition: transform 0.3s;
-	}
-	.formation-item:hover { background: var(--surface2); }
-	.formation-item:hover::after { transform: scaleY(1); }
-	.formation-period {
-		padding: 1.5rem 1.5rem 1.5rem 2.5rem; border-right: 1px solid var(--border-subtle);
-		display: flex; align-items: center; font-family: 'DM Mono', monospace;
-		font-size: 0.68rem; letter-spacing: 0.06em; color: var(--text-dim);
-	}
-	.formation-content {
-		padding: 1.5rem 2rem; display: flex; flex-direction: column;
-		justify-content: center; gap: 0.2rem;
-	}
-	.formation-degree { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--text); }
-	.formation-school { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-dim); }
-
-	/* ── EXPERIENCES ── */
-	.exp-list { display: flex; flex-direction: column; gap: 1px; background: var(--border-subtle); }
-	.exp-card {
-		background: var(--surface); display: grid; grid-template-columns: 260px 1fr;
-		transition: background 0.25s; position: relative; overflow: hidden;
-	}
-	.exp-card::after {
-		content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-		width: 2px; background: var(--gold); transform: scaleY(0);
-		transform-origin: bottom; transition: transform 0.35s ease;
-	}
-	.exp-card:hover { background: var(--surface2); }
-	.exp-card:hover::after { transform: scaleY(1); }
-	.exp-side {
-		padding: 2.5rem 2rem 2.5rem 3rem; border-right: 1px solid var(--border-subtle);
-		display: flex; flex-direction: column; justify-content: center; gap: 0.4rem;
-	}
-	.exp-type { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
-	.exp-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-mid); }
-	.exp-company { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); margin-top: 0.2rem; }
-	.exp-location { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-dim); }
-	.exp-main { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
-	.exp-main h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; letter-spacing: -0.01em; }
-	.exp-details { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-	.exp-details li {
-		font-family: 'Syne', sans-serif; font-size: 0.78rem; color: var(--text-dim);
-		display: flex; align-items: flex-start; gap: 0.75rem;
-	}
-	.exp-details li::before { content: '—'; color: var(--gold); opacity: 0.5; flex-shrink: 0; margin-top: 1px; }
-
-	/* ── PROJECTS ── */
-	.projects-grid {
-		display: grid; grid-template-columns: repeat(2, 1fr);
-		gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle);
-	}
-	.project-card {
-		background: var(--surface); padding: 2rem;
-		display: flex; flex-direction: column; gap: 1.2rem;
-		position: relative; overflow: hidden; transition: background 0.3s;
-	}
-	.project-card::before {
-		content: ''; position: absolute; inset: 0;
-		background: linear-gradient(160deg, var(--gold-dim) 0%, transparent 50%);
-		opacity: 0; transition: opacity 0.3s;
-	}
-	.project-card:hover { background: var(--surface2); }
-	.project-card:hover::before { opacity: 1; }
-	.project-placeholder-img {
-		width: 100%; aspect-ratio: 16/9; background: var(--surface2);
-		border: 1px dashed rgba(201,168,76,0.2);
-		display: flex; align-items: center; justify-content: center;
-		position: relative; z-index: 1;
-	}
-	.project-placeholder-img span {
-		font-family: 'DM Mono', monospace; font-size: 0.6rem;
-		letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim);
-	}
-	.project-video {
-		width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
-		position: relative; z-index: 1; background: var(--surface2);
-		border: 1px solid var(--border-subtle);
-	}
-	.project-img {
-		width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
-		position: relative; z-index: 1; border: 1px solid var(--border-subtle);
-	}
-	.project-number { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); opacity: 0.6; position: relative; z-index: 1; }
-	.project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--text); position: relative; z-index: 1; }
-	.project-desc { font-family: 'Syne', sans-serif; font-size: 0.78rem; line-height: 1.65; color: var(--text-dim); position: relative; z-index: 1; flex: 1; }
-	.project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; position: relative; z-index: 1; }
-	.project-footer {
-		display: flex; align-items: center; justify-content: space-between;
-		position: relative; z-index: 1; padding-top: 1rem;
-		border-top: 1px solid var(--border-subtle);
-	}
-	.project-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; transition: opacity 0.2s; }
-	.project-link:hover { opacity: 0.7; }
-
-	/* ── ASIDE ── */
-	.aside-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
-	.aside-card { background: var(--surface); padding: 2rem 2.5rem; }
-	.aside-card h3 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 1.5rem; }
-	.lang-list { display: flex; flex-direction: column; gap: 1rem; }
-	.lang-item { display: flex; flex-direction: column; gap: 0.4rem; }
-	.lang-row { display: flex; justify-content: space-between; align-items: baseline; }
-	.lang-name { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--text); }
-	.lang-level { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--gold); }
-	.lang-bar { height: 2px; background: var(--border-subtle); position: relative; }
-	.lang-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold); opacity: 0.6; }
-	.pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-	.pill { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--text-mid); border: 1px solid var(--border-subtle); padding: 0.4rem 0.9rem; background: rgba(255,255,255,0.03); }
-	.pill.interest { color: var(--text-dim); font-size: 0.72rem; }
-
-	/* ── THEME TOGGLE & LANG ── */
-.nav-controls { display: flex; align-items: center; gap: 0.75rem; }
-.theme-toggle {
-background: none; border: 1px solid var(--border-subtle);
-color: var(--text-dim); cursor: pointer; font-size: 0.85rem;
-width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-transition: border-color 0.2s, color 0.2s; flex-shrink: 0;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--bg: #07080a; --surface: #0e1015; --surface2: #13161c;
+--gold: #c9a84c; --gold-light: #e8c97a; --gold-dim: rgba(201,168,76,0.15);
+--text: #eeeae3; --text-dim: #7a7570; --text-mid: #b5b0a8;
+--border: rgba(201,168,76,0.18); --border-subtle: rgba(255,255,255,0.06);
 }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; overflow-x: hidden; min-height: 100vh; }
+body::before {
+content: ''; position: fixed; inset: 0;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+pointer-events: none; z-index: 9999; opacity: 0.4;
+}
+.ambient { position: fixed; top: -20vh; left: 50%; transform: translateX(-50%); width: 80vw; height: 60vh; background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); background: rgba(7,8,10,0.85); backdrop-filter: blur(20px); }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.12em; color: var(--text); text-decoration: none; flex-shrink: 0; }
+.logo em { color: var(--gold); font-style: italic; }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.25s; white-space: nowrap; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { color: var(--gold) !important; border: 1px solid var(--border) !important; padding: 0.55rem 1.2rem !important; transition: background 0.25s !important; }
+.nav-cta:hover { background: var(--gold-dim) !important; }
+.nav-cv { color: var(--text-dim) !important; border: 1px solid var(--border-subtle) !important; padding: 0.55rem 1.2rem !important; transition: color 0.25s, border-color 0.25s !important; text-decoration: none; }
+.nav-cv:hover { color: var(--text) !important; border-color: var(--border) !important; }
+.nav-mobile { display: none; }
+main { position: relative; z-index: 1; }
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 4rem 4rem; gap: 4rem; max-width: 1300px; margin: 0 auto; }
+.hero-left { display: flex; flex-direction: column; gap: 2rem; }
+.badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 0.45rem 1rem; background: var(--gold-dim); width: fit-content; }
+.badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
+.hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 300; line-height: 1.05; }
+.hero-name em { font-style: italic; color: var(--gold); }
+.hero-role { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; display: flex; flex-direction: column; gap: 0.25rem; }
+.hero-role span { color: var(--text-mid); }
+.hero-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; line-height: 1.75; color: var(--text-mid); max-width: 48ch; }
+.hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.btn-main { display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bg); background: var(--gold); padding: 0.9rem 2.2rem; text-decoration: none; font-weight: 600; transition: background 0.25s, transform 0.2s; white-space: nowrap; }
+.btn-main:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline { display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--border); padding: 0.9rem 2.2rem; text-decoration: none; font-weight: 600; white-space: nowrap; transition: background 0.25s, transform 0.2s; }
+.btn-outline:hover { background: var(--gold-dim); transform: translateY(-1px); }
+.hero-meta { display: flex; flex-direction: column; gap: 0.4rem; }
+.hero-meta span { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; color: var(--text-dim); }
+.hero-right { display: flex; justify-content: center; align-items: center; }
+.monogram-container { position: relative; width: 320px; height: 320px; display: flex; align-items: center; justify-content: center; }
+.monogram-bg { position: absolute; inset: 0; border: 1px solid var(--border); transform: rotate(15deg); opacity: 0.5; }
+.monogram-bg2 { position: absolute; inset: 20px; border: 1px solid var(--border); transform: rotate(5deg); opacity: 0.3; }
+.monogram { font-family: 'Cormorant Garamond', serif; font-size: 9rem; font-weight: 300; font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.4); line-height: 1; position: relative; z-index: 1; user-select: none; }
+.corner-tag { position: absolute; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-dim); line-height: 1.6; }
+.corner-tag.tl { top: 1rem; left: 1rem; }
+.corner-tag.br { bottom: 1rem; right: 1rem; text-align: right; }
+.divider { max-width: 1300px; margin: 0 auto; padding: 0 4rem; display: flex; align-items: center; gap: 2rem; }
+.divider-line { flex: 1; height: 1px; background: var(--border-subtle); }
+.divider-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
+.section { padding: 6rem 4rem; max-width: 1300px; margin: 0 auto; }
+.section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
+.section-number { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--gold); opacity: 0.7; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; letter-spacing: -0.01em; }
+.section-title em { font-style: italic; color: var(--gold); }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; border: 1px solid var(--border-subtle); }
+.skill-card { background: var(--surface); padding: 2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+.skill-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
+.skill-card:hover { background: var(--surface2); }
+.skill-card:hover::before { opacity: 1; }
+.skill-icon { font-size: 1.3rem; color: var(--gold); opacity: 0.6; margin-bottom: 0.8rem; display: block; }
+.skill-card h3 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1.2rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--text-mid); background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); padding: 0.3rem 0.75rem; transition: border-color 0.2s, color 0.2s; }
+.skill-card:hover .tag { border-color: var(--border); color: var(--text); }
+.formations-list { display: flex; flex-direction: column; border: 1px solid var(--border-subtle); }
+.formation-item { display: grid; grid-template-columns: 200px 1fr; background: var(--surface); border-bottom: 1px solid var(--border-subtle); transition: background 0.25s; position: relative; overflow: hidden; }
+.formation-item:last-child { border-bottom: none; }
+.formation-item::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s; }
+.formation-item:hover { background: var(--surface2); }
+.formation-item:hover::after { transform: scaleY(1); }
+.formation-period { padding: 1.5rem 1.5rem 1.5rem 2.5rem; border-right: 1px solid var(--border-subtle); display: flex; align-items: center; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--text-dim); }
+.formation-content { padding: 1.5rem 2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.2rem; }
+.formation-degree { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--text); }
+.formation-school { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-dim); }
+.exp-list { display: flex; flex-direction: column; gap: 1px; background: var(--border-subtle); }
+.exp-card { background: var(--surface); display: grid; grid-template-columns: 260px 1fr; transition: background 0.25s; position: relative; overflow: hidden; }
+.exp-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); transform: scaleY(0); transform-origin: bottom; transition: transform 0.35s ease; }
+.exp-card:hover { background: var(--surface2); }
+.exp-card:hover::after { transform: scaleY(1); }
+.exp-side { padding: 2.5rem 2rem 2.5rem 3rem; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: center; gap: 0.4rem; }
+.exp-type { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+.exp-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-mid); }
+.exp-company { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); margin-top: 0.2rem; }
+.exp-location { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-dim); }
+.exp-main { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+.exp-main h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; letter-spacing: -0.01em; }
+.exp-details { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-details li { font-family: 'Syne', sans-serif; font-size: 0.78rem; color: var(--text-dim); display: flex; align-items: flex-start; gap: 0.75rem; }
+.exp-details li::before { content: '—'; color: var(--gold); opacity: 0.5; flex-shrink: 0; margin-top: 1px; }
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
+.project-card { background: var(--surface); padding: 2rem; display: flex; flex-direction: column; gap: 1.2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+.project-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, var(--gold-dim) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; }
+.project-card:hover { background: var(--surface2); }
+.project-card:hover::before { opacity: 1; }
+.project-video { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; position: relative; z-index: 1; background: var(--surface2); border: 1px solid var(--border-subtle); }
+.project-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; position: relative; z-index: 1; border: 1px solid var(--border-subtle); }
+.project-number { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); opacity: 0.6; position: relative; z-index: 1; }
+.project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--text); position: relative; z-index: 1; }
+.project-desc { font-family: 'Syne', sans-serif; font-size: 0.78rem; line-height: 1.65; color: var(--text-dim); position: relative; z-index: 1; flex: 1; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; position: relative; z-index: 1; }
+.project-footer { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; padding-top: 1rem; border-top: 1px solid var(--border-subtle); }
+.project-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; transition: opacity 0.2s; }
+.project-link:hover { opacity: 0.7; }
+.aside-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); }
+.aside-card { background: var(--surface); padding: 2rem 2.5rem; }
+.aside-card h3 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 1.5rem; }
+.lang-list { display: flex; flex-direction: column; gap: 1rem; }
+.lang-item { display: flex; flex-direction: column; gap: 0.4rem; }
+.lang-row { display: flex; justify-content: space-between; align-items: baseline; }
+.lang-name { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+.lang-level { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--gold); }
+.lang-bar { height: 2px; background: var(--border-subtle); position: relative; }
+.lang-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold); opacity: 0.6; }
+.pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pill { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--text-mid); border: 1px solid var(--border-subtle); padding: 0.4rem 0.9rem; background: rgba(255,255,255,0.03); }
+.pill.interest { color: var(--text-dim); font-size: 0.72rem; }
+.nav-controls { display: flex; align-items: center; gap: 0.75rem; }
+.theme-toggle { background: none; border: 1px solid var(--border-subtle); color: var(--text-dim); cursor: pointer; font-size: 0.85rem; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; flex-shrink: 0; }
 .theme-toggle:hover { border-color: var(--border); color: var(--text); }
 .lang-dropdown { position: relative; }
-.lang-btn {
-background: none; border: 1px solid var(--border-subtle);
-color: var(--text-dim); cursor: pointer;
-font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
-padding: 0 0.75rem; height: 34px; display: flex; align-items: center; gap: 0.4rem;
-transition: border-color 0.2s, color 0.2s; white-space: nowrap; flex-shrink: 0;
-}
+.lang-btn { background: none; border: 1px solid var(--border-subtle); color: var(--text-dim); cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; padding: 0 0.75rem; height: 34px; display: flex; align-items: center; gap: 0.4rem; transition: border-color 0.2s, color 0.2s; white-space: nowrap; flex-shrink: 0; }
 .lang-btn:hover { border-color: var(--border); color: var(--text); }
-.lang-menu {
-position: absolute; top: calc(100% + 6px); right: 0;
-background: var(--surface2); border: 1px solid var(--border);
-min-width: 130px; z-index: 200; display: none; flex-direction: column;
-}
+.lang-menu { position: absolute; top: calc(100% + 6px); right: 0; background: var(--surface2); border: 1px solid var(--border); min-width: 130px; z-index: 200; display: none; flex-direction: column; }
 .lang-menu.open { display: flex; }
-.lang-option {
-font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
-color: var(--text-dim); padding: 0.6rem 1rem; cursor: pointer;
-border: none; background: none; text-align: left; width: 100%;
-transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 0.5rem;
-}
+.lang-option { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--text-dim); padding: 0.6rem 1rem; cursor: pointer; border: none; background: none; text-align: left; width: 100%; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 0.5rem; }
 .lang-option:hover { background: var(--gold-dim); color: var(--text); }
 .lang-option.active { color: var(--gold); }
-
-/* Light theme */
-body.light {
---bg: #f8f6f2; --surface: #f0ede8; --surface2: #e8e4de;
---text: #1a1810; --text-dim: #7a7570; --text-mid: #4a4640;
---border: rgba(160,120,40,0.25); --border-subtle: rgba(0,0,0,0.08);
---gold: #a07828; --gold-light: #c49a30; --gold-dim: rgba(160,120,40,0.1);
+body.light { --bg: #f8f6f2; --surface: #f0ede8; --surface2: #e8e4de; --text: #1a1810; --text-dim: #7a7570; --text-mid: #4a4640; --border: rgba(160,120,40,0.25); --border-subtle: rgba(0,0,0,0.08); --gold: #a07828; --gold-light: #c49a30; --gold-dim: rgba(160,120,40,0.1); }
+footer { border-top: 1px solid var(--border-subtle); padding: 3rem 4rem; max-width: 1300px; margin: 6rem auto 0; display: flex; align-items: center; justify-content: space-between; }
+.footer-left { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-dim); }
+.footer-right { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--text-dim); }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+.hero-left > * { animation: fadeUp 0.7s ease both; }
+.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+.hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+.hero-right { animation: fadeUp 1s ease both; animation-delay: 0.4s; }
+@media (max-width: 1100px) {
+.skills-grid { grid-template-columns: repeat(2, 1fr); }
+.projects-grid { grid-template-columns: 1fr 1fr; }
+.aside-grid { grid-template-columns: 1fr 1fr; }
+.hero { padding: 7rem 2.5rem 3rem; gap: 3rem; }
+.section { padding: 5rem 2.5rem; }
+.divider { padding: 0 2.5rem; }
+.navbar { padding: 1.2rem 2rem; }
+.nav-links { gap: 1.5rem; }
 }
-body.light body::before { opacity: 0.2; }
-
-/* ── FOOTER ── */
-	footer {
-		border-top: 1px solid var(--border-subtle); padding: 3rem 4rem;
-		max-width: 1300px; margin: 6rem auto 0;
-		display: flex; align-items: center; justify-content: space-between;
-	}
-	.footer-left { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-dim); }
-	.footer-right { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--text-dim); }
-
-	/* ── ANIMATIONS ── */
-	@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
-	.hero-left > * { animation: fadeUp 0.7s ease both; }
-	.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
-	.hero-left > *:nth-child(2) { animation-delay: 0.2s; }
-	.hero-left > *:nth-child(3) { animation-delay: 0.3s; }
-	.hero-left > *:nth-child(4) { animation-delay: 0.4s; }
-	.hero-left > *:nth-child(5) { animation-delay: 0.5s; }
-	.hero-right { animation: fadeUp 1s ease both; animation-delay: 0.4s; }
-
-	/* ── RESPONSIVE TABLET ── */
-	@media (max-width: 1100px) {
-		.skills-grid { grid-template-columns: repeat(2, 1fr); }
-		.projects-grid { grid-template-columns: 1fr 1fr; }
-		.aside-grid { grid-template-columns: 1fr 1fr; }
-		.hero { padding: 7rem 2.5rem 3rem; gap: 3rem; }
-		.section { padding: 5rem 2.5rem; }
-		.divider { padding: 0 2.5rem; }
-		.navbar { padding: 1.2rem 2rem; }
-		.nav-links { gap: 1.5rem; }
-	}
-
-	/* ── RESPONSIVE MOBILE ── */
-	@media (max-width: 700px) {
-		/* Navbar */
-		.navbar { padding: 1rem 1.25rem; }
-		.nav-links { display: none; }
-		.nav-controls { display: none; }
-		.nav-mobile {
-			display: flex; align-items: center; gap: 0.6rem;
-		}
-		.nav-mobile-cv {
-			font-family: 'DM Mono', monospace; font-size: 0.62rem;
-			letter-spacing: 0.1em; text-transform: uppercase;
-			color: var(--gold); border: 1px solid var(--border);
-			padding: 0.45rem 0.9rem; text-decoration: none;
-			background: var(--gold-dim); white-space: nowrap;
-		}
-		.nav-mobile-contact {
-			font-family: 'DM Mono', monospace; font-size: 0.62rem;
-			letter-spacing: 0.1em; text-transform: uppercase;
-			color: var(--text-dim); text-decoration: none; white-space: nowrap;
-		}
-
-		/* Hero */
-		.hero {
-			grid-template-columns: 1fr; min-height: auto;
-			padding: 5.5rem 1.25rem 3rem; gap: 2rem; text-align: left;
-		}
-		.hero-left { align-items: flex-start; gap: 1.5rem; }
-		.hero-right { display: none; }
-		.hero-name { font-size: clamp(2rem, 11vw, 3.2rem); line-height: 1.08; }
-		.hero-role { font-size: 0.65rem; }
-		.hero-desc { font-size: 1rem; line-height: 1.65; max-width: 100%; }
-		.badge { font-size: 0.58rem; padding: 0.38rem 0.8rem; }
-		.hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; width: 100%; }
-		.btn-main, .btn-outline { text-align: center; padding: 0.95rem 1.5rem; font-size: 0.68rem; }
-		.hero-meta span { font-size: 0.65rem; }
-
-		/* Sections */
-		.section { padding: 3rem 1.25rem; }
-		.divider { padding: 0 1.25rem; }
-		.section-header { gap: 1rem; margin-bottom: 1.75rem; }
-
-		/* Skills */
-		.skills-grid { grid-template-columns: 1fr 1fr; }
-		.skill-card { padding: 1.25rem; }
-		.skill-icon { font-size: 1rem; margin-bottom: 0.5rem; }
-		.skill-card h3 { font-size: 0.55rem; margin-bottom: 0.8rem; }
-		.tag { font-size: 0.68rem; padding: 0.25rem 0.6rem; }
-
-		/* Formations */
-		.formation-item { grid-template-columns: 1fr; }
-		.formation-period {
-			border-right: none; border-bottom: 1px solid var(--border-subtle);
-			padding: 0.75rem 1.25rem; font-size: 0.62rem;
-		}
-		.formation-content { padding: 0.75rem 1.25rem; }
-		.formation-degree { font-size: 0.82rem; }
-		.formation-school { font-size: 0.6rem; }
-
-		/* Experiences */
-		.exp-card { grid-template-columns: 1fr; }
-		.exp-side {
-			border-right: none; border-bottom: 1px solid var(--border-subtle);
-			padding: 1rem 1.25rem; flex-direction: row; flex-wrap: wrap;
-			align-items: center; gap: 0.4rem 1rem;
-		}
-		.exp-company { font-size: 1rem; }
-		.exp-main { padding: 1rem 1.25rem; gap: 0.75rem; }
-		.exp-main h3 { font-size: 1.3rem; }
-		.exp-details li { font-size: 0.74rem; }
-
-		/* Projects */
-		.projects-grid { grid-template-columns: 1fr; }
-		.project-card { padding: 1.5rem; gap: 1rem; }
-		.project-title { font-size: 1.2rem; }
-		.project-desc { font-size: 0.75rem; }
-
-		/* Aside */
-		.aside-grid { grid-template-columns: 1fr; }
-		.aside-card { padding: 1.5rem; }
-
-		/* Footer */
-		footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.75rem 1.25rem; margin-top: 2rem; }
-		.footer-left { font-size: 0.9rem; }
-		.footer-right { font-size: 0.6rem; }
-	}
+@media (max-width: 700px) {
+.navbar { padding: 1rem 1.25rem; }
+.nav-links { display: none; }
+.nav-controls { display: none; }
+.nav-mobile { display: flex; align-items: center; gap: 0.6rem; }
+.nav-mobile-cv { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 0.45rem 0.9rem; text-decoration: none; background: var(--gold-dim); white-space: nowrap; }
+.nav-mobile-contact { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; white-space: nowrap; }
+.hero { grid-template-columns: 1fr; min-height: auto; padding: 5.5rem 1.25rem 3rem; gap: 2rem; text-align: left; }
+.hero-left { align-items: flex-start; gap: 1.5rem; }
+.hero-right { display: none; }
+.hero-name { font-size: clamp(2rem, 11vw, 3.2rem); line-height: 1.08; }
+.hero-role { font-size: 0.65rem; }
+.hero-desc { font-size: 1rem; line-height: 1.65; max-width: 100%; }
+.badge { font-size: 0.58rem; padding: 0.38rem 0.8rem; }
+.hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; width: 100%; }
+.btn-main, .btn-outline { text-align: center; padding: 0.95rem 1.5rem; font-size: 0.68rem; }
+.hero-meta span { font-size: 0.65rem; }
+.section { padding: 3rem 1.25rem; }
+.divider { padding: 0 1.25rem; }
+.section-header { gap: 1rem; margin-bottom: 1.75rem; }
+.skills-grid { grid-template-columns: 1fr 1fr; }
+.skill-card { padding: 1.25rem; }
+.skill-icon { font-size: 1rem; margin-bottom: 0.5rem; }
+.skill-card h3 { font-size: 0.55rem; margin-bottom: 0.8rem; }
+.tag { font-size: 0.68rem; padding: 0.25rem 0.6rem; }
+.formation-item { grid-template-columns: 1fr; }
+.formation-period { border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 0.75rem 1.25rem; font-size: 0.62rem; }
+.formation-content { padding: 0.75rem 1.25rem; }
+.formation-degree { font-size: 0.82rem; }
+.formation-school { font-size: 0.6rem; }
+.exp-card { grid-template-columns: 1fr; }
+.exp-side { border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 1rem 1.25rem; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; }
+.exp-company { font-size: 1rem; }
+.exp-main { padding: 1rem 1.25rem; gap: 0.75rem; }
+.exp-main h3 { font-size: 1.3rem; }
+.exp-details li { font-size: 0.74rem; }
+.projects-grid { grid-template-columns: 1fr; }
+.project-card { padding: 1.5rem; gap: 1rem; }
+.project-title { font-size: 1.2rem; }
+.project-desc { font-size: 0.75rem; }
+.aside-grid { grid-template-columns: 1fr; }
+.aside-card { padding: 1.5rem; }
+footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.75rem 1.25rem; margin-top: 2rem; }
+.footer-left { font-size: 0.9rem; }
+.footer-right { font-size: 0.6rem; }
+}
 </style>
-
 <div class="ambient"></div>
-
 <nav class="navbar">
-	<a href="#" class="logo">P<em>A</em>D</a>
-	<div class="nav-links">
-		<a href="#about">À propos</a>
-		<a href="#skills">Compétences</a>
-		<a href="#formations">Formations</a>
-		<a href="#experience">Expériences</a>
-		<a href="#projects">Projets</a>
-		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">Télécharger CV</a>
-		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
-	</div>
-	<div class="nav-controls">
-		<div class="lang-dropdown" id="langDropdown">
-			<button class="lang-btn" id="langBtn">🇫🇷 FR ▾</button>
-			<div class="lang-menu" id="langMenu">
-				<button class="lang-option active" data-lang="fr">🇫🇷 Français</button>
-				<button class="lang-option" data-lang="en">🇬🇧 English</button>
-				<button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
-			</div>
-		</div>
-		<button class="theme-toggle" id="themeToggle">🌙</button>
-	</div>
-	<div class="nav-mobile">
-		<div class="lang-dropdown" id="langDropdownMobile">
-			<button class="lang-btn" id="langBtnMobile">🇫🇷</button>
-			<div class="lang-menu" id="langMenuMobile">
-				<button class="lang-option active" data-lang="fr">🇫🇷 FR</button>
-				<button class="lang-option" data-lang="en">🇬🇧 EN</button>
-				<button class="lang-option" data-lang="de">🇩🇪 DE</button>
-			</div>
-		</div>
-		<button class="theme-toggle" id="themeToggleMobile">🌙</button>
-		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">↓ CV</a>
-		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
-	</div>
+  <a href="#" class="logo">P<em>A</em>D</a>
+  <div class="nav-links">
+    <a href="#about">&Agrave; propos</a>
+    <a href="#skills">Comp&eacute;tences</a>
+    <a href="#formations">Formations</a>
+    <a href="#experience">Exp&eacute;riences</a>
+    <a href="#projects">Projets</a>
+    <a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">T&eacute;l&eacute;charger CV</a>
+    <a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
+  </div>
+  <div class="nav-controls">
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-btn" id="langBtn">&#x1F1EB;&#x1F1F7; FR &#x25BE;</button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-option active" data-lang="fr">&#x1F1EB;&#x1F1F7; Fran&ccedil;ais</button>
+        <button class="lang-option" data-lang="en">&#x1F1EC;&#x1F1E7; English</button>
+        <button class="lang-option" data-lang="de">&#x1F1E9;&#x1F1EA; Deutsch</button>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">&#x1F319;</button>
+  </div>
+  <div class="nav-mobile">
+    <div class="lang-dropdown" id="langDropdownMobile">
+      <button class="lang-btn" id="langBtnMobile">&#x1F1EB;&#x1F1F7;</button>
+      <div class="lang-menu" id="langMenuMobile">
+        <button class="lang-option active" data-lang="fr">&#x1F1EB;&#x1F1F7; FR</button>
+        <button class="lang-option" data-lang="en">&#x1F1EC;&#x1F1E7; EN</button>
+        <button class="lang-option" data-lang="de">&#x1F1E9;&#x1F1EA; DE</button>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggleMobile">&#x1F319;</button>
+    <a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">&#x2193; CV</a>
+    <a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
+  </div>
 </nav>
-
 <main>
-	<section id="about" class="hero">
-		<div class="hero-left">
-			<span class="badge">Disponible pour un stage · 3 mois</span>
-			<h1 class="hero-name">Prince Ascel Jacné<br><em>Djibodé</em></h1>
-			<div class="hero-role">
-				<span>{profession} — Développeur Full Stack</span>
-				<span>@ {school}</span>
-			</div>
-			<p class="hero-desc">{description}</p>
-			<div class="hero-actions">
-				<a href="#projects" class="btn-main">Voir mes projets</a>
-				<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="btn-outline">↓ Télécharger CV</a>
-				<div class="hero-meta">
-					<span>📍 Mulhouse, France · Mobilité</span>
-					<span>📞 07 45 36 03 07</span>
-					<span>🔗 linkedin: Prince_Ascel_Jacne_DJIBODE</span>
-				</div>
-			</div>
-		</div>
-		<div class="hero-right">
-			<div class="monogram-container">
-				<div class="monogram-bg"></div>
-				<div class="monogram-bg2"></div>
-				<span class="monogram">PAD</span>
-				<span class="corner-tag tl">MIAGE · L3</span>
-				<span class="corner-tag br">Full Stack<br>Mulhouse</span>
-			</div>
-		</div>
-	</section>
-
-	<div class="divider"><div class="divider-line"></div><span class="divider-label">Compétences techniques</span><div class="divider-line"></div></div>
-
-	<section id="skills" class="section">
-		<div class="section-header">
-			<span class="section-number">01</span>
-			<h2 class="section-title">Domaines d'<em>expertise</em></h2>
-		</div>
-		<div class="skills-grid">
-			{skills.map(group => (
-				<div class="skill-card">
-					<span class="skill-icon">{group.icon}</span>
-					<h3>{group.category}</h3>
-					<div class="tags">
-						{group.items.map(item => <span class="tag">{item}</span>)}
-					</div>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<div class="divider"><div class="divider-line"></div><span class="divider-label">Parcours académique</span><div class="divider-line"></div></div>
-
-	<section id="formations" class="section">
-		<div class="section-header">
-			<span class="section-number">02</span>
-			<h2 class="section-title">Formations &amp; <em>diplômes</em></h2>
-		</div>
-		<div class="formations-list">
-			{formations.map(f => (
-				<div class="formation-item">
-					<div class="formation-period">{f.period}</div>
-					<div class="formation-content">
-						<span class="formation-degree">{f.degree}</span>
-						<span class="formation-school">{f.school} — {f.location}</span>
-					</div>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<div class="divider"><div class="divider-line"></div><span class="divider-label">Expérience professionnelle</span><div class="divider-line"></div></div>
-
-	<section id="experience" class="section">
-		<div class="section-header">
-			<span class="section-number">03</span>
-			<h2 class="section-title">Expériences <em>terrain</em></h2>
-		</div>
-		<div class="exp-list">
-			{experiences.map(exp => (
-				<div class="exp-card">
-					<div class="exp-side">
-						<span class="exp-type">{exp.type}</span>
-						<span class="exp-date">{exp.date}</span>
-						<span class="exp-company">{exp.company}</span>
-						<span class="exp-location">{exp.location}</span>
-					</div>
-					<div class="exp-main">
-						<h3>{exp.role}</h3>
-						<ul class="exp-details">
-							{exp.details.map(d => <li>{d}</li>)}
-						</ul>
-					</div>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<div class="divider"><div class="divider-line"></div><span class="divider-label">Réalisations personnelles</span><div class="divider-line"></div></div>
-
-	<section id="projects" class="section">
-		<div class="section-header">
-			<span class="section-number">04</span>
-			<h2 class="section-title">Projets <em>GitHub</em></h2>
-		</div>
-		<div class="projects-grid">
-			{projects.map((p, i) => (
-				<div class="project-card">
-					{p.video
-						? <video class="project-video" src={p.video} controls muted playsinline preload="metadata" />
-						: p.image
-							? <img class="project-img" src={p.image} alt={p.title} />
-							: <div class="project-placeholder-img"><span>Aperçu à venir</span></div>
-					}
-					<span class="project-number">PROJET 0{i + 1}</span>
-					<h3 class="project-title">{p.title}</h3>
-					<p class="project-desc">{p.description}</p>
-					<div class="project-tech">
-						{p.tech.map(t => <span class="tag">{t}</span>)}
-					</div>
-					<div class="project-footer">
-						<a href={p.github} class="project-link" target="_blank" rel="noopener">Voir sur GitHub →</a>
-					</div>
-				</div>
-			))}
-		</div>
-	</section>
-
-	<div class="divider"><div class="divider-line"></div><span class="divider-label">Profil complet</span><div class="divider-line"></div></div>
-
-	<section class="section">
-		<div class="section-header">
-			<span class="section-number">05</span>
-			<h2 class="section-title">Langues, <em>atouts</em> & intérêts</h2>
-		</div>
-		<div class="aside-grid">
-			<div class="aside-card">
-				<h3>Langues</h3>
-				<div class="lang-list">
-					{languages.map(l => (
-						<div class="lang-item">
-							<div class="lang-row">
-								<span class="lang-name">{l.lang}</span>
-								<span class="lang-level">{l.level}</span>
-							</div>
-							<div class="lang-bar">
-								<div class="lang-bar-fill" style={`width: ${l.pct}%`}></div>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-			<div class="aside-card">
-				<h3>Atouts</h3>
-				<div class="pill-list">
-					{softSkills.map(s => <span class="pill">{s}</span>)}
-				</div>
-			</div>
-			<div class="aside-card">
-				<h3>Centres d'intérêt</h3>
-				<div class="pill-list">
-					{interests.map(i => <span class="pill interest">{i}</span>)}
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<footer>
-		<span class="footer-left">DJIBODE Prince Ascel Jacné — Portfolio 2025</span>
-		<span class="footer-right">djibodeprinceascel@gmail.com</span>
-	</footer>
+  <section id="about" class="hero">
+    <div class="hero-left">
+      <span class="badge">Disponible pour un stage &middot; 3 mois</span>
+      <h1 class="hero-name">Prince Ascel Jacn&eacute;<br><em>Djibod&eacute;</em></h1>
+      <div class="hero-role">
+        <span>{profession} &mdash; D&eacute;veloppeur Full Stack</span>
+        <span>@ {school}</span>
+      </div>
+      <p class="hero-desc">{description}</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-main">Voir mes projets</a>
+        <a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="btn-outline">&#x2193; T&eacute;l&eacute;charger CV</a>
+        <div class="hero-meta">
+          <span>&#x1F4CD; Mulhouse, France &middot; Mobilit&eacute;</span>
+          <span>&#x1F4DE; 07 45 36 03 07</span>
+          <span>&#x1F517; linkedin: Prince_Ascel_Jacne_DJIBODE</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="monogram-container">
+        <div class="monogram-bg"></div>
+        <div class="monogram-bg2"></div>
+        <span class="monogram">PAD</span>
+        <span class="corner-tag tl">MIAGE &middot; L3</span>
+        <span class="corner-tag br">Full Stack<br>Mulhouse</span>
+      </div>
+    </div>
+  </section>
+  <div class="divider"><div class="divider-line"></div><span class="divider-label">Comp&eacute;tences techniques</span><div class="divider-line"></div></div>
+  <section id="skills" class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Domaines d&rsquo;<em>expertise</em></h2>
+    </div>
+    <div class="skills-grid">
+      {skills.map(group => (
+        <div class="skill-card">
+          <span class="skill-icon">{group.icon}</span>
+          <h3>{group.category}</h3>
+          <div class="tags">
+            {group.items.map(item => <span class="tag">{item}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <div class="divider"><div class="divider-line"></div><span class="divider-label">Parcours acad&eacute;mique</span><div class="divider-line"></div></div>
+  <section id="formations" class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Formations &amp; <em>dipl&ocirc;mes</em></h2>
+    </div>
+    <div class="formations-list">
+      {formations.map(f => (
+        <div class="formation-item">
+          <div class="formation-period">{f.period}</div>
+          <div class="formation-content">
+            <span class="formation-degree">{f.degree}</span>
+            <span class="formation-school">{f.school} &mdash; {f.location}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <div class="divider"><div class="divider-line"></div><span class="divider-label">Exp&eacute;rience professionnelle</span><div class="divider-line"></div></div>
+  <section id="experience" class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Exp&eacute;riences <em>terrain</em></h2>
+    </div>
+    <div class="exp-list">
+      {experiences.map(exp => (
+        <div class="exp-card">
+          <div class="exp-side">
+            <span class="exp-type">{exp.type}</span>
+            <span class="exp-date">{exp.date}</span>
+            <span class="exp-company">{exp.company}</span>
+            <span class="exp-location">{exp.location}</span>
+          </div>
+          <div class="exp-main">
+            <h3>{exp.role}</h3>
+            <ul class="exp-details">
+              {exp.details.map(d => <li>{d}</li>)}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <div class="divider"><div class="divider-line"></div><span class="divider-label">R&eacute;alisations personnelles</span><div class="divider-line"></div></div>
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Projets <em>GitHub</em></h2>
+    </div>
+    <div class="projects-grid">
+      {projects.map((p, i) => (
+        <div class="project-card">
+          {p.video
+            ? <video class="project-video" src={p.video} controls muted playsinline preload="metadata" />
+            : p.image
+              ? <img class="project-img" src={p.image} alt={p.title} />
+              : <div class="project-placeholder-img"><span>Aper&ccedil;u &agrave; venir</span></div>
+          }
+          <span class="project-number">PROJET 0{i + 1}</span>
+          <h3 class="project-title">{p.title}</h3>
+          <p class="project-desc">{p.description}</p>
+          <div class="project-tech">
+            {p.tech.map(t => <span class="tag">{t}</span>)}
+          </div>
+          <div class="project-footer">
+            <a href={p.github} class="project-link" target="_blank" rel="noopener">Voir sur GitHub &rarr;</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <div class="divider"><div class="divider-line"></div><span class="divider-label">Profil complet</span><div class="divider-line"></div></div>
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Langues, <em>atouts</em> &amp; int&eacute;r&ecirc;ts</h2>
+    </div>
+    <div class="aside-grid">
+      <div class="aside-card">
+        <h3>Langues</h3>
+        <div class="lang-list">
+          {languages.map(l => (
+            <div class="lang-item">
+              <div class="lang-row">
+                <span class="lang-name">{l.lang}</span>
+                <span class="lang-level">{l.level}</span>
+              </div>
+              <div class="lang-bar">
+                <div class="lang-bar-fill" style={`width: ${l.pct}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="aside-card">
+        <h3>Atouts</h3>
+        <div class="pill-list">
+          {softSkills.map(s => <span class="pill">{s}</span>)}
+        </div>
+      </div>
+      <div class="aside-card">
+        <h3>Centres d&rsquo;int&eacute;r&ecirc;t</h3>
+        <div class="pill-list">
+          {interests.map(i => <span class="pill interest">{i}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <span class="footer-left">DJIBODE Prince Ascel Jacn&eacute; &mdash; Portfolio 2025</span>
+    <span class="footer-right">djibodeprinceascel@gmail.com</span>
+  </footer>
 </main>
-
 <script is:inline>
-// ── THEME ──
-// ── THEME ──
+(function() {
+
 function toggleTheme() {
-  const body = document.body;
+  var body = document.body;
   body.classList.toggle('light');
-  const isLight = body.classList.contains('light');
-  const icon = isLight ? '☀️' : '🌙';
-  document.querySelectorAll('.theme-toggle').forEach(btn => btn.textContent = icon);
+  var isLight = body.classList.contains('light');
+  var icon = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  document.querySelectorAll('.theme-toggle').forEach(function(btn) { btn.textContent = icon; });
   localStorage.setItem('pad-theme', isLight ? 'light' : 'dark');
 }
 
-// ── LANG ──
-const translations = {
+function toggleLang(menuId) {
+  var menu = document.getElementById(menuId);
+  menu.classList.toggle('open');
+  var otherId = menuId === 'langMenu' ? 'langMenuMobile' : 'langMenu';
+  document.getElementById(otherId).classList.remove('open');
+}
+
+var T = {
   fr: {
-    nav: ['À propos','Compétences','Formations','Expériences','Projets'],
-    badge: 'Disponible pour un stage · 3 mois',
-    desc: "Étudiant en L3 MIAGE à FST UHA, je suis à la recherche d'un stage de 3 mois en tant que Développeur Full Stack. Passionné par la création d'applications web complètes, je maîtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes compétences au service d'un projet concret au sein de votre équipe.",
-    s1t: "Domaines d'", s1em: "expertise",
-    s2t: "Formations & ", s2em: "diplômes",
-    s3t: "Expériences ", s3em: "terrain",
-    s4t: "Projets ", s4em: "GitHub",
-    s5t: "Langues, ", s5em: "atouts", s5rest: " & intérêts",
-    div: ['Compétences techniques','Parcours académique','Expérience professionnelle','Réalisations personnelles','Profil complet'],
-    role: 'Étudiant en Licence 3 MIAGE — Développeur Full Stack',
-    school: '@ Université de Haute-Alsace',
+    nav: ['\u00C0 propos','Comp\u00E9tences','Formations','Exp\u00E9riences','Projets'],
+    badge: 'Disponible pour un stage \u00B7 3 mois',
+    desc: '\u00C9tudiant en L3 MIAGE \u00E0 FST UHA, je suis \u00E0 la recherche d\'un stage de 3 mois en tant que D\u00E9veloppeur Full Stack. Passionn\u00E9 par la cr\u00E9ation d\'applications web compl\u00E8tes, je ma\u00EEtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes comp\u00E9tences au service d\'un projet concret au sein de votre \u00E9quipe.',
+    s1t: 'Domaines d\u2019', s1em: 'expertise',
+    s2t: 'Formations & ', s2em: 'dipl\u00F4mes',
+    s3t: 'Exp\u00E9riences ', s3em: 'terrain',
+    s4t: 'Projets ', s4em: 'GitHub',
+    s5t: 'Langues, ', s5em: 'atouts', s5rest: ' & int\u00E9r\u00EAts',
+    div: ['Comp\u00E9tences techniques','Parcours acad\u00E9mique','Exp\u00E9rience professionnelle','R\u00E9alisations personnelles','Profil complet'],
+    role: '\u00C9tudiant en Licence 3 MIAGE \u2014 D\u00E9veloppeur Full Stack',
+    school: '@ Universit\u00E9 de Haute-Alsace',
     skillCats: ['Web & Frameworks','Langages & Mobile','Analyse & BD','Outils'],
-    btnProjects: 'Voir mes projets', btnCV: '↓ Télécharger CV',
-    location: '📍 Mulhouse, France · Mobilité',
-    aside: ['Langues','Atouts','Centres d'intérêt'],
+    btnProjects: 'Voir mes projets', btnCV: '\u2193 T\u00E9l\u00E9charger CV',
+    location: '\uD83D\uDCCD Mulhouse, France \u00B7 Mobilit\u00E9',
+    aside: ['Langues','Atouts','Centres d\u2019int\u00E9r\u00EAt'],
     expType: 'Stage',
-    expRoles: ['Développeur web','Analyste programmeur'],
+    expRoles: ['D\u00E9veloppeur web','Analyste programmeur'],
     expDetails: [
-      ['Développement d'une application de gestion des fichiers (centralisation, sécurisation, accès documents)','Création d'un site web vitrine pour renforcer la visibilité de l'entreprise','Intégration d'une interface moderne et ergonomique','Collaboration avec l'équipe interne pour recueillir les besoins et tester les fonctionnalités'],
-      ['Participation à la conception et au développement d'applications web','Contribution à l'analyse des besoins et à la rédaction des cahiers des charges','Intégration d'interfaces utilisateurs en HTML, CSS et JavaScript','Collaboration avec l'équipe technique pour les tests et le déploiement']
+      ['D\u00E9veloppement d\'une application de gestion des fichiers (centralisation, s\u00E9curisation, acc\u00E8s documents)','Cr\u00E9ation d\'un site web vitrine pour renforcer la visibilit\u00E9 de l\'entreprise','Int\u00E9gration d\'une interface moderne et ergonomique','Collaboration avec l\'\u00E9quipe interne pour recueillir les besoins et tester les fonctionnalit\u00E9s'],
+      ['Participation \u00E0 la conception et au d\u00E9veloppement d\'applications web','Contribution \u00E0 l\'analyse des besoins et \u00E0 la r\u00E9daction des cahiers des charges','Int\u00E9gration d\'interfaces utilisateurs en HTML, CSS et JavaScript','Collaboration avec l\'\u00E9quipe technique pour les tests et le d\u00E9ploiement']
     ],
     formations: [
-      {degree:'Licence 3 MIAGE', school:'FST UHA — Mulhouse', period:'Depuis 2025'},
-      {degree:'Licence Pro. Analyse Informatique & Programmation', school:'ENEAM — Cotonou, Bénin', period:'2023 — 2024'},
-      {degree:'Baccalauréat Série D', school:'Sainte Jeanne d'Arc — Bénin', period:'2020 — 2021'},
-      {degree:'Brevet d'Étude du Premier Cycle', school:'CEG 1 Allada — Bénin', period:'2016 — 2017'}
+      {degree:'Licence 3 MIAGE', school:'FST UHA \u2014 Mulhouse', period:'Depuis 2025'},
+      {degree:'Licence Pro. Analyse Informatique & Programmation', school:'ENEAM \u2014 Cotonou, B\u00E9nin', period:'2023 \u2014 2024'},
+      {degree:'Baccalaur\u00E9at S\u00E9rie D', school:'Sainte Jeanne d\'Arc \u2014 B\u00E9nin', period:'2020 \u2014 2021'},
+      {degree:'Brevet d\'Étude du Premier Cycle', school:'CEG 1 Allada \u2014 B\u00E9nin', period:'2016 \u2014 2017'}
     ],
     projects: [
-      {title:'Crypto — Chiffrement de messages', desc:"Application de chiffrement polyalphabétique : l'utilisateur saisit un mot, une phrase ou un paragraphe, et le programme retourne le message codé en tenant compte des espaces.", link:'Voir sur GitHub →'},
-      {title:'Astus Citée — Gestion de fichiers', desc:'Application web de gestion documentaire développée en stage : centralisation, sécurisation et accès aux fichiers internes de l'entreprise, avec interface moderne et ergonomique.', link:'Voir sur GitHub →'},
-      {title:'Gestionnaire de questionnaires', desc:'Application en C++ permettant de gérer des questionnaires interactifs. Prend en charge plusieurs types de questions (texte, numérique, QCM), la sauvegarde depuis un fichier texte, et propose différents modes d'évaluation (test, seconde chance, adaptatif).', link:'Voir sur GitHub →'},
-      {title:'Astus Citée — Site vitrine', desc:'Site web vitrine développé en stage chez Astus Citée pour présenter l'entreprise et renforcer sa visibilité en ligne.', link:'Voir sur GitHub →'}
+      {title:'Crypto \u2014 Chiffrement de messages', desc:'Application de chiffrement polyalphab\u00E9tique : l\'utilisateur saisit un mot, une phrase ou un paragraphe, et le programme retourne le message cod\u00E9.', link:'Voir sur GitHub \u2192'},
+      {title:'Astus Cit\u00E9e \u2014 Gestion de fichiers', desc:'Application web de gestion documentaire d\u00E9velopp\u00E9e en stage : centralisation, s\u00E9curisation et acc\u00E8s aux fichiers internes de l\'entreprise.', link:'Voir sur GitHub \u2192'},
+      {title:'Gestionnaire de questionnaires', desc:'Application en C++ permettant de g\u00E9rer des questionnaires interactifs. Prend en charge plusieurs types de questions (texte, num\u00E9rique, QCM) et propose diff\u00E9rents modes d\'\u00E9valuation.', link:'Voir sur GitHub \u2192'},
+      {title:'Astus Cit\u00E9e \u2014 Site vitrine', desc:'Site web vitrine d\u00E9velopp\u00E9 en stage chez Astus Cit\u00E9e pour pr\u00E9senter l\'entreprise et renforcer sa visibilit\u00E9 en ligne.', link:'Voir sur GitHub \u2192'}
     ],
-    langNames: ['Français','Anglais','Allemand'],
-    softSkills: ["Esprit d'équipe","Dynamique & motivé","Sens de l'analyse","Capacité d'adaptation"],
-    interests: ['Football','Jeux vidéos','Voyage','Musique'],
-    footer: 'DJIBODE Prince Ascel Jacné — Portfolio 2025',
-    dl: 'Télécharger CV', contact: 'Contact',
-    flag: '🇫🇷', code: 'FR'
+    langNames: ['Fran\u00E7ais','Anglais','Allemand'],
+    softSkills: ['Esprit d\'equipe','Dynamique & motiv\u00E9','Sens de l\'analyse','Capacit\u00E9 d\'adaptation'],
+    interests: ['Football','Jeux vid\u00E9os','Voyage','Musique'],
+    footer: 'DJIBODE Prince Ascel Jacn\u00E9 \u2014 Portfolio 2025',
+    dl: 'T\u00E9l\u00E9charger CV', contact: 'Contact',
+    flag: '\uD83C\uDDEB\uD83C\uDDF7', code: 'FR'
   },
   en: {
     nav: ['About','Skills','Education','Experience','Projects'],
     badge: 'Available for a 3-month internship',
-    desc: "L3 MIAGE student at FST UHA, I am looking for a 3-month internship as a Full Stack Developer. Passionate about building complete web applications, I master both Front-end and Back-end environments. Rigorous and curious, I want to contribute to a concrete project within your team.",
-    s1t: "Areas of ", s1em: "expertise",
-    s2t: "Education & ", s2em: "degrees",
-    s3t: "Professional ", s3em: "experience",
-    s4t: "GitHub ", s4em: "projects",
-    s5t: "Languages, ", s5em: "strengths", s5rest: " & interests",
+    desc: 'L3 MIAGE student at FST UHA, I am looking for a 3-month internship as a Full Stack Developer. Passionate about building complete web applications, I master both Front-end and Back-end environments. Rigorous and curious, I want to contribute to a concrete project within your team.',
+    s1t: 'Areas of ', s1em: 'expertise',
+    s2t: 'Education & ', s2em: 'degrees',
+    s3t: 'Professional ', s3em: 'experience',
+    s4t: 'GitHub ', s4em: 'projects',
+    s5t: 'Languages, ', s5em: 'strengths', s5rest: ' & interests',
     div: ['Technical skills','Academic background','Work experience','Personal projects','Full profile'],
-    role: 'L3 MIAGE Student — Full Stack Developer',
+    role: 'L3 MIAGE Student \u2014 Full Stack Developer',
     school: '@ University of Haute-Alsace',
     skillCats: ['Web & Frameworks','Languages & Mobile','Analysis & DB','Tools'],
-    btnProjects: 'View my projects', btnCV: '↓ Download CV',
-    location: '📍 Mulhouse, France · Open to relocation',
+    btnProjects: 'View my projects', btnCV: '\u2193 Download CV',
+    location: '\uD83D\uDCCD Mulhouse, France \u00B7 Open to relocation',
     aside: ['Languages','Strengths','Interests'],
     expType: 'Internship',
     expRoles: ['Web Developer','Programmer Analyst'],
     expDetails: [
-      ['Development of a document management application (centralisation, security, access control)','Creation of a showcase website to strengthen the company's visibility','Integration of a modern and ergonomic interface','Collaboration with the internal team to gather requirements and test features'],
+      ['Development of a document management application (centralisation, security, access control)','Creation of a showcase website to strengthen the company visibility','Integration of a modern and ergonomic interface','Collaboration with the internal team to gather requirements and test features'],
       ['Participation in the design and development of web applications','Contribution to needs analysis and writing technical specifications','Integration of user interfaces in HTML, CSS and JavaScript','Collaboration with the technical team for testing and deployment']
     ],
     formations: [
-      {degree:'Bachelor L3 MIAGE', school:'FST UHA — Mulhouse', period:'Since 2025'},
-      {degree:'Professional Bachelor in Computer Analysis & Programming', school:'ENEAM — Cotonou, Benin', period:'2023 — 2024'},
-      {degree:'Baccalaureate Series D', school:'Sainte Jeanne d'Arc — Benin', period:'2020 — 2021'},
-      {degree:'First Cycle School Certificate', school:'CEG 1 Allada — Benin', period:'2016 — 2017'}
+      {degree:'Bachelor L3 MIAGE', school:'FST UHA \u2014 Mulhouse', period:'Since 2025'},
+      {degree:'Professional Bachelor in Computer Analysis & Programming', school:'ENEAM \u2014 Cotonou, Benin', period:'2023 \u2014 2024'},
+      {degree:'Baccalaureate Series D', school:'Sainte Jeanne d\'Arc \u2014 Benin', period:'2020 \u2014 2021'},
+      {degree:'First Cycle School Certificate', school:'CEG 1 Allada \u2014 Benin', period:'2016 \u2014 2017'}
     ],
     projects: [
-      {title:'Crypto — Message Encryption', desc:"Polyalphabetic encryption application: the user enters a word, phrase or paragraph, and the program returns the encoded message taking spaces into account.", link:'View on GitHub →'},
-      {title:'Astus Citée — File Management', desc:'Web document management application developed during internship: centralisation, security and access to internal company files, with a modern and ergonomic interface.', link:'View on GitHub →'},
-      {title:'Questionnaire Manager', desc:'C++ application for managing interactive questionnaires. Supports multiple question types (text, numeric, MCQ), file-based saving, and three evaluation modes (test, second chance, adaptive).', link:'View on GitHub →'},
-      {title:'Astus Citée — Showcase Website', desc:'Showcase website developed during internship at Astus Citée to present the company and strengthen its online visibility.', link:'View on GitHub →'}
+      {title:'Crypto \u2014 Message Encryption', desc:'Polyalphabetic encryption application: the user enters a word, phrase or paragraph, and the program returns the encoded message.', link:'View on GitHub \u2192'},
+      {title:'Astus Cit\u00E9e \u2014 File Management', desc:'Web document management application developed during internship: centralisation, security and access to internal company files.', link:'View on GitHub \u2192'},
+      {title:'Questionnaire Manager', desc:'C++ application for managing interactive questionnaires. Supports multiple question types (text, numeric, MCQ) and three evaluation modes.', link:'View on GitHub \u2192'},
+      {title:'Astus Cit\u00E9e \u2014 Showcase Website', desc:'Showcase website developed during internship at Astus Citee to present the company and strengthen its online visibility.', link:'View on GitHub \u2192'}
     ],
     langNames: ['French','English','German'],
     softSkills: ['Team spirit','Dynamic & motivated','Analytical mindset','Adaptability'],
     interests: ['Football','Video games','Travel','Music'],
-    footer: 'DJIBODE Prince Ascel Jacné — Portfolio 2025',
+    footer: 'DJIBODE Prince Ascel Jacn\u00E9 \u2014 Portfolio 2025',
     dl: 'Download CV', contact: 'Contact',
-    flag: '🇬🇧', code: 'EN'
+    flag: '\uD83C\uDDEC\uD83C\uDDE7', code: 'EN'
   },
   de: {
-    nav: ['Über mich','Fähigkeiten','Ausbildung','Erfahrung','Projekte'],
-    badge: 'Verfügbar für ein 3-monatiges Praktikum',
-    desc: "Als L3-MIAGE-Student an der FST UHA suche ich ein 3-monatiges Praktikum als Full-Stack-Entwickler. Ich beherrsche sowohl Front-end- als auch Back-end-Technologien und möchte meine Fähigkeiten in einem konkreten Projekt einsetzen.",
-    s1t: "", s1em: "Fachgebiete",
-    s2t: "Ausbildung & ", s2em: "Abschlüsse",
-    s3t: "Berufs", s3em: "erfahrung",
-    s4t: "GitHub-", s4em: "Projekte",
-    s5t: "Sprachen, ", s5em: "Stärken", s5rest: " & Interessen",
-    div: ['Technische Fähigkeiten','Akademischer Werdegang','Berufserfahrung','Persönliche Projekte','Vollständiges Profil'],
-    role: 'L3-MIAGE-Student — Full-Stack-Entwickler',
-    school: '@ Universität Haute-Alsace',
+    nav: ['\u00DCber mich','F\u00E4higkeiten','Ausbildung','Erfahrung','Projekte'],
+    badge: 'Verf\u00FCgbar f\u00FCr ein 3-monatiges Praktikum',
+    desc: 'Als L3-MIAGE-Student an der FST UHA suche ich ein 3-monatiges Praktikum als Full-Stack-Entwickler. Ich beherrsche sowohl Front-end- als auch Back-end-Technologien und m\u00F6chte meine F\u00E4higkeiten in einem konkreten Projekt einsetzen.',
+    s1t: '', s1em: 'Fachgebiete',
+    s2t: 'Ausbildung & ', s2em: 'Abschl\u00FCsse',
+    s3t: 'Berufs', s3em: 'erfahrung',
+    s4t: 'GitHub-', s4em: 'Projekte',
+    s5t: 'Sprachen, ', s5em: 'St\u00E4rken', s5rest: ' & Interessen',
+    div: ['Technische F\u00E4higkeiten','Akademischer Werdegang','Berufserfahrung','Pers\u00F6nliche Projekte','Vollst\u00E4ndiges Profil'],
+    role: 'L3-MIAGE-Student \u2014 Full-Stack-Entwickler',
+    school: '@ Universit\u00E4t Haute-Alsace',
     skillCats: ['Web & Frameworks','Sprachen & Mobile','Analyse & DB','Werkzeuge'],
-    btnProjects: 'Meine Projekte', btnCV: '↓ Lebenslauf laden',
-    location: '📍 Mulhouse, Frankreich · Mobilität',
-    aside: ['Sprachen','Stärken','Interessen'],
+    btnProjects: 'Meine Projekte', btnCV: '\u2193 Lebenslauf laden',
+    location: '\uD83D\uDCCD Mulhouse, Frankreich \u00B7 Mobilit\u00E4t',
+    aside: ['Sprachen','St\u00E4rken','Interessen'],
     expType: 'Praktikum',
     expRoles: ['Webentwickler','Programmierer-Analyst'],
     expDetails: [
-      ['Entwicklung einer Dokumentenmanagementsystem-Anwendung (Zentralisierung, Sicherheit, Zugangskontrolle)','Erstellung einer Showcase-Website zur Stärkung der Sichtbarkeit des Unternehmens','Integration einer modernen und ergonomischen Benutzeroberfläche','Zusammenarbeit mit dem internen Team zur Anforderungserfassung und Funktionstest'],
-      ['Mitwirkung an der Konzeption und Entwicklung von Webanwendungen','Beitrag zur Bedarfsanalyse und Erstellung von Pflichtenheften','Integration von Benutzeroberflächen in HTML, CSS und JavaScript','Zusammenarbeit mit dem technischen Team für Tests und Deployment']
+      ['Entwicklung einer Dokumentenmanagementsystem-Anwendung (Zentralisierung, Sicherheit, Zugangskontrolle)','Erstellung einer Showcase-Website zur St\u00E4rkung der Sichtbarkeit des Unternehmens','Integration einer modernen und ergonomischen Benutzeroberfl\u00E4che','Zusammenarbeit mit dem internen Team zur Anforderungserfassung und Funktionstest'],
+      ['Mitwirkung an der Konzeption und Entwicklung von Webanwendungen','Beitrag zur Bedarfsanalyse und Erstellung von Pflichtenheften','Integration von Benutzeroberfl\u00E4chen in HTML, CSS und JavaScript','Zusammenarbeit mit dem technischen Team f\u00FCr Tests und Deployment']
     ],
     formations: [
-      {degree:'Bachelor L3 MIAGE', school:'FST UHA — Mulhouse', period:'Seit 2025'},
-      {degree:'Professioneller Bachelor Informatikanalyse & Programmierung', school:'ENEAM — Cotonou, Benin', period:'2023 — 2024'},
-      {degree:'Abitur Serie D', school:'Sainte Jeanne d'Arc — Benin', period:'2020 — 2021'},
-      {degree:'Erster Schulabschluss', school:'CEG 1 Allada — Benin', period:'2016 — 2017'}
+      {degree:'Bachelor L3 MIAGE', school:'FST UHA \u2014 Mulhouse', period:'Seit 2025'},
+      {degree:'Professioneller Bachelor Informatikanalyse & Programmierung', school:'ENEAM \u2014 Cotonou, Benin', period:'2023 \u2014 2024'},
+      {degree:'Abitur Serie D', school:'Sainte Jeanne d\'Arc \u2014 Benin', period:'2020 \u2014 2021'},
+      {degree:'Erster Schulabschluss', school:'CEG 1 Allada \u2014 Benin', period:'2016 \u2014 2017'}
     ],
     projects: [
-      {title:'Crypto — Nachrichtenverschlüsselung', desc:"Polyalphabetische Verschlüsselungsanwendung: Der Benutzer gibt ein Wort, einen Satz oder einen Absatz ein, und das Programm gibt die codierte Nachricht unter Berücksichtigung von Leerzeichen zurück.", link:'Auf GitHub ansehen →'},
-      {title:'Astus Citée — Dateiverwaltung', desc:'Web-Dokumentenmanagementsystem, entwickelt während des Praktikums: Zentralisierung, Sicherheit und Zugang zu internen Unternehmensdateien, mit moderner und ergonomischer Oberfläche.', link:'Auf GitHub ansehen →'},
-      {title:'Fragebogen-Manager', desc:'C++-Anwendung zur Verwaltung interaktiver Fragebögen. Unterstützt mehrere Fragetypen (Text, Numerisch, QCM), dateibasierte Speicherung und drei Auswertungsmodi (Test, zweite Chance, adaptiv).', link:'Auf GitHub ansehen →'},
-      {title:'Astus Citée — Firmenwebsite', desc:'Showcase-Website, entwickelt während des Praktikums bei Astus Citée, um das Unternehmen zu präsentieren und seine Online-Sichtbarkeit zu stärken.', link:'Auf GitHub ansehen →'}
+      {title:'Crypto \u2014 Nachrichtenversch\u00FCsselung', desc:'Polyalphabetische Verschl\u00FCsselungsanwendung: Der Benutzer gibt ein Wort, einen Satz oder einen Absatz ein, und das Programm gibt die codierte Nachricht zur\u00FCck.', link:'Auf GitHub ansehen \u2192'},
+      {title:'Astus Cit\u00E9e \u2014 Dateiverwaltung', desc:'Web-Dokumentenmanagementsystem, entwickelt w\u00E4hrend des Praktikums: Zentralisierung, Sicherheit und Zugang zu internen Unternehmensdateien.', link:'Auf GitHub ansehen \u2192'},
+      {title:'Fragebogen-Manager', desc:'C++-Anwendung zur Verwaltung interaktiver Frageb\u00F6gen. Unterst\u00FCtzt mehrere Fragetypen (Text, Numerisch, QCM) und drei Auswertungsmodi.', link:'Auf GitHub ansehen \u2192'},
+      {title:'Astus Cit\u00E9e \u2014 Firmenwebsite', desc:'Showcase-Website, entwickelt w\u00E4hrend des Praktikums bei Astus Cit\u00E9e, um das Unternehmen zu pr\u00E4sentieren und seine Online-Sichtbarkeit zu st\u00E4rken.', link:'Auf GitHub ansehen \u2192'}
     ],
-    langNames: ['Französisch','Englisch','Deutsch'],
-    softSkills: ['Teamgeist','Dynamisch & motiviert','Analytisches Denken','Anpassungsfähigkeit'],
-    interests: ['Fußball','Videospiele','Reisen','Musik'],
-    footer: 'DJIBODE Prince Ascel Jacné — Portfolio 2025',
+    langNames: ['Franz\u00F6sisch','Englisch','Deutsch'],
+    softSkills: ['Teamgeist','Dynamisch & motiviert','Analytisches Denken','Anpassungsf\u00E4higkeit'],
+    interests: ['Fu\u00DFball','Videospiele','Reisen','Musik'],
+    footer: 'DJIBODE Prince Ascel Jacn\u00E9 \u2014 Portfolio 2025',
     dl: 'Lebenslauf laden', contact: 'Kontakt',
-    flag: '🇩🇪', code: 'DE'
+    flag: '\uD83C\uDDE9\uD83C\uDDEA', code: 'DE'
   }
 };
 
-function toggleLang(menuId) {
-  const menu = document.getElementById(menuId);
-  menu.classList.toggle('open');
-  const otherId = menuId === 'langMenu' ? 'langMenuMobile' : 'langMenu';
-  document.getElementById(otherId).classList.remove('open');
-}
-
 function setLang(lang) {
-  const t = translations[lang];
-
-  // ── Buttons
-  const btn = document.getElementById('langBtn');
-  btn.textContent = t.flag + ' ' + t.code + ' ▾';
-  const mobile = document.getElementById('langBtnMobile');
-  if (mobile) mobile.textContent = t.flag;
-
-  // ── Nav links
-  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta)');
-  navLinks.forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
-  document.querySelectorAll('.nav-cv').forEach(el => el.textContent = t.dl);
-  document.querySelectorAll('.nav-cta').forEach(el => el.textContent = t.contact);
-
-  // ── Badge
-  const badge = document.querySelector('.badge');
-  if (badge) badge.childNodes[badge.childNodes.length - 1].textContent = ' ' + t.badge;
-
-  // ── Hero desc, role, school
-  const heroDesc = document.querySelector('.hero-desc');
-  if (heroDesc) heroDesc.textContent = t.desc;
-  const roleLines = document.querySelectorAll('.hero-role span');
-  if (roleLines[0]) roleLines[0].textContent = t.role;
-  if (roleLines[1]) roleLines[1].textContent = t.school;
-
-  // ── Hero buttons
-  const btnMain = document.querySelector('.btn-main');
-  if (btnMain) btnMain.textContent = t.btnProjects;
-  const btnOutline = document.querySelector('.btn-outline');
-  if (btnOutline) btnOutline.textContent = t.btnCV;
-
-  // ── Location
-  const metaSpans = document.querySelectorAll('.hero-meta span');
-  if (metaSpans[0]) metaSpans[0].textContent = t.location;
-
-  // ── Section titles (with em)
-  const titles = document.querySelectorAll('.section-title');
-  const tKeys = [
-    {t:'s1t',em:'s1em',rest:''},
-    {t:'s2t',em:'s2em',rest:''},
-    {t:'s3t',em:'s3em',rest:''},
-    {t:'s4t',em:'s4em',rest:''},
-    {t:'s5t',em:'s5em',rest:'s5rest'}
-  ];
-  titles.forEach((el, i) => {
-    const k = tKeys[i];
-    if (!k) return;
-    el.innerHTML = (t[k.t]||'') + '<em>' + (t[k.em]||'') + '</em>' + (t[k.rest]||'');
-  });
-
-  // ── Divider labels
-  const divLabels = document.querySelectorAll('.divider-label');
-  divLabels.forEach((el, i) => { if (t.div[i]) el.textContent = t.div[i]; });
-
-  // ── Skill category headers
-  const skillCatEls = document.querySelectorAll('.skill-card h3');
-  skillCatEls.forEach((el, i) => { if (t.skillCats[i]) el.textContent = t.skillCats[i]; });
-
-  // ── Aside titles
-  const asideTitles = document.querySelectorAll('.aside-card h3');
-  asideTitles.forEach((el, i) => { if (t.aside[i]) el.textContent = t.aside[i]; });
-
-  // ── Footer
-  const footerLeft = document.querySelector('.footer-left');
-  if (footerLeft) footerLeft.textContent = t.footer;
-
-  // ── Formations
-  const formItems = document.querySelectorAll('.formation-item');
-  formItems.forEach((el, i) => {
+  var t = T[lang]; if (!t) return;
+  var b = document.getElementById('langBtn');
+  if (b) b.textContent = t.flag + ' ' + t.code + ' \u25BE';
+  var bm = document.getElementById('langBtnMobile');
+  if (bm) bm.textContent = t.flag;
+  document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta)').forEach(function(a, i) { if (t.nav[i]) a.textContent = t.nav[i]; });
+  document.querySelectorAll('.nav-cv').forEach(function(el) { el.textContent = t.dl; });
+  document.querySelectorAll('.nav-cta').forEach(function(el) { el.textContent = t.contact; });
+  var badge = document.querySelector('.badge');
+  if (badge) { var n = badge.childNodes; n[n.length - 1].textContent = ' ' + t.badge; }
+  var hd = document.querySelector('.hero-desc'); if (hd) hd.textContent = t.desc;
+  var rs = document.querySelectorAll('.hero-role span');
+  if (rs[0]) rs[0].textContent = t.role; if (rs[1]) rs[1].textContent = t.school;
+  var bMain = document.querySelector('.btn-main'); if (bMain) bMain.textContent = t.btnProjects;
+  var bOut = document.querySelector('.btn-outline'); if (bOut) bOut.textContent = t.btnCV;
+  var ms = document.querySelectorAll('.hero-meta span'); if (ms[0]) ms[0].textContent = t.location;
+  var titles = document.querySelectorAll('.section-title');
+  var keys = [{t:'s1t',e:'s1em',r:''},{t:'s2t',e:'s2em',r:''},{t:'s3t',e:'s3em',r:''},{t:'s4t',e:'s4em',r:''},{t:'s5t',e:'s5em',r:'s5rest'}];
+  titles.forEach(function(el, i) { var k = keys[i]; if (!k) return; el.innerHTML = (t[k.t]||'') + '<em>' + (t[k.e]||'') + '</em>' + (t[k.r] ? t[k.r] : ''); });
+  document.querySelectorAll('.divider-label').forEach(function(el, i) { if (t.div[i]) el.textContent = t.div[i]; });
+  document.querySelectorAll('.skill-card h3').forEach(function(el, i) { if (t.skillCats[i]) el.textContent = t.skillCats[i]; });
+  document.querySelectorAll('.aside-card h3').forEach(function(el, i) { if (t.aside[i]) el.textContent = t.aside[i]; });
+  var fl = document.querySelector('.footer-left'); if (fl) fl.textContent = t.footer;
+  document.querySelectorAll('.formation-item').forEach(function(el, i) {
     if (!t.formations[i]) return;
-    const period = el.querySelector('.formation-period');
-    const degree = el.querySelector('.formation-degree');
-    const school = el.querySelector('.formation-school');
-    if (period) period.textContent = t.formations[i].period;
-    if (degree) degree.textContent = t.formations[i].degree;
-    if (school) school.textContent = t.formations[i].school;
+    var p = el.querySelector('.formation-period'), d = el.querySelector('.formation-degree'), s = el.querySelector('.formation-school');
+    if (p) p.textContent = t.formations[i].period; if (d) d.textContent = t.formations[i].degree; if (s) s.textContent = t.formations[i].school;
   });
-
-  // ── Experiences
-  const expCards = document.querySelectorAll('.exp-card');
-  expCards.forEach((el, i) => {
-    const typeEl = el.querySelector('.exp-type');
-    const roleEl = el.querySelector('.exp-main h3');
-    if (typeEl) typeEl.textContent = t.expType;
-    if (roleEl && t.expRoles[i]) roleEl.textContent = t.expRoles[i];
-    const details = el.querySelectorAll('.exp-details li');
-    if (t.expDetails[i]) {
-      details.forEach((li, j) => { if (t.expDetails[i][j]) li.textContent = t.expDetails[i][j]; });
-    }
+  document.querySelectorAll('.exp-card').forEach(function(el, i) {
+    var ty = el.querySelector('.exp-type'), ro = el.querySelector('.exp-main h3');
+    if (ty) ty.textContent = t.expType; if (ro && t.expRoles[i]) ro.textContent = t.expRoles[i];
+    if (t.expDetails[i]) el.querySelectorAll('.exp-details li').forEach(function(li, j) { if (t.expDetails[i][j]) li.textContent = t.expDetails[i][j]; });
   });
-
-  // ── Projects
-  const projCards = document.querySelectorAll('.project-card');
-  projCards.forEach((el, i) => {
+  document.querySelectorAll('.project-card').forEach(function(el, i) {
     if (!t.projects[i]) return;
-    const titleEl = el.querySelector('.project-title');
-    const descEl = el.querySelector('.project-desc');
-    const linkEl = el.querySelector('.project-link');
-    if (titleEl) titleEl.textContent = t.projects[i].title;
-    if (descEl) descEl.textContent = t.projects[i].desc;
-    if (linkEl) linkEl.textContent = t.projects[i].link;
+    var ti = el.querySelector('.project-title'), de = el.querySelector('.project-desc'), li = el.querySelector('.project-link');
+    if (ti) ti.textContent = t.projects[i].title; if (de) de.textContent = t.projects[i].desc; if (li) li.textContent = t.projects[i].link;
   });
-
-  // ── Language names in aside
-  const langNames = document.querySelectorAll('.lang-name');
-  langNames.forEach((el, i) => { if (t.langNames[i]) el.textContent = t.langNames[i]; });
-
-  // ── Soft skills pills
-  const softPills = document.querySelectorAll('.aside-card:nth-child(2) .pill');
-  softPills.forEach((el, i) => { if (t.softSkills[i]) el.textContent = t.softSkills[i]; });
-
-  // ── Interests pills
-  const intPills = document.querySelectorAll('.aside-card:nth-child(3) .pill');
-  intPills.forEach((el, i) => { if (t.interests[i]) el.textContent = t.interests[i]; });
-
-  // ── Active option
-  document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
-  document.querySelectorAll(`.lang-option[data-lang="${lang}"]`).forEach(el => el.classList.add('active'));
+  document.querySelectorAll('.lang-name').forEach(function(el, i) { if (t.langNames[i]) el.textContent = t.langNames[i]; });
+  document.querySelectorAll('.aside-card:nth-child(2) .pill').forEach(function(el, i) { if (t.softSkills[i]) el.textContent = t.softSkills[i]; });
+  document.querySelectorAll('.aside-card:nth-child(3) .pill').forEach(function(el, i) { if (t.interests[i]) el.textContent = t.interests[i]; });
+  document.querySelectorAll('.lang-option').forEach(function(o) { o.classList.remove('active'); });
+  document.querySelectorAll('.lang-option[data-lang="' + lang + '"]').forEach(function(el) { el.classList.add('active'); });
   document.getElementById('langMenu').classList.remove('open');
   document.getElementById('langMenuMobile').classList.remove('open');
-
   localStorage.setItem('pad-lang', lang);
 }
 
-// ── INIT ──
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Theme
-  const savedTheme = localStorage.getItem('pad-theme');
-  if (savedTheme === 'light') {
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('pad-theme') === 'light') {
     document.body.classList.add('light');
-    document.querySelectorAll('.theme-toggle').forEach(btn => btn.textContent = '☀️');
+    document.querySelectorAll('.theme-toggle').forEach(function(b) { b.textContent = '\u2600\uFE0F'; });
   }
-
-  // Theme buttons
-  document.querySelectorAll('.theme-toggle').forEach(btn => {
-    btn.addEventListener('click', toggleTheme);
+  document.querySelectorAll('.theme-toggle').forEach(function(btn) { btn.addEventListener('click', toggleTheme); });
+  var lb = document.getElementById('langBtn');
+  if (lb) lb.addEventListener('click', function(e) { e.stopPropagation(); toggleLang('langMenu'); });
+  var lbm = document.getElementById('langBtnMobile');
+  if (lbm) lbm.addEventListener('click', function(e) { e.stopPropagation(); toggleLang('langMenuMobile'); });
+  document.querySelectorAll('.lang-option[data-lang]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) { e.stopPropagation(); setLang(btn.dataset.lang); });
   });
-
-  // Lang toggle buttons (desktop + mobile)
-  const langBtn = document.getElementById('langBtn');
-  if (langBtn) langBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleLang('langMenu'); });
-  const langBtnMobile = document.getElementById('langBtnMobile');
-  if (langBtnMobile) langBtnMobile.addEventListener('click', (e) => { e.stopPropagation(); toggleLang('langMenuMobile'); });
-
-  // Lang options
-  document.querySelectorAll('.lang-option[data-lang]').forEach(btn => {
-    btn.addEventListener('click', (e) => { e.stopPropagation(); setLang(btn.dataset.lang); });
-  });
-
-  // Close menus on outside click
-  document.addEventListener('click', () => {
+  document.addEventListener('click', function() {
     document.getElementById('langMenu').classList.remove('open');
     document.getElementById('langMenuMobile').classList.remove('open');
   });
-
-  // Apply saved lang
-  const savedLang = localStorage.getItem('pad-lang');
-  if (savedLang && savedLang !== 'fr') setLang(savedLang);
+  var saved = localStorage.getItem('pad-lang');
+  if (saved && saved !== 'fr') setLang(saved);
 });
+
+})();
 </script>
 </Layout>
