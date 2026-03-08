@@ -596,25 +596,25 @@ body.light body::before { opacity: 0.2; }
 	</div>
 	<div class="nav-controls">
 		<div class="lang-dropdown" id="langDropdown">
-			<button class="lang-btn" id="langBtn" onclick="toggleLang()">🇫🇷 FR ▾</button>
+			<button class="lang-btn" id="langBtn">🇫🇷 FR ▾</button>
 			<div class="lang-menu" id="langMenu">
-				<button class="lang-option active" onclick="setLang('fr')">🇫🇷 Français</button>
-				<button class="lang-option" onclick="setLang('en')">🇬🇧 English</button>
-				<button class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</button>
+				<button class="lang-option active" data-lang="fr">🇫🇷 Français</button>
+				<button class="lang-option" data-lang="en">🇬🇧 English</button>
+				<button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
 			</div>
 		</div>
-		<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Changer le thème">🌙</button>
+		<button class="theme-toggle" id="themeToggle">🌙</button>
 	</div>
 	<div class="nav-mobile">
 		<div class="lang-dropdown" id="langDropdownMobile">
-			<button class="lang-btn" id="langBtnMobile" onclick="toggleLangMobile()">🇫🇷</button>
+			<button class="lang-btn" id="langBtnMobile">🇫🇷</button>
 			<div class="lang-menu" id="langMenuMobile">
-				<button class="lang-option active" onclick="setLang('fr')">🇫🇷 FR</button>
-				<button class="lang-option" onclick="setLang('en')">🇬🇧 EN</button>
-				<button class="lang-option" onclick="setLang('de')">🇩🇪 DE</button>
+				<button class="lang-option active" data-lang="fr">🇫🇷 FR</button>
+				<button class="lang-option" data-lang="en">🇬🇧 EN</button>
+				<button class="lang-option" data-lang="de">🇩🇪 DE</button>
 			</div>
 		</div>
-		<button class="theme-toggle" id="themeToggleMobile" onclick="toggleTheme()">🌙</button>
+		<button class="theme-toggle" id="themeToggleMobile">🌙</button>
 		<a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">↓ CV</a>
 		<a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
 	</div>
@@ -795,6 +795,7 @@ body.light body::before { opacity: 0.2; }
 
 <script is:inline>
 // ── THEME ──
+// ── THEME ──
 function toggleTheme() {
   const body = document.body;
   body.classList.toggle('light');
@@ -931,15 +932,11 @@ const translations = {
   }
 };
 
-function toggleLang() {
-  const menu = document.getElementById('langMenu');
+function toggleLang(menuId) {
+  const menu = document.getElementById(menuId);
   menu.classList.toggle('open');
-  document.getElementById('langMenuMobile').classList.remove('open');
-}
-function toggleLangMobile() {
-  const menu = document.getElementById('langMenuMobile');
-  menu.classList.toggle('open');
-  document.getElementById('langMenu').classList.remove('open');
+  const otherId = menuId === 'langMenu' ? 'langMenuMobile' : 'langMenu';
+  document.getElementById(otherId).classList.remove('open');
 }
 
 function setLang(lang) {
@@ -1060,7 +1057,7 @@ function setLang(lang) {
 
   // ── Active option
   document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
-  document.querySelectorAll(`.lang-option[onclick="setLang('${lang}')"]`).forEach(el => el.classList.add('active'));
+  document.querySelectorAll(`.lang-option[data-lang="${lang}"]`).forEach(el => el.classList.add('active'));
   document.getElementById('langMenu').classList.remove('open');
   document.getElementById('langMenuMobile').classList.remove('open');
 
@@ -1069,23 +1066,39 @@ function setLang(lang) {
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Theme
   const savedTheme = localStorage.getItem('pad-theme');
   if (savedTheme === 'light') {
     document.body.classList.add('light');
     document.querySelectorAll('.theme-toggle').forEach(btn => btn.textContent = '☀️');
   }
+
+  // Theme buttons
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.addEventListener('click', toggleTheme);
+  });
+
+  // Lang toggle buttons (desktop + mobile)
+  const langBtn = document.getElementById('langBtn');
+  if (langBtn) langBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleLang('langMenu'); });
+  const langBtnMobile = document.getElementById('langBtnMobile');
+  if (langBtnMobile) langBtnMobile.addEventListener('click', (e) => { e.stopPropagation(); toggleLang('langMenuMobile'); });
+
+  // Lang options
+  document.querySelectorAll('.lang-option[data-lang]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.stopPropagation(); setLang(btn.dataset.lang); });
+  });
+
+  // Close menus on outside click
+  document.addEventListener('click', () => {
+    document.getElementById('langMenu').classList.remove('open');
+    document.getElementById('langMenuMobile').classList.remove('open');
+  });
+
+  // Apply saved lang
   const savedLang = localStorage.getItem('pad-lang');
   if (savedLang && savedLang !== 'fr') setLang(savedLang);
-
-  // Close lang menu on outside click
-  document.addEventListener('click', (e) => {
-    if (!document.getElementById('langDropdown').contains(e.target)) {
-      document.getElementById('langMenu').classList.remove('open');
-    }
-    if (!document.getElementById('langDropdownMobile').contains(e.target)) {
-      document.getElementById('langMenuMobile').classList.remove('open');
-    }
-  });
 });
 </script>
 </Layout>
