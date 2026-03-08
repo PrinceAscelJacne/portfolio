@@ -319,7 +319,7 @@ footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.75
     <a href="#projects">Projets</a>
     <a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">T&eacute;l&eacute;charger CV</a>
     <div class="contact-dropdown" id="contactDropdown">
-      <button class="nav-cta contact-btn" id="contactBtn">Contact</button>
+      <button class="nav-cv contact-btn" id="contactBtn">Contact</button>
       <div class="contact-menu" id="contactMenu">
         <a href="mailto:djibodeprinceascel@gmail.com" class="contact-option">
           <span>&#x2709;</span> Email
@@ -695,7 +695,7 @@ function setLang(lang) {
   if (b) b.textContent = t.flag + ' ' + t.code + ' ▾';
   var bm = document.getElementById('langBtnMobile');
   if (bm) bm.textContent = t.flag;
-  document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta):not(.contact-btn)').forEach(function(a, i) {
+  document.querySelectorAll('.nav-links a:not(.nav-cv):not(.contact-btn)').forEach(function(a, i) {
     if (t.nav[i]) a.textContent = t.nav[i];
   });
   document.querySelectorAll('.nav-cv').forEach(function(el) { el.textContent = t.dl; });
