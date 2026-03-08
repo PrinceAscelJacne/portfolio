@@ -809,8 +809,19 @@ const translations = {
     nav: ['À propos','Compétences','Formations','Expériences','Projets'],
     badge: 'Disponible pour un stage · 3 mois',
     desc: "Étudiant en L3 MIAGE à FST UHA, je suis à la recherche d'un stage de 3 mois en tant que Développeur Full Stack. Passionné par la création d'applications web complètes, je maîtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes compétences au service d'un projet concret au sein de votre équipe.",
-    s1: "Domaines d'expertise", s2: "Formations & diplômes", s3: "Expériences terrain",
-    s4: "Projets GitHub", s5: "Langues, atouts & intérêts",
+    s1t: "Domaines d'", s1em: "expertise",
+    s2t: "Formations & ", s2em: "diplômes",
+    s3t: "Expériences ", s3em: "terrain",
+    s4t: "Projets ", s4em: "GitHub",
+    s5t: "Langues, ", s5em: "atouts", s5rest: " & intérêts",
+    div: ['Compétences techniques','Parcours académique','Expérience professionnelle','Réalisations personnelles','Profil complet'],
+    role: 'Étudiant en Licence 3 MIAGE — Développeur Full Stack',
+    school: '@ Université de Haute-Alsace',
+    skillCats: ['Web & Frameworks','Langages & Mobile','Analyse & BD','Outils'],
+    btnProjects: 'Voir mes projets', btnCV: '↓ Télécharger CV',
+    location: '📍 Mulhouse, France · Mobilité',
+    aside: ['Langues','Atouts','Centres d'intérêt'],
+    footer: 'DJIBODE Prince Ascel Jacné — Portfolio 2025',
     dl: 'Télécharger CV', contact: 'Contact',
     flag: '🇫🇷', code: 'FR'
   },
@@ -818,8 +829,19 @@ const translations = {
     nav: ['About','Skills','Education','Experience','Projects'],
     badge: 'Available for a 3-month internship',
     desc: "L3 MIAGE student at FST UHA, I am looking for a 3-month internship as a Full Stack Developer. Passionate about building complete web applications, I master both Front-end and Back-end environments. Rigorous and curious, I want to contribute to a concrete project within your team.",
-    s1: "Areas of expertise", s2: "Education & degrees", s3: "Professional experience",
-    s4: "GitHub projects", s5: "Languages, strengths & interests",
+    s1t: "Areas of ", s1em: "expertise",
+    s2t: "Education & ", s2em: "degrees",
+    s3t: "Professional ", s3em: "experience",
+    s4t: "GitHub ", s4em: "projects",
+    s5t: "Languages, ", s5em: "strengths", s5rest: " & interests",
+    div: ['Technical skills','Academic background','Work experience','Personal projects','Full profile'],
+    role: 'L3 MIAGE Student — Full Stack Developer',
+    school: '@ University of Haute-Alsace',
+    skillCats: ['Web & Frameworks','Languages & Mobile','Analysis & DB','Tools'],
+    btnProjects: 'View my projects', btnCV: '↓ Download CV',
+    location: '📍 Mulhouse, France · Open to relocation',
+    aside: ['Languages','Strengths','Interests'],
+    footer: 'DJIBODE Prince Ascel Jacné — Portfolio 2025',
     dl: 'Download CV', contact: 'Contact',
     flag: '🇬🇧', code: 'EN'
   },
@@ -827,8 +849,19 @@ const translations = {
     nav: ['Über mich','Fähigkeiten','Ausbildung','Erfahrung','Projekte'],
     badge: 'Verfügbar für ein 3-monatiges Praktikum',
     desc: "Als L3-MIAGE-Student an der FST UHA suche ich ein 3-monatiges Praktikum als Full-Stack-Entwickler. Ich beherrsche sowohl Front-end- als auch Back-end-Technologien und möchte meine Fähigkeiten in einem konkreten Projekt einsetzen.",
-    s1: "Fachgebiete", s2: "Ausbildung & Abschlüsse", s3: "Berufserfahrung",
-    s4: "GitHub-Projekte", s5: "Sprachen, Stärken & Interessen",
+    s1t: "", s1em: "Fachgebiete",
+    s2t: "Ausbildung & ", s2em: "Abschlüsse",
+    s3t: "Berufs", s3em: "erfahrung",
+    s4t: "GitHub-", s4em: "Projekte",
+    s5t: "Sprachen, ", s5em: "Stärken", s5rest: " & Interessen",
+    div: ['Technische Fähigkeiten','Akademischer Werdegang','Berufserfahrung','Persönliche Projekte','Vollständiges Profil'],
+    role: 'L3-MIAGE-Student — Full-Stack-Entwickler',
+    school: '@ Universität Haute-Alsace',
+    skillCats: ['Web & Frameworks','Sprachen & Mobile','Analyse & DB','Werkzeuge'],
+    btnProjects: 'Meine Projekte', btnCV: '↓ Lebenslauf laden',
+    location: '📍 Mulhouse, Frankreich · Mobilität',
+    aside: ['Sprachen','Stärken','Interessen'],
+    footer: 'DJIBODE Prince Ascel Jacné — Portfolio 2025',
     dl: 'Lebenslauf laden', contact: 'Kontakt',
     flag: '🇩🇪', code: 'DE'
   }
@@ -847,28 +880,77 @@ function toggleLangMobile() {
 
 function setLang(lang) {
   const t = translations[lang];
+
+  // ── Buttons
   const btn = document.getElementById('langBtn');
   btn.textContent = t.flag + ' ' + t.code + ' ▾';
-  // Nav links
+  const mobile = document.getElementById('langBtnMobile');
+  if (mobile) mobile.textContent = t.flag;
+
+  // ── Nav links
   const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta)');
   navLinks.forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
   document.querySelectorAll('.nav-cv').forEach(el => el.textContent = t.dl);
   document.querySelectorAll('.nav-cta').forEach(el => el.textContent = t.contact);
-  // Badge
+
+  // ── Badge
   const badge = document.querySelector('.badge');
   if (badge) badge.childNodes[badge.childNodes.length - 1].textContent = ' ' + t.badge;
-  // Section titles (simplified)
+
+  // ── Hero desc, role, school
+  const heroDesc = document.querySelector('.hero-desc');
+  if (heroDesc) heroDesc.textContent = t.desc;
+  const roleLines = document.querySelectorAll('.hero-role span');
+  if (roleLines[0]) roleLines[0].textContent = t.role;
+  if (roleLines[1]) roleLines[1].textContent = t.school;
+
+  // ── Hero buttons
+  const btnMain = document.querySelector('.btn-main');
+  if (btnMain) btnMain.textContent = t.btnProjects;
+  const btnOutline = document.querySelector('.btn-outline');
+  if (btnOutline) btnOutline.textContent = t.btnCV;
+
+  // ── Location
+  const metaSpans = document.querySelectorAll('.hero-meta span');
+  if (metaSpans[0]) metaSpans[0].textContent = t.location;
+
+  // ── Section titles (with em)
   const titles = document.querySelectorAll('.section-title');
-  const keys = ['s1','s2','s3','s4','s5'];
-  titles.forEach((el, i) => { if (t[keys[i]]) el.innerHTML = t[keys[i]].replace(/([^&]*)(&.*?)?$/,'$1'); });
-  // Active option
+  const tKeys = [
+    {t:'s1t',em:'s1em',rest:''},
+    {t:'s2t',em:'s2em',rest:''},
+    {t:'s3t',em:'s3em',rest:''},
+    {t:'s4t',em:'s4em',rest:''},
+    {t:'s5t',em:'s5em',rest:'s5rest'}
+  ];
+  titles.forEach((el, i) => {
+    const k = tKeys[i];
+    if (!k) return;
+    el.innerHTML = (t[k.t]||'') + '<em>' + (t[k.em]||'') + '</em>' + (t[k.rest]||'');
+  });
+
+  // ── Divider labels
+  const divLabels = document.querySelectorAll('.divider-label');
+  divLabels.forEach((el, i) => { if (t.div[i]) el.textContent = t.div[i]; });
+
+  // ── Skill category headers
+  const skillCatEls = document.querySelectorAll('.skill-card h3');
+  skillCatEls.forEach((el, i) => { if (t.skillCats[i]) el.textContent = t.skillCats[i]; });
+
+  // ── Aside titles (Langues, Atouts, Centres d'intérêt)
+  const asideTitles = document.querySelectorAll('.aside-card h3');
+  asideTitles.forEach((el, i) => { if (t.aside[i]) el.textContent = t.aside[i]; });
+
+  // ── Footer
+  const footerLeft = document.querySelector('.footer-left');
+  if (footerLeft) footerLeft.textContent = t.footer;
+
+  // ── Active option
   document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
   document.querySelectorAll(`.lang-option[onclick="setLang('${lang}')"]`).forEach(el => el.classList.add('active'));
   document.getElementById('langMenu').classList.remove('open');
   document.getElementById('langMenuMobile').classList.remove('open');
-  // Sync mobile flag
-  const mobile = document.getElementById('langBtnMobile');
-  if (mobile) mobile.textContent = t.flag;
+
   localStorage.setItem('pad-lang', lang);
 }
 
