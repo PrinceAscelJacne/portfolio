@@ -223,6 +223,22 @@ main { position: relative; z-index: 1; }
 .lang-option { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--text-dim); padding: 0.6rem 1rem; cursor: pointer; border: none; background: none; text-align: left; width: 100%; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 0.5rem; }
 .lang-option:hover { background: var(--gold-dim); color: var(--text); }
 .lang-option.active { color: var(--gold); }
+.contact-dropdown { position: relative; }
+.contact-btn { cursor: pointer; font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.1em; }
+.contact-menu {
+  position: absolute; top: calc(100% + 6px); right: 0;
+  background: var(--surface2); border: 1px solid var(--border);
+  min-width: 160px; z-index: 200; display: none; flex-direction: column;
+}
+.contact-menu.open { display: flex; }
+.contact-menu-mobile { right: auto; left: 0; }
+.contact-option {
+  font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+  color: var(--text-dim); padding: 0.65rem 1rem; text-decoration: none;
+  border: none; background: none; text-align: left; width: 100%;
+  transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 0.6rem;
+}
+.contact-option:hover { background: var(--gold-dim); color: var(--text); }
 body.light { --bg: #f8f6f2; --surface: #f0ede8; --surface2: #e8e4de; --text: #1a1810; --text-dim: #7a7570; --text-mid: #4a4640; --border: rgba(160,120,40,0.25); --border-subtle: rgba(0,0,0,0.08); --gold: #a07828; --gold-light: #c49a30; --gold-dim: rgba(160,120,40,0.1); }
 footer { border-top: 1px solid var(--border-subtle); padding: 3rem 4rem; max-width: 1300px; margin: 6rem auto 0; display: flex; align-items: center; justify-content: space-between; }
 .footer-left { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-dim); }
@@ -302,7 +318,20 @@ footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.75
     <a href="#experience">Exp&eacute;riences</a>
     <a href="#projects">Projets</a>
     <a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-cv">T&eacute;l&eacute;charger CV</a>
-    <a href="mailto:djibodeprinceascel@gmail.com" class="nav-cta">Contact</a>
+    <div class="contact-dropdown" id="contactDropdown">
+      <button class="nav-cta contact-btn" id="contactBtn">Contact</button>
+      <div class="contact-menu" id="contactMenu">
+        <a href="mailto:djibodeprinceascel@gmail.com" class="contact-option">
+          <span>&#x2709;</span> Email
+        </a>
+        <a href="tel:+33745360307" class="contact-option">
+          <span>&#x1F4DE;</span> Appel direct
+        </a>
+        <a href="https://wa.me/33745360307" target="_blank" rel="noopener" class="contact-option">
+          <span>&#x1F4AC;</span> WhatsApp
+        </a>
+      </div>
+    </div>
   </div>
   <div class="nav-controls">
     <div class="lang-dropdown" id="langDropdown">
@@ -326,7 +355,20 @@ footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.75
     </div>
     <button class="theme-toggle" id="themeToggleMobile">&#x1F319;</button>
     <a href="/CV_Prince_Ascel_DJIBODE.pdf" download class="nav-mobile-cv">&#x2193; CV</a>
-    <a href="mailto:djibodeprinceascel@gmail.com" class="nav-mobile-contact">Contact</a>
+    <div class="contact-dropdown" id="contactDropdownMobile">
+      <button class="nav-mobile-contact contact-btn" id="contactBtnMobile">Contact</button>
+      <div class="contact-menu contact-menu-mobile" id="contactMenuMobile">
+        <a href="mailto:djibodeprinceascel@gmail.com" class="contact-option">
+          <span>&#x2709;</span> Email
+        </a>
+        <a href="tel:+33745360307" class="contact-option">
+          <span>&#x1F4DE;</span> Appel
+        </a>
+        <a href="https://wa.me/33745360307" target="_blank" rel="noopener" class="contact-option">
+          <span>&#x1F4AC;</span> WhatsApp
+        </a>
+      </div>
+    </div>
   </div>
 </nav>
 <main>
@@ -490,171 +532,189 @@ footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.75
     <span class="footer-right">djibodeprinceascel@gmail.com</span>
   </footer>
 </main>
-<script is:inline>
+<script>
 (function() {
 
 function toggleTheme() {
   var body = document.body;
   body.classList.toggle('light');
   var isLight = body.classList.contains('light');
-  var icon = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
-  document.querySelectorAll('.theme-toggle').forEach(function(btn) { btn.textContent = icon; });
+  document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+    btn.textContent = isLight ? '☀️' : '🌙';
+  });
   localStorage.setItem('pad-theme', isLight ? 'light' : 'dark');
 }
 
 function toggleLang(menuId) {
   var menu = document.getElementById(menuId);
+  if (!menu) return;
   menu.classList.toggle('open');
   var otherId = menuId === 'langMenu' ? 'langMenuMobile' : 'langMenu';
-  document.getElementById(otherId).classList.remove('open');
+  var other = document.getElementById(otherId);
+  if (other) other.classList.remove('open');
+}
+
+function toggleContact(menuId) {
+  var menu = document.getElementById(menuId);
+  if (!menu) return;
+  menu.classList.toggle('open');
+  var otherId = menuId === 'contactMenu' ? 'contactMenuMobile' : 'contactMenu';
+  var other = document.getElementById(otherId);
+  if (other) other.classList.remove('open');
 }
 
 var T = {
   fr: {
-    nav: ['\u00C0 propos','Comp\u00E9tences','Formations','Exp\u00E9riences','Projets'],
-    badge: 'Disponible pour un stage \u00B7 3 mois',
-    desc: '\u00C9tudiant en L3 MIAGE \u00E0 FST UHA, je suis \u00E0 la recherche d\'un stage de 3 mois en tant que D\u00E9veloppeur Full Stack. Passionn\u00E9 par la cr\u00E9ation d\'applications web compl\u00E8tes, je ma\u00EEtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes comp\u00E9tences au service d\'un projet concret au sein de votre \u00E9quipe.',
-    s1t: 'Domaines d\u2019', s1em: 'expertise',
-    s2t: 'Formations & ', s2em: 'dipl\u00F4mes',
-    s3t: 'Exp\u00E9riences ', s3em: 'terrain',
-    s4t: 'Projets ', s4em: 'GitHub',
-    s5t: 'Langues, ', s5em: 'atouts', s5rest: ' & int\u00E9r\u00EAts',
-    div: ['Comp\u00E9tences techniques','Parcours acad\u00E9mique','Exp\u00E9rience professionnelle','R\u00E9alisations personnelles','Profil complet'],
-    role: '\u00C9tudiant en Licence 3 MIAGE \u2014 D\u00E9veloppeur Full Stack',
-    school: '@ Universit\u00E9 de Haute-Alsace',
-    skillCats: ['Web & Frameworks','Langages & Mobile','Analyse & BD','Outils'],
-    btnProjects: 'Voir mes projets', btnCV: '\u2193 T\u00E9l\u00E9charger CV',
-    location: '\uD83D\uDCCD Mulhouse, France \u00B7 Mobilit\u00E9',
-    aside: ['Langues','Atouts','Centres d\u2019int\u00E9r\u00EAt'],
-    expType: 'Stage',
-    expRoles: ['D\u00E9veloppeur web','Analyste programmeur'],
+    nav: ['À propos','Compétences','Formations','Expériences','Projets'],
+    badge: 'Disponible pour un stage · 3 mois',
+    desc: "Étudiant en L3 MIAGE à FST UHA, je suis à la recherche d'un stage de 3 mois en tant que Développeur Full Stack. Passionné par la création d'applications web complètes, je maîtrise les environnements Front-end et Back-end. Rigoureux et curieux, je souhaite mettre mes compétences au service d'un projet concret.",
+    s1t: "Domaines d'", s1em: "expertise",
+    s2t: "Formations & ", s2em: "diplômes",
+    s3t: "Expériences ", s3em: "terrain",
+    s4t: "Projets ", s4em: "GitHub",
+    s5t: "Langues, ", s5em: "atouts", s5rest: " & intérêts",
+    div: ["Compétences techniques","Parcours académique","Expérience professionnelle","Réalisations personnelles","Profil complet"],
+    role: "Étudiant en Licence 3 MIAGE — Développeur Full Stack",
+    school: "@ Université de Haute-Alsace",
+    skillCats: ["Web & Frameworks","Langages & Mobile","Analyse & BD","Outils"],
+    btnProjects: "Voir mes projets", btnCV: "↓ Télécharger CV",
+    location: "📍 Mulhouse, France · Mobilité",
+    aside: ["Langues","Atouts","Centres d'intérêt"],
+    expType: "Stage",
+    expRoles: ["Développeur web","Analyste programmeur"],
     expDetails: [
-      ['D\u00E9veloppement d\'une application de gestion des fichiers (centralisation, s\u00E9curisation, acc\u00E8s documents)','Cr\u00E9ation d\'un site web vitrine pour renforcer la visibilit\u00E9 de l\'entreprise','Int\u00E9gration d\'une interface moderne et ergonomique','Collaboration avec l\'\u00E9quipe interne pour recueillir les besoins et tester les fonctionnalit\u00E9s'],
-      ['Participation \u00E0 la conception et au d\u00E9veloppement d\'applications web','Contribution \u00E0 l\'analyse des besoins et \u00E0 la r\u00E9daction des cahiers des charges','Int\u00E9gration d\'interfaces utilisateurs en HTML, CSS et JavaScript','Collaboration avec l\'\u00E9quipe technique pour les tests et le d\u00E9ploiement']
+      ["Développement d'une application de gestion des fichiers","Création d'un site web vitrine pour renforcer la visibilité","Intégration d'une interface moderne et ergonomique","Collaboration avec l'équipe interne pour recueillir les besoins"],
+      ["Participation à la conception et au développement d'applications web","Contribution à l'analyse des besoins et rédaction des cahiers des charges","Intégration d'interfaces utilisateurs en HTML, CSS et JavaScript","Collaboration avec l'équipe technique pour les tests et le déploiement"]
     ],
     formations: [
-      {degree:'Licence 3 MIAGE', school:'FST UHA \u2014 Mulhouse', period:'Depuis 2025'},
-      {degree:'Licence Pro. Analyse Informatique & Programmation', school:'ENEAM \u2014 Cotonou, B\u00E9nin', period:'2023 \u2014 2024'},
-      {degree:'Baccalaur\u00E9at S\u00E9rie D', school:'Sainte Jeanne d\'Arc \u2014 B\u00E9nin', period:'2020 \u2014 2021'},
-      {degree:'Brevet d\'Étude du Premier Cycle', school:'CEG 1 Allada \u2014 B\u00E9nin', period:'2016 \u2014 2017'}
+      {degree:"Licence 3 MIAGE", school:"FST UHA — Mulhouse", period:"Depuis 2025"},
+      {degree:"Licence Pro. Analyse Informatique & Programmation", school:"ENEAM — Cotonou, Bénin", period:"2023 — 2024"},
+      {degree:"Baccalauréat Série D", school:"Sainte Jeanne d'Arc — Bénin", period:"2020 — 2021"},
+      {degree:"Brevet d'Étude du Premier Cycle", school:"CEG 1 Allada — Bénin", period:"2016 — 2017"}
     ],
     projects: [
-      {title:'Crypto \u2014 Chiffrement de messages', desc:'Application de chiffrement polyalphab\u00E9tique : l\'utilisateur saisit un mot, une phrase ou un paragraphe, et le programme retourne le message cod\u00E9.', link:'Voir sur GitHub \u2192'},
-      {title:'Astus Cit\u00E9e \u2014 Gestion de fichiers', desc:'Application web de gestion documentaire d\u00E9velopp\u00E9e en stage : centralisation, s\u00E9curisation et acc\u00E8s aux fichiers internes de l\'entreprise.', link:'Voir sur GitHub \u2192'},
-      {title:'Gestionnaire de questionnaires', desc:'Application en C++ permettant de g\u00E9rer des questionnaires interactifs. Prend en charge plusieurs types de questions (texte, num\u00E9rique, QCM) et propose diff\u00E9rents modes d\'\u00E9valuation.', link:'Voir sur GitHub \u2192'},
-      {title:'Astus Cit\u00E9e \u2014 Site vitrine', desc:'Site web vitrine d\u00E9velopp\u00E9 en stage chez Astus Cit\u00E9e pour pr\u00E9senter l\'entreprise et renforcer sa visibilit\u00E9 en ligne.', link:'Voir sur GitHub \u2192'}
+      {title:"Crypto — Chiffrement de messages", desc:"Application de chiffrement polyalphabétique : saisie d'un mot ou paragraphe, retour du message codé.", link:"Voir sur GitHub →"},
+      {title:"Astus Citée — Gestion de fichiers", desc:"Application web de gestion documentaire développée en stage : centralisation, sécurisation et accès aux fichiers internes.", link:"Voir sur GitHub →"},
+      {title:"Gestionnaire de questionnaires", desc:"Application C++ pour gérer des questionnaires interactifs (texte, numérique, QCM) avec modes d'évaluation adaptatifs.", link:"Voir sur GitHub →"},
+      {title:"Astus Citée — Site vitrine", desc:"Site vitrine développé en stage pour présenter l'entreprise et renforcer sa visibilité.", link:"Voir sur GitHub →"}
     ],
-    langNames: ['Fran\u00E7ais','Anglais','Allemand'],
-    softSkills: ['Esprit d\'equipe','Dynamique & motiv\u00E9','Sens de l\'analyse','Capacit\u00E9 d\'adaptation'],
-    interests: ['Football','Jeux vid\u00E9os','Voyage','Musique'],
-    footer: 'DJIBODE Prince Ascel Jacn\u00E9 \u2014 Portfolio 2025',
-    dl: 'T\u00E9l\u00E9charger CV', contact: 'Contact',
-    flag: '\uD83C\uDDEB\uD83C\uDDF7', code: 'FR'
+    langNames: ["Français","Anglais","Allemand"],
+    softSkills: ["Esprit d'équipe","Dynamique & motivé","Sens de l'analyse","Capacité d'adaptation"],
+    interests: ["Football","Jeux vidéos","Voyage","Musique"],
+    footer: "DJIBODE Prince Ascel Jacné — Portfolio 2025",
+    dl: "Télécharger CV", contact: "Contact",
+    flag: "🇫🇷", code: "FR"
   },
   en: {
-    nav: ['About','Skills','Education','Experience','Projects'],
-    badge: 'Available for a 3-month internship',
-    desc: 'L3 MIAGE student at FST UHA, I am looking for a 3-month internship as a Full Stack Developer. Passionate about building complete web applications, I master both Front-end and Back-end environments. Rigorous and curious, I want to contribute to a concrete project within your team.',
-    s1t: 'Areas of ', s1em: 'expertise',
-    s2t: 'Education & ', s2em: 'degrees',
-    s3t: 'Professional ', s3em: 'experience',
-    s4t: 'GitHub ', s4em: 'projects',
-    s5t: 'Languages, ', s5em: 'strengths', s5rest: ' & interests',
-    div: ['Technical skills','Academic background','Work experience','Personal projects','Full profile'],
-    role: 'L3 MIAGE Student \u2014 Full Stack Developer',
-    school: '@ University of Haute-Alsace',
-    skillCats: ['Web & Frameworks','Languages & Mobile','Analysis & DB','Tools'],
-    btnProjects: 'View my projects', btnCV: '\u2193 Download CV',
-    location: '\uD83D\uDCCD Mulhouse, France \u00B7 Open to relocation',
-    aside: ['Languages','Strengths','Interests'],
-    expType: 'Internship',
-    expRoles: ['Web Developer','Programmer Analyst'],
+    nav: ["About","Skills","Education","Experience","Projects"],
+    badge: "Available for a 3-month internship",
+    desc: "L3 MIAGE student at FST UHA, looking for a 3-month Full Stack Developer internship. Passionate about web applications, rigorous and curious.",
+    s1t: "Areas of ", s1em: "expertise",
+    s2t: "Education & ", s2em: "degrees",
+    s3t: "Professional ", s3em: "experience",
+    s4t: "GitHub ", s4em: "projects",
+    s5t: "Languages, ", s5em: "strengths", s5rest: " & interests",
+    div: ["Technical skills","Academic background","Work experience","Personal projects","Full profile"],
+    role: "L3 MIAGE Student — Full Stack Developer",
+    school: "@ University of Haute-Alsace",
+    skillCats: ["Web & Frameworks","Languages & Mobile","Analysis & DB","Tools"],
+    btnProjects: "View my projects", btnCV: "↓ Download CV",
+    location: "📍 Mulhouse, France · Open to relocation",
+    aside: ["Languages","Strengths","Interests"],
+    expType: "Internship",
+    expRoles: ["Web Developer","Programmer Analyst"],
     expDetails: [
-      ['Development of a document management application (centralisation, security, access control)','Creation of a showcase website to strengthen the company visibility','Integration of a modern and ergonomic interface','Collaboration with the internal team to gather requirements and test features'],
-      ['Participation in the design and development of web applications','Contribution to needs analysis and writing technical specifications','Integration of user interfaces in HTML, CSS and JavaScript','Collaboration with the technical team for testing and deployment']
+      ["Development of a document management application","Creation of a showcase website to strengthen visibility","Integration of a modern and ergonomic interface","Collaboration with the internal team to gather requirements"],
+      ["Participation in design and development of web applications","Contribution to needs analysis and technical specifications","Integration of user interfaces in HTML, CSS and JavaScript","Collaboration with the technical team for testing and deployment"]
     ],
     formations: [
-      {degree:'Bachelor L3 MIAGE', school:'FST UHA \u2014 Mulhouse', period:'Since 2025'},
-      {degree:'Professional Bachelor in Computer Analysis & Programming', school:'ENEAM \u2014 Cotonou, Benin', period:'2023 \u2014 2024'},
-      {degree:'Baccalaureate Series D', school:'Sainte Jeanne d\'Arc \u2014 Benin', period:'2020 \u2014 2021'},
-      {degree:'First Cycle School Certificate', school:'CEG 1 Allada \u2014 Benin', period:'2016 \u2014 2017'}
+      {degree:"Bachelor L3 MIAGE", school:"FST UHA — Mulhouse", period:"Since 2025"},
+      {degree:"Professional Bachelor in Computer Analysis & Programming", school:"ENEAM — Cotonou, Benin", period:"2023 — 2024"},
+      {degree:"Baccalaureate Series D", school:"Sainte Jeanne d'Arc — Benin", period:"2020 — 2021"},
+      {degree:"First Cycle School Certificate", school:"CEG 1 Allada — Benin", period:"2016 — 2017"}
     ],
     projects: [
-      {title:'Crypto \u2014 Message Encryption', desc:'Polyalphabetic encryption application: the user enters a word, phrase or paragraph, and the program returns the encoded message.', link:'View on GitHub \u2192'},
-      {title:'Astus Cit\u00E9e \u2014 File Management', desc:'Web document management application developed during internship: centralisation, security and access to internal company files.', link:'View on GitHub \u2192'},
-      {title:'Questionnaire Manager', desc:'C++ application for managing interactive questionnaires. Supports multiple question types (text, numeric, MCQ) and three evaluation modes.', link:'View on GitHub \u2192'},
-      {title:'Astus Cit\u00E9e \u2014 Showcase Website', desc:'Showcase website developed during internship at Astus Citee to present the company and strengthen its online visibility.', link:'View on GitHub \u2192'}
+      {title:"Crypto — Message Encryption", desc:"Polyalphabetic encryption app: enter a word or paragraph, get the encoded message back.", link:"View on GitHub →"},
+      {title:"Astus Citée — File Management", desc:"Web document management app built during internship: centralisation, security and access to internal files.", link:"View on GitHub →"},
+      {title:"Questionnaire Manager", desc:"C++ app for managing interactive questionnaires with multiple question types and adaptive evaluation modes.", link:"View on GitHub →"},
+      {title:"Astus Citée — Showcase Website", desc:"Showcase website built during internship to present the company and strengthen online visibility.", link:"View on GitHub →"}
     ],
-    langNames: ['French','English','German'],
-    softSkills: ['Team spirit','Dynamic & motivated','Analytical mindset','Adaptability'],
-    interests: ['Football','Video games','Travel','Music'],
-    footer: 'DJIBODE Prince Ascel Jacn\u00E9 \u2014 Portfolio 2025',
-    dl: 'Download CV', contact: 'Contact',
-    flag: '\uD83C\uDDEC\uD83C\uDDE7', code: 'EN'
+    langNames: ["French","English","German"],
+    softSkills: ["Team spirit","Dynamic & motivated","Analytical mindset","Adaptability"],
+    interests: ["Football","Video games","Travel","Music"],
+    footer: "DJIBODE Prince Ascel Jacné — Portfolio 2025",
+    dl: "Download CV", contact: "Contact",
+    flag: "🇬🇧", code: "EN"
   },
   de: {
-    nav: ['\u00DCber mich','F\u00E4higkeiten','Ausbildung','Erfahrung','Projekte'],
-    badge: 'Verf\u00FCgbar f\u00FCr ein 3-monatiges Praktikum',
-    desc: 'Als L3-MIAGE-Student an der FST UHA suche ich ein 3-monatiges Praktikum als Full-Stack-Entwickler. Ich beherrsche sowohl Front-end- als auch Back-end-Technologien und m\u00F6chte meine F\u00E4higkeiten in einem konkreten Projekt einsetzen.',
-    s1t: '', s1em: 'Fachgebiete',
-    s2t: 'Ausbildung & ', s2em: 'Abschl\u00FCsse',
-    s3t: 'Berufs', s3em: 'erfahrung',
-    s4t: 'GitHub-', s4em: 'Projekte',
-    s5t: 'Sprachen, ', s5em: 'St\u00E4rken', s5rest: ' & Interessen',
-    div: ['Technische F\u00E4higkeiten','Akademischer Werdegang','Berufserfahrung','Pers\u00F6nliche Projekte','Vollst\u00E4ndiges Profil'],
-    role: 'L3-MIAGE-Student \u2014 Full-Stack-Entwickler',
-    school: '@ Universit\u00E4t Haute-Alsace',
-    skillCats: ['Web & Frameworks','Sprachen & Mobile','Analyse & DB','Werkzeuge'],
-    btnProjects: 'Meine Projekte', btnCV: '\u2193 Lebenslauf laden',
-    location: '\uD83D\uDCCD Mulhouse, Frankreich \u00B7 Mobilit\u00E4t',
-    aside: ['Sprachen','St\u00E4rken','Interessen'],
-    expType: 'Praktikum',
-    expRoles: ['Webentwickler','Programmierer-Analyst'],
+    nav: ["Über mich","Fähigkeiten","Ausbildung","Erfahrung","Projekte"],
+    badge: "Verfügbar für ein 3-monatiges Praktikum",
+    desc: "Als L3-MIAGE-Student an der FST UHA suche ich ein 3-monatiges Praktikum als Full-Stack-Entwickler.",
+    s1t: "", s1em: "Fachgebiete",
+    s2t: "Ausbildung & ", s2em: "Abschlüsse",
+    s3t: "Berufs", s3em: "erfahrung",
+    s4t: "GitHub-", s4em: "Projekte",
+    s5t: "Sprachen, ", s5em: "Stärken", s5rest: " & Interessen",
+    div: ["Technische Fähigkeiten","Akademischer Werdegang","Berufserfahrung","Persönliche Projekte","Vollständiges Profil"],
+    role: "L3-MIAGE-Student — Full-Stack-Entwickler",
+    school: "@ Universität Haute-Alsace",
+    skillCats: ["Web & Frameworks","Sprachen & Mobile","Analyse & DB","Werkzeuge"],
+    btnProjects: "Meine Projekte", btnCV: "↓ Lebenslauf laden",
+    location: "📍 Mulhouse, Frankreich · Mobilität",
+    aside: ["Sprachen","Stärken","Interessen"],
+    expType: "Praktikum",
+    expRoles: ["Webentwickler","Programmierer-Analyst"],
     expDetails: [
-      ['Entwicklung einer Dokumentenmanagementsystem-Anwendung (Zentralisierung, Sicherheit, Zugangskontrolle)','Erstellung einer Showcase-Website zur St\u00E4rkung der Sichtbarkeit des Unternehmens','Integration einer modernen und ergonomischen Benutzeroberfl\u00E4che','Zusammenarbeit mit dem internen Team zur Anforderungserfassung und Funktionstest'],
-      ['Mitwirkung an der Konzeption und Entwicklung von Webanwendungen','Beitrag zur Bedarfsanalyse und Erstellung von Pflichtenheften','Integration von Benutzeroberfl\u00E4chen in HTML, CSS und JavaScript','Zusammenarbeit mit dem technischen Team f\u00FCr Tests und Deployment']
+      ["Entwicklung einer Dokumentenmanagementsystem-Anwendung","Erstellung einer Showcase-Website zur Stärkung der Sichtbarkeit","Integration einer modernen Benutzeroberfläche","Zusammenarbeit mit dem internen Team zur Anforderungserfassung"],
+      ["Mitwirkung an der Konzeption von Webanwendungen","Beitrag zur Bedarfsanalyse und Erstellung von Pflichtenheften","Integration von Benutzeroberflächen in HTML, CSS und JavaScript","Zusammenarbeit mit dem technischen Team für Tests und Deployment"]
     ],
     formations: [
-      {degree:'Bachelor L3 MIAGE', school:'FST UHA \u2014 Mulhouse', period:'Seit 2025'},
-      {degree:'Professioneller Bachelor Informatikanalyse & Programmierung', school:'ENEAM \u2014 Cotonou, Benin', period:'2023 \u2014 2024'},
-      {degree:'Abitur Serie D', school:'Sainte Jeanne d\'Arc \u2014 Benin', period:'2020 \u2014 2021'},
-      {degree:'Erster Schulabschluss', school:'CEG 1 Allada \u2014 Benin', period:'2016 \u2014 2017'}
+      {degree:"Bachelor L3 MIAGE", school:"FST UHA — Mulhouse", period:"Seit 2025"},
+      {degree:"Professioneller Bachelor Informatikanalyse & Programmierung", school:"ENEAM — Cotonou, Benin", period:"2023 — 2024"},
+      {degree:"Abitur Serie D", school:"Sainte Jeanne d'Arc — Benin", period:"2020 — 2021"},
+      {degree:"Erster Schulabschluss", school:"CEG 1 Allada — Benin", period:"2016 — 2017"}
     ],
     projects: [
-      {title:'Crypto \u2014 Nachrichtenversch\u00FCsselung', desc:'Polyalphabetische Verschl\u00FCsselungsanwendung: Der Benutzer gibt ein Wort, einen Satz oder einen Absatz ein, und das Programm gibt die codierte Nachricht zur\u00FCck.', link:'Auf GitHub ansehen \u2192'},
-      {title:'Astus Cit\u00E9e \u2014 Dateiverwaltung', desc:'Web-Dokumentenmanagementsystem, entwickelt w\u00E4hrend des Praktikums: Zentralisierung, Sicherheit und Zugang zu internen Unternehmensdateien.', link:'Auf GitHub ansehen \u2192'},
-      {title:'Fragebogen-Manager', desc:'C++-Anwendung zur Verwaltung interaktiver Frageb\u00F6gen. Unterst\u00FCtzt mehrere Fragetypen (Text, Numerisch, QCM) und drei Auswertungsmodi.', link:'Auf GitHub ansehen \u2192'},
-      {title:'Astus Cit\u00E9e \u2014 Firmenwebsite', desc:'Showcase-Website, entwickelt w\u00E4hrend des Praktikums bei Astus Cit\u00E9e, um das Unternehmen zu pr\u00E4sentieren und seine Online-Sichtbarkeit zu st\u00E4rken.', link:'Auf GitHub ansehen \u2192'}
+      {title:"Crypto — Nachrichtenverschlüsselung", desc:"Polyalphabetische Verschlüsselungsanwendung: Eingabe eines Satzes, Rückgabe der codierten Nachricht.", link:"Auf GitHub ansehen →"},
+      {title:"Astus Citée — Dateiverwaltung", desc:"Web-Dokumentenmanagementsystem, entwickelt während des Praktikums bei Astus Citée.", link:"Auf GitHub ansehen →"},
+      {title:"Fragebogen-Manager", desc:"C++-Anwendung zur Verwaltung interaktiver Fragebögen mit mehreren Fragetypen und Auswertungsmodi.", link:"Auf GitHub ansehen →"},
+      {title:"Astus Citée — Firmenwebsite", desc:"Showcase-Website, entwickelt während des Praktikums bei Astus Citée.", link:"Auf GitHub ansehen →"}
     ],
-    langNames: ['Franz\u00F6sisch','Englisch','Deutsch'],
-    softSkills: ['Teamgeist','Dynamisch & motiviert','Analytisches Denken','Anpassungsf\u00E4higkeit'],
-    interests: ['Fu\u00DFball','Videospiele','Reisen','Musik'],
-    footer: 'DJIBODE Prince Ascel Jacn\u00E9 \u2014 Portfolio 2025',
-    dl: 'Lebenslauf laden', contact: 'Kontakt',
-    flag: '\uD83C\uDDE9\uD83C\uDDEA', code: 'DE'
+    langNames: ["Französisch","Englisch","Deutsch"],
+    softSkills: ["Teamgeist","Dynamisch & motiviert","Analytisches Denken","Anpassungsfähigkeit"],
+    interests: ["Fußball","Videospiele","Reisen","Musik"],
+    footer: "DJIBODE Prince Ascel Jacné — Portfolio 2025",
+    dl: "Lebenslauf laden", contact: "Kontakt",
+    flag: "🇩🇪", code: "DE"
   }
 };
 
 function setLang(lang) {
   var t = T[lang]; if (!t) return;
   var b = document.getElementById('langBtn');
-  if (b) b.textContent = t.flag + ' ' + t.code + ' \u25BE';
+  if (b) b.textContent = t.flag + ' ' + t.code + ' ▾';
   var bm = document.getElementById('langBtnMobile');
   if (bm) bm.textContent = t.flag;
-  document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta)').forEach(function(a, i) { if (t.nav[i]) a.textContent = t.nav[i]; });
+  document.querySelectorAll('.nav-links a:not(.nav-cv):not(.nav-cta):not(.contact-btn)').forEach(function(a, i) {
+    if (t.nav[i]) a.textContent = t.nav[i];
+  });
   document.querySelectorAll('.nav-cv').forEach(function(el) { el.textContent = t.dl; });
-  document.querySelectorAll('.nav-cta').forEach(function(el) { el.textContent = t.contact; });
+  document.querySelectorAll('.contact-btn').forEach(function(el) { el.textContent = t.contact; });
   var badge = document.querySelector('.badge');
   if (badge) { var n = badge.childNodes; n[n.length - 1].textContent = ' ' + t.badge; }
   var hd = document.querySelector('.hero-desc'); if (hd) hd.textContent = t.desc;
   var rs = document.querySelectorAll('.hero-role span');
-  if (rs[0]) rs[0].textContent = t.role; if (rs[1]) rs[1].textContent = t.school;
+  if (rs[0]) rs[0].textContent = t.role;
+  if (rs[1]) rs[1].textContent = t.school;
   var bMain = document.querySelector('.btn-main'); if (bMain) bMain.textContent = t.btnProjects;
   var bOut = document.querySelector('.btn-outline'); if (bOut) bOut.textContent = t.btnCV;
   var ms = document.querySelectorAll('.hero-meta span'); if (ms[0]) ms[0].textContent = t.location;
   var titles = document.querySelectorAll('.section-title');
   var keys = [{t:'s1t',e:'s1em',r:''},{t:'s2t',e:'s2em',r:''},{t:'s3t',e:'s3em',r:''},{t:'s4t',e:'s4em',r:''},{t:'s5t',e:'s5em',r:'s5rest'}];
-  titles.forEach(function(el, i) { var k = keys[i]; if (!k) return; el.innerHTML = (t[k.t]||'') + '<em>' + (t[k.e]||'') + '</em>' + (t[k.r] ? t[k.r] : ''); });
+  titles.forEach(function(el, i) {
+    var k = keys[i]; if (!k) return;
+    el.innerHTML = (t[k.t]||'') + '<em>' + (t[k.e]||'') + '</em>' + (t[k.r] ? t[k.r] : '');
+  });
   document.querySelectorAll('.divider-label').forEach(function(el, i) { if (t.div[i]) el.textContent = t.div[i]; });
   document.querySelectorAll('.skill-card h3').forEach(function(el, i) { if (t.skillCats[i]) el.textContent = t.skillCats[i]; });
   document.querySelectorAll('.aside-card h3').forEach(function(el, i) { if (t.aside[i]) el.textContent = t.aside[i]; });
@@ -662,17 +722,24 @@ function setLang(lang) {
   document.querySelectorAll('.formation-item').forEach(function(el, i) {
     if (!t.formations[i]) return;
     var p = el.querySelector('.formation-period'), d = el.querySelector('.formation-degree'), s = el.querySelector('.formation-school');
-    if (p) p.textContent = t.formations[i].period; if (d) d.textContent = t.formations[i].degree; if (s) s.textContent = t.formations[i].school;
+    if (p) p.textContent = t.formations[i].period;
+    if (d) d.textContent = t.formations[i].degree;
+    if (s) s.textContent = t.formations[i].school;
   });
   document.querySelectorAll('.exp-card').forEach(function(el, i) {
     var ty = el.querySelector('.exp-type'), ro = el.querySelector('.exp-main h3');
-    if (ty) ty.textContent = t.expType; if (ro && t.expRoles[i]) ro.textContent = t.expRoles[i];
-    if (t.expDetails[i]) el.querySelectorAll('.exp-details li').forEach(function(li, j) { if (t.expDetails[i][j]) li.textContent = t.expDetails[i][j]; });
+    if (ty) ty.textContent = t.expType;
+    if (ro && t.expRoles[i]) ro.textContent = t.expRoles[i];
+    if (t.expDetails[i]) el.querySelectorAll('.exp-details li').forEach(function(li, j) {
+      if (t.expDetails[i][j]) li.textContent = t.expDetails[i][j];
+    });
   });
   document.querySelectorAll('.project-card').forEach(function(el, i) {
     if (!t.projects[i]) return;
     var ti = el.querySelector('.project-title'), de = el.querySelector('.project-desc'), li = el.querySelector('.project-link');
-    if (ti) ti.textContent = t.projects[i].title; if (de) de.textContent = t.projects[i].desc; if (li) li.textContent = t.projects[i].link;
+    if (ti) ti.textContent = t.projects[i].title;
+    if (de) de.textContent = t.projects[i].desc;
+    if (li) li.textContent = t.projects[i].link;
   });
   document.querySelectorAll('.lang-name').forEach(function(el, i) { if (t.langNames[i]) el.textContent = t.langNames[i]; });
   document.querySelectorAll('.aside-card:nth-child(2) .pill').forEach(function(el, i) { if (t.softSkills[i]) el.textContent = t.softSkills[i]; });
@@ -687,19 +754,26 @@ function setLang(lang) {
 document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('pad-theme') === 'light') {
     document.body.classList.add('light');
-    document.querySelectorAll('.theme-toggle').forEach(function(b) { b.textContent = '\u2600\uFE0F'; });
+    document.querySelectorAll('.theme-toggle').forEach(function(b) { b.textContent = '☀️'; });
   }
-  document.querySelectorAll('.theme-toggle').forEach(function(btn) { btn.addEventListener('click', toggleTheme); });
+  document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+    btn.addEventListener('click', toggleTheme);
+  });
   var lb = document.getElementById('langBtn');
   if (lb) lb.addEventListener('click', function(e) { e.stopPropagation(); toggleLang('langMenu'); });
   var lbm = document.getElementById('langBtnMobile');
   if (lbm) lbm.addEventListener('click', function(e) { e.stopPropagation(); toggleLang('langMenuMobile'); });
+  var cb = document.getElementById('contactBtn');
+  if (cb) cb.addEventListener('click', function(e) { e.stopPropagation(); toggleContact('contactMenu'); });
+  var cbm = document.getElementById('contactBtnMobile');
+  if (cbm) cbm.addEventListener('click', function(e) { e.stopPropagation(); toggleContact('contactMenuMobile'); });
   document.querySelectorAll('.lang-option[data-lang]').forEach(function(btn) {
     btn.addEventListener('click', function(e) { e.stopPropagation(); setLang(btn.dataset.lang); });
   });
   document.addEventListener('click', function() {
-    document.getElementById('langMenu').classList.remove('open');
-    document.getElementById('langMenuMobile').classList.remove('open');
+    ['langMenu','langMenuMobile','contactMenu','contactMenuMobile'].forEach(function(id) {
+      var el = document.getElementById(id); if (el) el.classList.remove('open');
+    });
   });
   var saved = localStorage.getItem('pad-lang');
   if (saved && saved !== 'fr') setLang(saved);
