@@ -1,11 +1,24 @@
+﻿---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Prince Ascel Jacne | Portfolio',
+	description = 'Portfolio universel de Prince Ascel Jacne, developpeur full stack.',
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Portfolio de Prince Ascel Jacné</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
@@ -13,10 +26,10 @@
 </html>
 
 <style>
-	html,
-	body {
+	:global(html),
+	:global(body) {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+		min-height: 100%;
 	}
 </style>
