@@ -15,10 +15,10 @@ const profile = {
 
 const portraitFile = new URL(`../../public${profile.portrait}`, import.meta.url);
 const hasPortrait = existsSync(portraitFile);
-const contactApiBase = String(import.meta.env.PUBLIC_CONTACT_API_BASE ?? '').trim();
-const contactApiUrl = contactApiBase
-  ? `${contactApiBase.replace(/\/$/, '')}/api/contact`
-  : '/api/contact';
+const rawContactApiBase = String(import.meta.env.PUBLIC_CONTACT_API_BASE ?? '').trim();
+const isLocalApiBase = /localhost|127\.0\.0\.1/i.test(rawContactApiBase);
+const contactApiBase = import.meta.env.PROD && isLocalApiBase ? '' : rawContactApiBase;
+const contactApiUrl = contactApiBase ? `${contactApiBase.replace(/\/$/, '')}/api/contact` : '/api/contact';
 
 const services = [
   { title: 'Sites vitrines et interfaces web', text: 'Création de pages modernes et lisibles avec HTML, CSS, JavaScript et Bootstrap.' },
@@ -224,8 +224,9 @@ const projects = [
           maintenables.
         </p>
         <p>
-          Actuellement à la recherche d’un stage de 3 mois pour valider mon année de L3, je suis par ailleurs
-          déjà admis en Master 1 MIAGE en alternance à l’Université d’Orléans pour la rentrée de septembre 2026.
+          Actuellement à la recherche d’un stage de 3 mois pour valider mon année de L3, je suis également en
+          recherche active d'un contrat d'alternance, étant déjà admis en Master 1 MIAGE à l’Université d’Orléans
+          pour la rentrée de septembre 2026.
         </p>
       </div>
     </section>
