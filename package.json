@@ -4,11 +4,17 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:server": "node server/index.js",
     "build": "astro build",
     "preview": "astro preview",
+    "server": "node server/index.js",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.17.1"
+    "astro": "^5.17.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "smtp-client": "^0.4.0"
   }
 }

@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 const profile = {
   name: 'DJIBODE Prince Ascel Jacne',
   short: 'Prince Ascel',
-  role: 'Developpeur Full-Stack',
+  role: 'Développeur Full-Stack',
   location: 'Mulhouse',
   email: 'djibodeprinceascel@gmail.com',
   github: 'https://github.com/PrinceAscelJacne',
@@ -15,14 +15,18 @@ const profile = {
 
 const portraitFile = new URL(`../../public${profile.portrait}`, import.meta.url);
 const hasPortrait = existsSync(portraitFile);
+const contactApiBase = String(import.meta.env.PUBLIC_CONTACT_API_BASE ?? '').trim();
+const contactApiUrl = contactApiBase
+  ? `${contactApiBase.replace(/\/$/, '')}/api/contact`
+  : '/api/contact';
 
 const services = [
-  { title: 'Sites vitrines et interfaces web', text: 'Creation de pages modernes et lisibles avec HTML, CSS, JavaScript et Bootstrap.' },
-  { title: 'Applications web Laravel / PHP', text: 'Developpement de modules metier et de fonctionnalités web avec une structure claire.' },
-  { title: 'Integration responsive', text: 'Interfaces adaptees mobile, tablette et desktop avec attention aux details visuels.' },
-  { title: 'Modelisation et base de donnees', text: 'Conception de schemas avec UML/Merise et integration MySQL sur les projets web.' },
-  { title: 'Maintenance et amelioration', text: 'Correction de bugs, optimisation de pages existantes et stabilisation du code.' },
-  { title: 'Collaboration projet', text: 'Participation a l analyse des besoins, aux tests et au suivi de mise en production.' },
+  { title: 'Sites vitrines et interfaces web', text: 'Création de pages modernes et lisibles avec HTML, CSS, JavaScript et Bootstrap.' },
+  { title: 'Applications web Laravel / PHP', text: 'Développement de modules métier et de fonctionnalités web avec une structure claire.' },
+  { title: 'Intégration responsive', text: 'Interfaces adaptées mobile, tablette et desktop avec attention aux détails visuels.' },
+  { title: 'Modélisation et base de données', text: 'Conception de schémas avec UML/Merise et intégration MySQL sur les projets web.' },
+  { title: 'Maintenance et amélioration', text: 'Correction de bugs, optimisation de pages existantes et stabilisation du code.' },
+  { title: 'Collaboration projet', text: 'Participation à l’analyse des besoins, aux tests et au suivi de mise en production.' },
 ];
 
 const skills = [
@@ -35,44 +39,90 @@ const skills = [
 const parcours = [
   {
     year: '2021',
-    title: 'Baccalaureat Serie D',
+    title: 'Baccalauréat Série D - Sainte Jeanne d’Arc',
     text: 'Validation des bases scientifiques et analytiques.',
   },
   {
     year: '2023',
-    title: 'Stage Analyste programmeur - Super U Erevan',
-    text: 'Participation au developpement web, integration front-end et tests applicatifs.',
+    title: 'Stage Analyste programmeur - Super U Erevan (Bénin)',
+    text: 'Participation au développement web, intégration front-end et tests applicatifs.',
   },
   {
     year: '2024',
-    title: 'Stage Developpeur web - ASTUS CITEE',
-    text: 'Application de gestion documentaire et site vitrine pour l entreprise.',
+    title: 'Stage Développeur web - ASTUS CITEE (Cotonou, Bénin)',
+    text: 'Application de gestion documentaire et site vitrine pour l’entreprise.',
   },
   {
-    year: '2025',
-    title: 'Licence Pro Analyse Informatique et Programmation',
-    text: 'Renforcement en dev web, methodes et architecture logicielle.',
+    year: '2023-2024',
+    title: 'Licence Pro Analyse Informatique et Programmation - ENEAM',
+    text: 'Renforcement en dev web, méthodes et architecture logicielle.',
+  },
+  {
+    year: '2025-2026',
+    title: 'Licence 3 MIAGE - FST UHA (Mulhouse)',
+    text: 'Formation actuelle orientée systèmes d’information, développement et besoins métier.',
   },
 ];
 
 const projects = [
   {
-    title: 'Astus Citee - Gestion documentaire',
-    text: 'Centralisation, securisation et acces aux fichiers avec interface metier.',
-    stack: 'Laravel, MySQL, JavaScript',
+    title: 'Projet Graphe et Algorithmes',
+    text: 'Application Java de création, visualisation et analyse de graphes avec architecture MVC.',
+    stack: 'Java - Architecture MVC (Swing, JavaSE-21)',
+    points: [
+      'Création et visualisation interactive de graphes (orientés/non orientés, pondérés) via interface Swing.',
+      'Implémentation d’algorithmes: Dijkstra, Dantzig, Tarjan, Kruskal, Prüfer et tests de connexité.',
+      'Module d’ordonnancement: chemin critique, dates au plus tôt/tard et diagramme de Gantt.',
+      'Simulation du réseau RER parisien (24 stations, 4 lignes) avec calcul du trajet optimal.',
+    ],
+    link: 'https://github.com/PrinceAscelJacne/MonProjetDeGrapheEtAlgo',
+    image: '/images/projet-graphe-algo.png',
+  },
+  {
+    title: 'Astus Citée - Site vitrine',
+    text: 'Conception et intégration d’un site vitrine pour améliorer la visibilité de l’entreprise.',
+    stack: 'HTML, CSS, JavaScript, PHP',
+    points: [
+      'Conception et intégration d’un site vitrine pour améliorer la visibilité de l’entreprise.',
+    ],
     link: 'https://github.com/PrinceAscelJacne/Astus-Cit-e',
+    image: '/images/projet-astus-vitrine.jpeg',
+  },
+  {
+    title: 'GestiLoc - Gestion locative en ligne',
+    text: 'Application web de gestion locative dédiée aux propriétaires béninois.',
+    stack: 'Laravel, MySQL, JavaScript - Déployée sur Vercel',
+    points: [
+      'Gestion des biens, locataires, contrats et paiements (CRUD complet avec authentification).',
+      'Interface moderne et responsive déployée en production sur Vercel.',
+      'Lien démo: gestiloc-rho.vercel.app',
+    ],
+    link: 'https://gestiloc-rho.vercel.app',
+    image: '/images/projet-gestiloc.png',
   },
   {
     title: 'Gestionnaire de questionnaires',
-    text: 'Application C++ pour evaluation adaptative et gestion de questions multiples.',
-    stack: 'C++, Algorithmique',
+    text: 'Application C++ pour la gestion de questionnaires avec plusieurs modes d’évaluation.',
+    stack: 'C++',
+    points: [
+      'Gestion de types de questions: texte libre, numérique et QCM.',
+      'Sauvegarde et lecture depuis fichiers texte.',
+      'Trois modes d’évaluation.',
+    ],
     link: 'https://github.com/PrinceAscelJacne/Questionnaire-Cpp',
+    image: '/images/questionnaire-illustration.svg',
   },
   {
-    title: 'Crypto - Chiffrement',
-    text: 'Outil de chiffrement polyalphabetique pour textes et messages multiformats.',
+    title: 'Crypto - Chiffrement de messages',
+    text: 'Projet de chiffrement polyalphabétique implémenté en deux langages.',
     stack: 'Python, C++',
+    points: [
+      'Implémentation d’un algorithme de chiffrement polyalphabétique.',
+      'Développement en deux langages pour comparer les approches.',
+      'Interface de test pour saisir le message et vérifier le résultat chiffré.',
+    ],
     link: 'https://github.com/PrinceAscelJacne/Crypto',
+    image: '/images/crypto-illustration.svg',
   },
 ];
 ---
@@ -94,9 +144,9 @@ const projects = [
 
       <nav class="nav desktop-nav" aria-label="Navigation principale">
         <a href="#hero">Accueil</a>
-        <a href="#about">A propos</a>
+        <a href="#about">À propos</a>
         <a href="#services">Services</a>
-        <a href="#skills">Competences</a>
+        <a href="#skills">Compétences</a>
         <a href="#parcours">Parcours</a>
         <a href="#projects">Projets</a>
       </nav>
@@ -105,9 +155,9 @@ const projects = [
 
       <nav class="nav mobile-nav" aria-label="Navigation mobile">
         <a href="#hero">Accueil</a>
-        <a href="#about">A propos</a>
+        <a href="#about">À propos</a>
         <a href="#services">Services</a>
-        <a href="#skills">Competences</a>
+        <a href="#skills">Compétences</a>
         <a href="#parcours">Parcours</a>
         <a href="#projects">Projets</a>
         <a href="#contact">Contact</a>
@@ -116,14 +166,14 @@ const projects = [
 
     <section id="hero" class="hero shell reveal">
       <div class="hero-intro">
-        <p class="hero-eyebrow">HELLO, MON NOM C EST</p>
+        <p class="hero-eyebrow">HELLO, MON NOM C’EST</p>
         <h1>
           <span>{profile.name}</span>
           <strong>{profile.role}</strong>
         </h1>
         <p>
-          Je concois des applications web utiles, lisibles et maintenables, avec une approche orientee besoin metier
-          et un travail rigoureux sur l integration front-end et back-end.
+          Je conçois des applications web utiles, lisibles et maintenables, avec une approche orientée besoin métier
+          et un travail rigoureux sur l’intégration front-end et back-end.
         </p>
       </div>
 
@@ -149,7 +199,7 @@ const projects = [
         <div class="hero-cta">
           <a class="btn btn-solid" href="#services">Mes services</a>
           <a class="btn btn-outline" href="#projects">Mes projets</a>
-          <a class="btn btn-outline" href={profile.cv} target="_blank" rel="noopener">Telecharger CV</a>
+          <a class="btn btn-outline" href={profile.cv} target="_blank" rel="noopener">Télécharger CV</a>
         </div>
         <div class="hero-tags">
           <span>Laravel</span><span>PHP</span><span>JavaScript</span><span>MySQL</span><span>UML</span><span>Python</span>
@@ -159,18 +209,23 @@ const projects = [
 
     <section id="about" class="block shell reveal">
       <div class="block-head">
-        <h2>A propos de moi</h2>
+        <h2>À propos de moi</h2>
       </div>
       <div class="about-copy">
         <p>
-          Je suis DJIBODE Prince Ascel Jacne, developpeur full stack base a {profile.location}.
-          Actuellement en Licence 3 MIAGE (FST UHA), je concois des applications web utiles, lisibles et
-          maintenables, avec une approche orientee besoin metier.
+          Je suis DJIBODE Prince Ascel Jacne, développeur Full Stack basé en France.
+          Actuellement en Licence 3 MIAGE à FST UHA, je conçois des applications web utiles, lisibles et
+          maintenables, avec une approche orientée besoin métier.
         </p>
         <p>
-          Mes competences couvrent surtout le developpement web (HTML, CSS, JavaScript, PHP/Laravel), la
-          modelisation (UML, Merise), les bases de donnees MySQL et des langages comme Java, Python, C++ et Flutter.
-          Mon objectif est de livrer des applications claires, fonctionnelles et maintenables.
+          Mes compétences couvrent principalement le développement web (HTML, CSS, JavaScript, PHP/Laravel),
+          la modélisation (UML, Merise), les bases de données MySQL, ainsi que des langages comme Java,
+          Python, C++ et Flutter. Mon objectif est de livrer des applications claires, fonctionnelles et
+          maintenables.
+        </p>
+        <p>
+          Actuellement à la recherche d’un stage de 3 mois pour valider mon année de L3, je suis par ailleurs
+          déjà admis en Master 1 MIAGE en alternance à l’Université d’Orléans pour la rentrée de septembre 2026.
         </p>
       </div>
     </section>
@@ -178,7 +233,7 @@ const projects = [
     <section id="services" class="block shell reveal">
       <div class="block-head">
         <h2> Ce que je peux construire</h2>
-        <p>Des prestations alignees sur mes competences reelles et mes experiences de terrain.</p>
+        <p>Des prestations alignées sur mes compétences réelles et mes expériences de terrain.</p>
       </div>
       <div class="service-grid">
         {services.map((service, index) => (
@@ -192,7 +247,7 @@ const projects = [
 
     <section id="skills" class="block shell reveal">
       <div class="block-head">
-        <h2>Competences</h2>
+        <h2>Compétences</h2>
         <p>Stack principale: HTML, CSS, JavaScript, PHP/Laravel, MySQL, UML/Merise, Python, C++, Flutter.</p>
       </div>
       <div class="skill-grid">
@@ -211,8 +266,8 @@ const projects = [
       <div class="block-head">
         <h2>Parcours</h2>
         <p>
-          Mon parcours combine une base academique solide et des experiences pratiques en entreprise,
-          avec une progression continue vers le developpement web full-stack.
+          Mon parcours combine une base académique solide et des expériences pratiques en entreprise,
+          avec une progression continue vers le développement web full-stack.
         </p>
       </div>
       <div class="tree">
@@ -234,27 +289,42 @@ const projects = [
         <h2>Projets</h2>
         <a class="btn btn-outline" href={profile.github} target="_blank" rel="noopener">Voir GitHub</a>
       </div>
-      <div class="project-grid">
-        {projects.map((project, index) => (
-          <article class="project-card scroll-reveal" style={`--delay:${index * 80}ms`}>
-            <h3>{project.title}</h3>
-            <p>{project.text}</p>
-            <footer>
-              <span>{project.stack}</span>
-              <a href={project.link} target="_blank" rel="noopener">Voir</a>
-            </footer>
-          </article>
-        ))}
+      <div class="projects-carousel">
+        <button class="carousel-btn prev" type="button" aria-label="Projet précédent">‹</button>
+        <div class="project-viewport" id="project-viewport">
+          <div class="project-track">
+            {projects.map((project, index) => (
+              <article class="project-card scroll-reveal" style={`--delay:${index * 80}ms`}>
+                {project.image && <img class="project-thumb" src={project.image} alt={project.title} loading="lazy" />}
+                <h3>{project.title}</h3>
+                <p>{project.text}</p>
+                {project.points && (
+                  <ul class="project-points">
+                    {project.points.map((point) => <li>{point}</li>)}
+                  </ul>
+                )}
+                <footer>
+                  <span>{project.stack}</span>
+                  <div class="project-links">
+                    <a href={project.link} target="_blank" rel="noopener">Voir</a>
+                    {project.repo && <a href={project.repo} target="_blank" rel="noopener">GitHub</a>}
+                  </div>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </div>
+        <button class="carousel-btn next" type="button" aria-label="Projet suivant">›</button>
       </div>
     </section>
 
     <section id="contact" class="block shell reveal">
       <div class="block-head">
         <h2>Contact</h2>
-        <p>Envoie ton besoin, je te reponds avec un plan d action clair.</p>
+        <p>Envoie ton besoin, je te réponds avec un plan d’action clair.</p>
       </div>
       <div class="contact-grid">
-        <form class="contact-form" action={`mailto:${profile.email}`} method="post" enctype="text/plain">
+        <form class="contact-form" id="contact-form" data-endpoint={contactApiUrl}>
           <div class="row2">
             <label>Nom *<input type="text" name="nom" required /></label>
             <label>Email *<input type="email" name="email" required /></label>
@@ -262,6 +332,7 @@ const projects = [
           <label>Sujet *<input type="text" name="sujet" required /></label>
           <label>Message *<textarea name="message" rows="6" required></textarea></label>
           <button class="btn btn-solid" type="submit">Envoyer</button>
+          <p id="contact-feedback" class="contact-feedback" role="status" aria-live="polite"></p>
         </form>
 
         <aside class="contact-side">
@@ -301,6 +372,99 @@ const projects = [
           });
         }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
         targets.forEach((el) => observer.observe(el));
+      }
+
+      const viewport = document.getElementById('project-viewport');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      if (viewport && prevBtn && nextBtn) {
+        const getStep = () => {
+          const firstCard = viewport.querySelector('.project-card');
+          const track = viewport.querySelector('.project-track');
+          if (!firstCard || !track) return viewport.clientWidth;
+          const styles = window.getComputedStyle(track);
+          const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        const goToIndex = (index) => {
+          const step = getStep();
+          const maxIndex = Math.max(0, Math.round((viewport.scrollWidth - viewport.clientWidth) / step));
+          const clamped = Math.max(0, Math.min(index, maxIndex));
+          viewport.scrollTo({ left: clamped * step, behavior: 'smooth' });
+        };
+
+        const getCurrentIndex = () => {
+          const step = getStep();
+          return step > 0 ? Math.round(viewport.scrollLeft / step) : 0;
+        };
+
+        const syncButtons = () => {
+          const maxLeft = viewport.scrollWidth - viewport.clientWidth - 2;
+          prevBtn.disabled = viewport.scrollLeft <= 2;
+          nextBtn.disabled = viewport.scrollLeft >= maxLeft;
+        };
+
+        prevBtn.addEventListener('click', () => {
+          goToIndex(getCurrentIndex() - 1);
+        });
+        nextBtn.addEventListener('click', () => {
+          goToIndex(getCurrentIndex() + 1);
+        });
+
+        viewport.addEventListener('scroll', syncButtons, { passive: true });
+        window.addEventListener('resize', () => {
+          goToIndex(getCurrentIndex());
+          syncButtons();
+        });
+        syncButtons();
+      }
+
+      const form = document.getElementById('contact-form');
+      const feedback = document.getElementById('contact-feedback');
+      if (form && feedback) {
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const submitButton = form.querySelector('button[type="submit"]');
+          const endpoint = form.dataset.endpoint;
+          const formData = new FormData(form);
+          const payload = {
+            nom: String(formData.get('nom') || '').trim(),
+            email: String(formData.get('email') || '').trim(),
+            sujet: String(formData.get('sujet') || '').trim(),
+            message: String(formData.get('message') || '').trim(),
+          };
+
+          if (!endpoint) {
+            feedback.textContent = 'Erreur de configuration du formulaire.';
+            feedback.dataset.state = 'error';
+            return;
+          }
+
+          submitButton?.setAttribute('disabled', 'true');
+          feedback.textContent = 'Envoi en cours...';
+          feedback.dataset.state = 'loading';
+
+          try {
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) {
+              throw new Error(result?.error || 'Erreur serveur');
+            }
+            feedback.textContent = 'Message envoyé. Vérification envoyée sur votre email.';
+            feedback.dataset.state = 'success';
+            form.reset();
+          } catch (error) {
+            feedback.textContent = 'Impossible d’envoyer le message. Réessayez.';
+            feedback.dataset.state = 'error';
+          } finally {
+            submitButton?.removeAttribute('disabled');
+          }
+        });
       }
     </script>
   </main>
@@ -686,11 +850,46 @@ const projects = [
   .tree-item h3 { margin: 0.25rem 0 0; font-size: 1rem; color: #573e29; }
   .tree-item p { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem; }
 
-  .project-grid {
+  .projects-carousel {
     margin-top: 0.9rem;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .carousel-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
+    color: #5d452f;
+    font-size: 1.55rem;
+    line-height: 1;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-btn:hover { filter: brightness(1.04); }
+  .carousel-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .project-viewport {
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .project-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 1.2rem) / 3);
     gap: 0.6rem;
+    transition: transform 0.35s ease;
+    will-change: transform;
   }
 
   .project-card {
@@ -700,19 +899,50 @@ const projects = [
     background: rgba(255, 252, 247, 0.76);
     display: grid;
     gap: 0.55rem;
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 0.72rem;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.55);
   }
 
   .project-card h3 { margin: 0; font-size: 1.05rem; color: #563d28; }
   .project-card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+  .project-points {
+    margin: 0;
+    padding-left: 1.05rem;
+    display: grid;
+    gap: 0.32rem;
+    min-height: 4.4rem;
+  }
+  .project-points li {
+    color: #6d5a49;
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
 
   .project-card footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.7rem;
+    margin-top: auto;
   }
 
   .project-card footer span { font-size: 0.78rem; color: #654f3b; font-weight: 700; }
+  .project-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
   .project-card footer a {
     text-decoration: none;
     border: 1px solid var(--line);
@@ -727,6 +957,18 @@ const projects = [
     margin: 0.7rem 0 0;
     color: var(--muted);
     line-height: 1.65;
+  }
+
+  .parcours-copy {
+    margin-top: 0.85rem;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .parcours-copy p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.68;
   }
 
   .contact-grid {
@@ -778,6 +1020,22 @@ const projects = [
     border-color: rgba(128, 85, 49, 0.7);
     box-shadow: 0 0 0 3px rgba(128, 85, 49, 0.14);
   }
+
+  .contact-form button[disabled] {
+    opacity: 0.72;
+    cursor: not-allowed;
+  }
+
+  .contact-feedback {
+    margin: 0.6rem 0 0;
+    min-height: 1.2rem;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #6a5441;
+  }
+
+  .contact-feedback[data-state='success'] { color: #2f6b3f; }
+  .contact-feedback[data-state='error'] { color: #8f2f2f; }
 
   .contact-side { display: grid; gap: 0.45rem; align-content: start; }
 
@@ -840,6 +1098,11 @@ const projects = [
     50% { transform: translateY(-9px); }
   }
 
+  @keyframes floating-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
   @media (max-width: 1100px) {
     .contact-grid { grid-template-columns: 1fr; }
 
@@ -852,7 +1115,7 @@ const projects = [
 
     .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project-track { grid-auto-columns: calc((100% - 0.6rem) / 2); }
   }
 
   @media (max-width: 860px) {
@@ -863,7 +1126,8 @@ const projects = [
 
     .hero-stage {
       min-height: 26rem;
-      padding: 0.45rem 0.35rem 0.9rem;
+      padding: 0.85rem 0.5rem 0.9rem;
+      overflow: visible;
     }
 
     .hero-photo-wrap { min-height: 21.5rem; width: 100%; }
@@ -872,17 +1136,17 @@ const projects = [
     .orbit-chip {
       position: absolute;
       display: inline-flex;
-      animation: floating 4s ease-in-out infinite;
+      animation: floating-soft 4s ease-in-out infinite;
       font-size: 0.74rem;
       padding: 0.28rem 0.5rem;
     }
 
-    .c1 { left: 0.35rem; top: 0.55rem; }
-    .c2 { right: 0.35rem; top: 0.55rem; }
-    .c3 { left: 0.2rem; top: 5.7rem; }
-    .c4 { right: 0.2rem; top: 5.7rem; }
-    .c5 { left: 0.45rem; bottom: 6.2rem; }
-    .c6 { right: 0.45rem; bottom: 6.2rem; }
+    .c1 { left: 0.55rem; top: 1rem; }
+    .c2 { right: 0.55rem; top: 1rem; }
+    .c3 { left: 0.45rem; top: 6.25rem; }
+    .c4 { right: 0.45rem; top: 6.25rem; }
+    .c5 { left: 0.55rem; bottom: 6.4rem; }
+    .c6 { right: 0.55rem; bottom: 6.4rem; }
 
     .hero-tags,
     .hero-cta {
@@ -977,10 +1241,25 @@ const projects = [
 
     .service-grid,
     .skill-grid,
-    .project-grid,
     .row2 {
       grid-template-columns: 1fr;
     }
+
+    .projects-carousel {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+    }
+
+    .project-track { grid-auto-columns: 100%; }
+
+    .carousel-btn {
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.35rem;
+    }
+
+    .projects-carousel .prev { justify-self: start; }
+    .projects-carousel .next { justify-self: end; }
 
     .footer {
       flex-direction: column;
