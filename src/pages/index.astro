@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 const profile = {
   name: 'DJIBODE Prince Ascel Jacne',
   short: 'Prince Ascel',
-  role: 'Développeur Full-Stack',
+  role: 'Ingénieur Études & Développement',
   location: 'Mulhouse',
   email: 'djibodeprinceascel@gmail.com',
   github: 'https://github.com/PrinceAscelJacne',
@@ -21,19 +21,19 @@ const contactApiBase = import.meta.env.PROD && isLocalApiBase ? '' : rawContactA
 const contactApiUrl = contactApiBase ? `${contactApiBase.replace(/\/$/, '')}/api/contact` : '/api/contact';
 
 const services = [
-  { title: 'Sites vitrines et interfaces web', text: 'Création de pages modernes et lisibles avec HTML, CSS, JavaScript et Bootstrap.' },
-  { title: 'Applications web Laravel / PHP', text: 'Développement de modules métier et de fonctionnalités web avec une structure claire.' },
-  { title: 'Intégration responsive', text: 'Interfaces adaptées mobile, tablette et desktop avec attention aux détails visuels.' },
-  { title: 'Modélisation et base de données', text: 'Conception de schémas avec UML/Merise et intégration MySQL sur les projets web.' },
-  { title: 'Maintenance et amélioration', text: 'Correction de bugs, optimisation de pages existantes et stabilisation du code.' },
-  { title: 'Collaboration projet', text: 'Participation à l’analyse des besoins, aux tests et au suivi de mise en production.' },
+  { title: 'Applications métier', text: 'Études et développement d’applications de gestion en C# et PHP/Laravel, pensées pour durer.' },
+  { title: 'Tests et automatisation', text: 'Tests unitaires et scénarios Gherkin automatisés pour fiabiliser chaque livraison.' },
+  { title: 'Conception et architecture logicielle', text: 'Modélisation UML/Merise et choix d’architecture alignés sur les besoins métier.' },
+  { title: 'Données et bases de données', text: 'Conception de schémas relationnels et intégration MySQL dans les applications.' },
+  { title: 'Qualité et maintenance', text: 'Correction, refactorisation et stabilisation du code d’applications existantes.' },
+  { title: 'Analyse des besoins', text: 'Recueil des besoins, rédaction de cahiers des charges et suivi jusqu’à la mise en production.' },
 ];
 
 const skills = [
   { group: 'Web et Frameworks', items: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'Livewire', 'Blade', 'Tailwind CSS', 'Alpine.js', 'GSAP', 'Bootstrap'] },
-  { group: 'Langages et Mobile', items: ['Java', 'Python', 'C++', 'Flutter'] },
+  { group: 'Langages et Mobile', items: ['C#', 'Java', 'Python', 'C++', 'Flutter'] },
   { group: 'Analyse et Bases de donnees', items: ['MySQL', 'Eloquent ORM', 'UML', 'Merise'] },
-  { group: 'Outils et deploiement', items: ['Git', 'GitHub', 'Composer', 'Vite', 'PHPUnit', 'VS Code', 'Eclipse', 'Laragon', 'XAMPP', 'Hostinger', 'Vercel'] },
+  { group: 'Outils et deploiement', items: ['Git', 'GitHub', 'Composer', 'Vite', 'Tests unitaires', 'PHPUnit', 'Gherkin', 'VS Code', 'Eclipse', 'Laragon', 'XAMPP', 'Hostinger', 'Vercel'] },
 ];
 
 const parcours = [
@@ -60,12 +60,22 @@ const parcours = [
   {
     year: '2025-2026',
     title: 'Licence 3 MIAGE - FST UHA (Mulhouse)',
-    text: 'Formation actuelle orientée systèmes d’information, développement et besoins métier.',
+    text: 'Formation orientée systèmes d’information, développement et besoins métier.',
   },
   {
     year: '2026',
     title: 'Stage Développeur web full-stack : Agence Kery Assistance Médicale (Paris, Île-de-France)',
     text: 'Site web du groupe Kery, page Elite Conciergerie Internationale et back-office d’administration, mis en production.',
+  },
+  {
+    year: '2026-2028',
+    title: 'Mastère Manager Architecture et applications logicielles des SI - CESI École d’Ingénieurs (Orléans)',
+    text: 'Formation Bac+5 en alternance (titre RNCP 38778) : architecture logicielle, conception et pilotage d’applications du système d’information.',
+  },
+  {
+    year: '2026-2028',
+    title: 'Alternance Ingénieur Études & Développement 1 - Malakoff Humanis (La Chaussée-Saint-Victor)',
+    text: 'Au sein de MH TECH, dans le domaine Gestion Santé / Prévoyance / Cotisation : développement en C# et automatisation des tests (Gherkin).',
   },
 ];
 
@@ -150,7 +160,7 @@ const projects = [
 ];
 ---
 
-<Layout title={`${profile.name} | Portfolio`} description="Portfolio full-stack de DJIBODE Prince Ascel Jacne.">
+<Layout title={`${profile.name} | Portfolio`} description="Portfolio de DJIBODE Prince Ascel Jacne, Ingénieur Études &amp; Développement.">
   <main class="site">
     <div class="texture" aria-hidden="true"></div>
 
@@ -195,8 +205,8 @@ const projects = [
           <strong>{profile.role}</strong>
         </h1>
         <p>
-          Je conçois des applications web utiles, lisibles et maintenables, avec une approche orientée besoin métier
-          et un travail rigoureux sur l’intégration front-end et back-end.
+          Je conçois et fais évoluer des applications métier fiables et maintenables, avec une approche orientée
+          besoin métier et une attention particulière à la qualité logicielle et aux tests.
         </p>
       </div>
 
@@ -205,8 +215,8 @@ const projects = [
         <span class="orbit-chip c2">PHP / Laravel</span>
         <span class="orbit-chip c3">MySQL</span>
         <span class="orbit-chip c4">UML / Merise</span>
-        <span class="orbit-chip c5">Flutter</span>
-        <span class="orbit-chip c6">C++ / Python</span>
+        <span class="orbit-chip c5">C#</span>
+        <span class="orbit-chip c6">Tests / Gherkin</span>
 
         <div class="hero-photo-wrap">
           <div class="halo"></div>
@@ -225,7 +235,7 @@ const projects = [
           <a class="btn btn-outline" href={profile.cv} target="_blank" rel="noopener">Télécharger CV</a>
         </div>
         <div class="hero-tags">
-          <span>Laravel</span><span>PHP</span><span>JavaScript</span><span>MySQL</span><span>UML</span><span>Python</span>
+          <span>C#</span><span>Gherkin</span><span>Laravel</span><span>PHP</span><span>MySQL</span><span>UML</span>
         </div>
       </div>
     </section>
@@ -236,18 +246,19 @@ const projects = [
       </div>
       <div class="about-copy">
         <p>
-          Je suis DJIBODE Prince Ascel Jacne, développeur Full Stack basé en France. Actuellement étudiant en
-          Licence 3 MIAGE à la FST UHA et en stage chez Kery Assistance Médicale, je conçois des applications web
-          utiles, lisibles et maintenables, avec une approche toujours orientée vers les besoins métiers.
+          Je suis DJIBODE Prince Ascel Jacne, Ingénieur Études &amp; Développement en alternance chez Malakoff
+          Humanis. Je conçois des applications métier fiables et maintenables, avec une approche toujours orientée
+          vers les besoins métier et la qualité logicielle.
         </p>
         <p>
-          Mes compétences couvrent principalement le développement web (HTML, CSS, JavaScript, PHP/Laravel), la
-          modélisation (UML, Merise) et les bases de données MySQL, ainsi que des langages comme Java, Python, C++
-          et Flutter.
+          Mes compétences couvrent le développement en C# et PHP/Laravel, les tests unitaires et l’automatisation des tests avec Gherkin,
+          la modélisation (UML, Merise) et les bases de données MySQL, ainsi que des langages comme Java, Python et
+          C++.
         </p>
         <p>
-          Passionné et rigoureux, j'ai le plaisir d'intégrer le groupe Malakoff Humanis dès la rentrée de septembre
-          2026 en tant qu'Ingénieur Études et Développement en alternance, afin de poursuivre mon parcours en Master.
+          Passionné et rigoureux, j’ai rejoint le groupe Malakoff Humanis en octobre 2026 en tant qu’Ingénieur
+          Études &amp; Développement 1 en alternance, au sein de MH TECH (domaine Gestion Santé / Prévoyance /
+          Cotisation). J’y développe en C# et je travaille sur l’automatisation des tests avec Gherkin.
         </p>
       </div>
     </section>
@@ -270,7 +281,7 @@ const projects = [
     <section id="skills" class="block shell reveal">
       <div class="block-head">
         <h2>Compétences</h2>
-        <p>Stack principale: HTML, CSS, JavaScript, PHP/Laravel, MySQL, UML/Merise, Python, C++, Flutter.</p>
+        <p>Stack principale : C#, PHP/Laravel, tests unitaires, Gherkin, MySQL, UML/Merise, JavaScript, Java, Python, C++.</p>
       </div>
       <div class="skill-grid">
         {skills.map((skill, index) => (
@@ -289,7 +300,7 @@ const projects = [
         <h2>Parcours</h2>
         <p>
           Mon parcours combine une base académique solide et des expériences pratiques en entreprise,
-          avec une progression continue vers le développement web full-stack.
+          avec une progression continue vers l’ingénierie logicielle et la qualité des applications.
         </p>
       </div>
       <div class="tree">
