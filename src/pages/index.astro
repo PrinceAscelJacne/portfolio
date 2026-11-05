@@ -234,9 +234,6 @@ const projects = [
           <a class="btn btn-outline" href="#projects">Mes projets</a>
           <a class="btn btn-outline" href={profile.cv} target="_blank" rel="noopener">Télécharger CV</a>
         </div>
-        <div class="hero-tags">
-          <span>C#</span><span>Gherkin</span><span>Laravel</span><span>PHP</span><span>MySQL</span><span>UML</span>
-        </div>
       </div>
     </section>
 
@@ -394,6 +391,23 @@ const projects = [
     </footer>
 
     <script>
+      // Referme le menu mobile : clic sur un lien, toucher en dehors, défilement ou touche Échap.
+      const menuToggle = document.getElementById('menu-toggle');
+      const topbar = document.querySelector('.topbar');
+      if (menuToggle instanceof HTMLInputElement && topbar) {
+        const closeMenu = () => { menuToggle.checked = false; };
+        document.querySelectorAll('.mobile-nav a').forEach((link) => link.addEventListener('click', closeMenu));
+        document.addEventListener('click', (event) => {
+          if (menuToggle.checked && event.target instanceof Node && !topbar.contains(event.target)) closeMenu();
+        });
+        let scrollStart = 0;
+        menuToggle.addEventListener('change', () => { scrollStart = window.scrollY; });
+        window.addEventListener('scroll', () => {
+          if (menuToggle.checked && Math.abs(window.scrollY - scrollStart) > 40) closeMenu();
+        }, { passive: true });
+        document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
+      }
+
       if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
         document.body.classList.add('motion-enabled');
         const targets = document.querySelectorAll('.reveal, .scroll-reveal');
@@ -689,27 +703,7 @@ const projects = [
     z-index: 5;
   }
 
-  .hero-tags {
-    position: absolute;
-    left: 50%;
-    bottom: 3.85rem;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    z-index: 5;
-  }
 
-  .hero-tags span {
-    padding: 0.32rem 0.64rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: #684f3a;
-    background: rgba(255, 255, 255, 0.55);
-  }
 
   .hero-photo-wrap {
     position: relative;
@@ -1140,7 +1134,6 @@ const projects = [
     .contact-grid { grid-template-columns: 1fr; }
 
     .hero-stage { min-height: 28rem; }
-    .hero-tags { bottom: 3.7rem; }
     .hero-cta { bottom: 0.8rem; }
 
     .hero-photo-wrap { min-height: 25rem; }
@@ -1178,10 +1171,9 @@ const projects = [
     .c2 { right: 0.55rem; top: 1rem; }
     .c3 { left: 0.45rem; top: 6.25rem; }
     .c4 { right: 0.45rem; top: 6.25rem; }
-    .c5 { left: 0.55rem; bottom: 6.4rem; }
-    .c6 { right: 0.55rem; bottom: 6.4rem; }
+    .c5 { left: 0.55rem; top: 11.5rem; bottom: auto; }
+    .c6 { right: 0.55rem; top: 11.5rem; bottom: auto; }
 
-    .hero-tags,
     .hero-cta {
       position: static;
       transform: none;
