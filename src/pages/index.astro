@@ -359,7 +359,10 @@ const projects = [
             <label>Email *<input type="email" name="email" required /></label>
           </div>
           <label>Sujet *<input type="text" name="sujet" required /></label>
-          <label>Message *<textarea name="message" rows="6" required></textarea></label>
+          <label>Message *<textarea name="message" rows="6" maxlength="5000" required></textarea></label>
+          <div class="hp-field" aria-hidden="true">
+            <label>Site web<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
           <button class="btn btn-solid" type="submit">Envoyer</button>
           <p id="contact-feedback" class="contact-feedback" role="status" aria-live="polite"></p>
         </form>
@@ -479,6 +482,7 @@ const projects = [
             email: String(formData.get('email') || '').trim(),
             sujet: String(formData.get('sujet') || '').trim(),
             message: String(formData.get('message') || '').trim(),
+            website: String(formData.get('website') || '').trim(),
           };
 
           if (!endpoint) {
@@ -501,11 +505,12 @@ const projects = [
             if (!response.ok) {
               throw new Error(result?.error || 'Erreur serveur');
             }
-            feedback.textContent = 'Message envoyé. Vérification envoyée sur votre email.';
+            feedback.textContent = 'Message envoyé ! Un accusé de réception vous a été envoyé par email.';
             feedback.dataset.state = 'success';
             form.reset();
           } catch (error) {
-            feedback.textContent = 'Impossible d’envoyer le message. Réessayez.';
+            const reason = error instanceof Error && error.message && error.message !== 'Failed to fetch' ? ` (${error.message})` : '';
+            feedback.textContent = `Impossible d’envoyer le message${reason}. Réessayez ou écrivez-moi directement par email.`;
             feedback.dataset.state = 'error';
           } finally {
             submitButton?.removeAttribute('disabled');
@@ -1051,6 +1056,8 @@ const projects = [
     opacity: 0.72;
     cursor: not-allowed;
   }
+
+  .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   .contact-feedback {
     margin: 0.6rem 0 0;
