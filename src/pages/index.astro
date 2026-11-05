@@ -22,7 +22,7 @@ const contactApiUrl = contactApiBase ? `${contactApiBase.replace(/\/$/, '')}/api
 
 const services = [
   { title: 'Applications métier', text: 'Études et développement d’applications de gestion en C# et PHP/Laravel, pensées pour durer.' },
-  { title: 'Automatisation des tests', text: 'Scénarios de tests écrits en Gherkin et automatisés pour fiabiliser chaque livraison.' },
+  { title: 'Tests et automatisation', text: 'Tests unitaires et scénarios Gherkin automatisés pour fiabiliser chaque livraison.' },
   { title: 'Conception et architecture logicielle', text: 'Modélisation UML/Merise et choix d’architecture alignés sur les besoins métier.' },
   { title: 'Données et bases de données', text: 'Conception de schémas relationnels et intégration MySQL dans les applications.' },
   { title: 'Qualité et maintenance', text: 'Correction, refactorisation et stabilisation du code d’applications existantes.' },
@@ -33,7 +33,7 @@ const skills = [
   { group: 'Web et Frameworks', items: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'Livewire', 'Blade', 'Tailwind CSS', 'Alpine.js', 'GSAP', 'Bootstrap'] },
   { group: 'Langages et Mobile', items: ['C#', 'Java', 'Python', 'C++', 'Flutter'] },
   { group: 'Analyse et Bases de donnees', items: ['MySQL', 'Eloquent ORM', 'UML', 'Merise'] },
-  { group: 'Outils et deploiement', items: ['Git', 'GitHub', 'Composer', 'Vite', 'PHPUnit', 'Gherkin', 'VS Code', 'Eclipse', 'Laragon', 'XAMPP', 'Hostinger', 'Vercel'] },
+  { group: 'Outils et deploiement', items: ['Git', 'GitHub', 'Composer', 'Vite', 'Tests unitaires', 'PHPUnit', 'Gherkin', 'VS Code', 'Eclipse', 'Laragon', 'XAMPP', 'Hostinger', 'Vercel'] },
 ];
 
 const parcours = [
@@ -251,7 +251,7 @@ const projects = [
           vers les besoins métier et la qualité logicielle.
         </p>
         <p>
-          Mes compétences couvrent le développement en C# et PHP/Laravel, l’automatisation des tests avec Gherkin,
+          Mes compétences couvrent le développement en C# et PHP/Laravel, les tests unitaires et l’automatisation des tests avec Gherkin,
           la modélisation (UML, Merise) et les bases de données MySQL, ainsi que des langages comme Java, Python et
           C++.
         </p>
@@ -281,7 +281,7 @@ const projects = [
     <section id="skills" class="block shell reveal">
       <div class="block-head">
         <h2>Compétences</h2>
-        <p>Stack principale : C#, PHP/Laravel, Gherkin, MySQL, UML/Merise, JavaScript, Java, Python, C++.</p>
+        <p>Stack principale : C#, PHP/Laravel, tests unitaires, Gherkin, MySQL, UML/Merise, JavaScript, Java, Python, C++.</p>
       </div>
       <div class="skill-grid">
         {skills.map((skill, index) => (
