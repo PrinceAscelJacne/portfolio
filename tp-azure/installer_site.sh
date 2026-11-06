@@ -2,6 +2,11 @@
 # Installe le site PHP relié à Azure Database for PostgreSQL sur la VM (Ubuntu + Apache).
 # Usage : bash installer_site.sh
 set -e
+if ! command -v apt-get >/dev/null 2>&1 || [ "$(uname -s)" != "Linux" ]; then
+  echo "Ce script doit être lancé sur la VM Azure (Ubuntu), pas sur votre Mac."
+  echo "Connectez-vous d'abord : ssh PrinceAscel@68.221.26.250"
+  exit 1
+fi
 BASE=https://raw.githubusercontent.com/PrinceAscelJacne/portfolio/claude/project-thread-feigon/tp-azure
 
 echo "== 1/5 Installation de PHP, php-pgsql et psql =="
