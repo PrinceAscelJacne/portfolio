@@ -70,7 +70,8 @@ fi
 psql service=portfolio -tAc "SELECT 1 FROM pg_database WHERE datname='drupal'" | grep -q 1 \
   || psql service=portfolio -c "CREATE DATABASE drupal;"
 psql "service=portfolio dbname=drupal" -q -c "GRANT ALL PRIVILEGES ON DATABASE drupal TO drupaluser;" \
-  -c "GRANT ALL ON SCHEMA public TO drupaluser;"
+  -c "GRANT ALL ON SCHEMA public TO drupaluser;" \
+  -c "ALTER DATABASE drupal SET bytea_output = 'escape';"
 # Drupal 11 exige l'extension pg_trgm
 if ! psql "service=portfolio dbname=drupal" -q -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;"; then
   echo
