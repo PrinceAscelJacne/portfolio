@@ -10,6 +10,12 @@ fi
 BASE=https://raw.githubusercontent.com/PrinceAscelJacne/portfolio/claude/project-thread-feigon/tp-azure
 
 echo "== 1/5 Installation de PHP, php-pgsql et psql =="
+# Nginx occupe le port 80 : on le coupe pour laisser la place à Apache
+if systemctl is-active --quiet nginx 2>/dev/null; then
+  echo "Nginx détecté sur le port 80 : arrêt de Nginx, Apache prend le relais."
+  sudo systemctl disable --now nginx
+fi
+sudo dpkg --configure -a || true
 sudo apt-get update -q
 sudo apt-get install -y -q php libapache2-mod-php php-pgsql postgresql-client
 sudo systemctl restart apache2
